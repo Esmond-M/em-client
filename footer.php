@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package esmond-theme-portfolio
+ * @package em-client
  */
 ?>
  <footer id="colophon" class="site-footer emThemefooter">

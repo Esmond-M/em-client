@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package esmond-theme-portfolio
+ * @package em-client
  */
 
 /*
@@ -32,13 +32,13 @@ if ( post_password_required() ) {
 			if ( '1' === $emTheme_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'esmond-theme-portfolio' ),
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'em-client' ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
 				printf( 
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $emTheme_comment_count, 'comments title', 'esmond-theme-portfolio' ) ),
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $emTheme_comment_count, 'comments title', 'em-client' ) ),
 					number_format_i18n( $emTheme_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
@@ -65,7 +65,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'esmond-theme-portfolio' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'em-client' ); ?></p>
 			<?php
 		endif;
 

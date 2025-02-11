@@ -15,11 +15,11 @@ msgstr ""
 "X-Domain: _s\n"
 
 #. Theme Name of the theme
-msgid "esmond-theme"
+msgid "em-client"
 msgstr ""
 
 #. Theme URI of the theme
-msgid "https://github.com/Esmond-M/esmond-theme"
+msgid "https://github.com/Esmond-M/em-client"
 msgstr ""
 
 #. Description of the theme

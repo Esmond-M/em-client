@@ -138,7 +138,7 @@
             endwhile;
             else:
             // If no posts match this query, output this text.
-            	_e( 'Sorry, no posts matched your criteria.', 'esmond-theme-portfolio' );
+            	_e( 'Sorry, no posts matched your criteria.', 'em-client' );
             endif; 
             
             // If no posts match this query, output this text. 
@@ -187,7 +187,7 @@
             endwhile;
             else:
             // If no posts match this query, output this text.
-            	_e( 'Sorry, no posts matched your criteria.', 'esmond-theme-portfolio' );
+            	_e( 'Sorry, no posts matched your criteria.', 'em-client' );
             endif; 
             
             // If no posts match this query, output this text. 

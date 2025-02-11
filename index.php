@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package esmond-theme-portfolio
+ * @package em-client
  */
 
 get_header();

@@ -1,8 +1,8 @@
 <?php
 /**
- * esmond-theme-portfolio Theme Customizer
+ * em-client Theme Customizer
  *
- * @package esmond-theme-portfolio
+ * @package em-client
  */
 
 /**
