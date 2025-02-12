@@ -15,11 +15,6 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 /*--------------------------------------------------------------
 # Header & Nav
 --------------------------------------------------------------*/
-.site-header #primary-menu {
-	max-width: 1200px;
-    width: 100%;
-	margin: auto;
-}
 .site-header  {
     display: -webkit-box;
     display: -moz-box;
@@ -57,6 +52,8 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
     justify-content: center;
     width: 100%;
     padding: 0px;
+	max-width: 1200px;
+	margin: auto;
 }
 
 .site-header #primary-menu li {
@@ -102,12 +99,6 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 	display: block;
     margin: auto;
 }
-
-
-/* Controls
----------------------------------------------------------------------- */
-
-
 
 
 /*--------------------------------------------------------------
@@ -599,7 +590,6 @@ button.control:hover:before{
 }
 
 
-@
 .em-padding{
 	 padding: 0 0 500px 0;
 }
