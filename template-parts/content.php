@@ -22,14 +22,14 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				emTheme_posted_on();
-				emTheme_posted_by();
+				emclient_posted_on();
+				emclient_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php emTheme_post_thumbnail(); ?>
+	<?php emclient_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -58,6 +58,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php emTheme_entry_footer(); ?>
+		<?php emclient_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

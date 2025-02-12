@@ -608,46 +608,46 @@ button.control:hover:before{
 ----------------------------------------------------------------
 */
 
-.emThemefooter {
+.emclientfooter {
 	background: #343a40;
 }
-.emThemefooter .copy-right {
+.emclientfooter .copy-right {
     color: white;
     font-size: 18px;
     text-align: center;
     padding: 20px;
 }
 
-.emThemefooter a {
+.emclientfooter a {
 	font-size:17px;
     color: white;
 }
-.emThemefooter a:hover {
+.emclientfooter a:hover {
     color: #ee9836;
 }
-.emThemefooter a:focus {
+.emclientfooter a:focus {
     color: #ee9836;
 }
-.emThemefooter a:active {
+.emclientfooter a:active {
     color: #ee9836;
 }
 
 
 @media only screen 
 and (max-width : 767px) {
-/* Styles */ .emThemefooter-section {
+/* Styles */ .emclientfooter-section {
     width: 100%;
     padding: 0 1rem 0 1rem!important;
     text-align: center;
 }
 
 }
-.emThemewaitr-footer-contain {
+.emclientwaitr-footer-contain {
     padding-left: 10px;
     text-decoration: none!important;
 	font-size: 17px!important;
 }
-.emThemefooter .container .row:first-child {
+.emclientfooter .container .row:first-child {
     padding: 29px 10% 15px 10%;
 }
 /*misc */

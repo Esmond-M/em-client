@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
         if (currentScroll >= fixmeTop) {
             jQuery(".site-header").last().addClass("scroll-with");
 
-            jQuery('.emTheme-fixedheader-placeholder').css({
+            jQuery('.emclient-fixedheader-placeholder').css({
                 display: 'block'
             });
         } else {
@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
             if (jQuery('.scroll-with').length) {
                 jQuery(".site-header").removeClass('scroll-with');
             }
-            jQuery('.emTheme-fixedheader-placeholder').css({
+            jQuery('.emclient-fixedheader-placeholder').css({
                 display: 'none'
             });
         }

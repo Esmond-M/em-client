@@ -16,7 +16,7 @@
  * For more information on hooks, actions, and filters,
  * see http://codex.wordpress.org/Plugin_API
  *
- * @package emThemeWP WordPress theme
+ * @package emclientWP WordPress theme
  */
 
 // Exit if accessed directly.
@@ -25,13 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Core Constants.
-define( 'EMTHEME_THEME_DIR', get_template_directory() );
-define( 'EMTHEME_THEME_URI', get_template_directory_uri() );
+define( 'EMCLIENT_Theme_DIR', get_template_directory() );
+define( 'EMCLIENT_Theme_URI', get_template_directory_uri() );
 
 /**
- * emThemeWP theme class
+ * emclientWP theme class
  */
-final class EMTHEME_Theme_Class {
+final class EMCLIENT_Theme_Class {
 
 	/**
 	 * Main Theme Class Constructor
@@ -41,16 +41,16 @@ final class EMTHEME_Theme_Class {
 	public function __construct() {
 	
 		// Define theme constants.
-		$this->emTheme_constants();
+		$this->emclient_constants();
 
 		// Load framework classes.
-		add_action( 'after_setup_theme', array( 'EMTHEME_Theme_Class', 'classes' ), 4 );
+		add_action( 'after_setup_theme', array( 'EMCLIENT_Theme_Class', 'classes' ), 4 );
 
 		// Setup theme => add_theme_support, register_nav_menus, load_theme_textdomain, etc.
-		add_action( 'after_setup_theme', array( 'EMTHEME_Theme_Class', 'theme_setup' ), 10 );
+		add_action( 'after_setup_theme', array( 'EMCLIENT_Theme_Class', 'theme_setup' ), 10 );
 
 		// register sidebar widget areas.
-		add_action( 'widgets_init', array( 'EMTHEME_Theme_Class', 'register_sidebars' ) );
+		add_action( 'widgets_init', array( 'EMCLIENT_Theme_Class', 'register_sidebars' ) );
 
 
 		/** Admin only actions */
@@ -77,7 +77,7 @@ final class EMTHEME_Theme_Class {
 
 
 
-			add_filter( 'emTheme_enqueue_generated_files', '__return_false' );
+			add_filter( 'emclient_enqueue_generated_files', '__return_false' );
 		}
 	}
 
@@ -88,19 +88,19 @@ final class EMTHEME_Theme_Class {
 	 *
 	 * @since   1.0.0
 	 */
-	public static function emTheme_constants() {
+	public static function emclient_constants() {
 
 		// Theme version.
-		define( 'EMTHEME_THEME_VERSION', '3.6.0' );
+		define( 'EMCLIENT_Theme_VERSION', '3.6.0' );
 
-		define( 'EMTHEME_LIB_DIR_URI', EMTHEME_THEME_DIR .'/lib/');
+		define( 'EMTHEME_LIB_DIR_URI', EMCLIENT_Theme_DIR .'/lib/');
 
 		// Javascript and CSS Paths.
-		define( 'EMTHEME_JS_DIR_URI', EMTHEME_THEME_URI . '/assets/js/' );
-		define( 'EMTHEME_CSS_DIR_URI', EMTHEME_THEME_URI . '/assets/css/' );
+		define( 'EMTHEME_JS_DIR_URI', EMCLIENT_Theme_URI . '/assets/js/' );
+		define( 'EMTHEME_CSS_DIR_URI', EMCLIENT_Theme_URI . '/assets/css/' );
 
 		// Include Paths.
-		define( 'EMTHEME_INC_DIR', EMTHEME_THEME_DIR . '/inc/' );
+		define( 'EMTHEME_INC_DIR', EMCLIENT_Theme_DIR . '/inc/' );
 
 	}
 
@@ -125,7 +125,7 @@ final class EMTHEME_Theme_Class {
 		$dir_include = EMTHEME_INC_DIR;
 		$dir_lib = EMTHEME_LIB_DIR_URI;
 		// Load text domain.
-		load_theme_textdomain( 'emTheme', EMTHEME_THEME_DIR . '/languages' );
+		load_theme_textdomain( 'emclient', EMCLIENT_Theme_DIR . '/languages' );
 
 		// Get globals.
 		global $content_width;
@@ -138,11 +138,11 @@ final class EMTHEME_Theme_Class {
 		// Register navigation menus.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'emTheme' ),
-				'topbar_menu' => esc_html__( 'Top Bar', 'emTheme' ),
-				'main_menu'   => esc_html__( 'Main', 'emTheme' ),
-				'footer_menu' => esc_html__( 'Footer', 'emTheme' ),
-				'mobile_menu' => esc_html__( 'Mobile (optional)', 'emTheme' ),
+				'menu-1' => esc_html__( 'Primary', 'emclient' ),
+				'topbar_menu' => esc_html__( 'Top Bar', 'emclient' ),
+				'main_menu'   => esc_html__( 'Main', 'emclient' ),
+				'footer_menu' => esc_html__( 'Footer', 'emclient' ),
+				'mobile_menu' => esc_html__( 'Mobile (optional)', 'emclient' ),
 			)
 		);
 
@@ -164,7 +164,7 @@ final class EMTHEME_Theme_Class {
 		add_theme_support(
 			'custom-header',
 			apply_filters(
-				'emTheme_custom_header_args',
+				'emclient_custom_header_args',
 				array(
 					'width'       => 2000,
 					'height'      => 1200,
@@ -181,7 +181,7 @@ final class EMTHEME_Theme_Class {
 		add_theme_support(
 			'custom-logo',
 			apply_filters(
-				'emTheme_custom_logo_args',
+				'emclient_custom_logo_args',
 				array(
 					'height'      => 45,
 					'width'       => 164,
@@ -194,7 +194,7 @@ final class EMTHEME_Theme_Class {
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'emTheme_custom_background_args',
+				'emclient_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -247,15 +247,6 @@ final class EMTHEME_Theme_Class {
 
 
 		/**
-		 * Custom post types.
-		 */
-		require_once $dir_lib . 'EMTHEME_class_custom_post_types.php';
-		require_once $dir_lib . 'EMTHEME_class_custom_post_meta.php';
-		//require_once __DIR__ . '/lib/custom-taxonomies.php';
-		//require_once __DIR__ . '/lib/custom-post-meta.php';
-
-
-		/**
 		 * Load Jetpack compatibility file.
 		 */
 		if ( defined( 'JETPACK__VERSION' ) ) {
@@ -296,7 +287,7 @@ final class EMTHEME_Theme_Class {
 		$viewport = '<meta name="viewport" content="width=device-width, initial-scale=1">';
 
 		// Apply filters for child theme tweaking.
-		echo apply_filters( 'emTheme_meta_viewport', $viewport ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo apply_filters( 'emclient_meta_viewport', $viewport ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 
@@ -310,14 +301,14 @@ final class EMTHEME_Theme_Class {
 
 		// Define dir.
 		$dir           = EMTHEME_CSS_DIR_URI;
-		$theme_version = EMTHEME_THEME_VERSION;
+		$theme_version = EMCLIENT_Theme_VERSION;
 		$nonCache_version = rand( 1, 99999999999 );
 		// Enqueue Main style.
-		//wp_enqueue_style( 'emTheme-style', $dir . 'style.min.css', false, $theme_version );
-		wp_enqueue_style( 'emThemestyle', get_stylesheet_uri(), array(), $nonCache_version );
+		//wp_enqueue_style( 'emclient-style', $dir . 'style.min.css', false, $theme_version );
+		wp_enqueue_style( 'emclientstyle', get_stylesheet_uri(), array(), $nonCache_version );
 		wp_enqueue_style( 'animatecss', get_stylesheet_directory_uri() ."/assets/css/animate.css", array(), $theme_version );
 		wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() ."/assets/css/g-fonts.css", array(), $theme_version );
-		wp_style_add_data( 'emThemestyle', 'rtl', 'replace' );
+		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
 		wp_enqueue_style('font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css');
 		wp_enqueue_style('font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css');
 			
@@ -337,7 +328,7 @@ final class EMTHEME_Theme_Class {
 		$dir = EMTHEME_JS_DIR_URI;
 
 		// Get current theme version.
-		$theme_version = EMTHEME_THEME_VERSION;
+		$theme_version = EMCLIENT_Theme_VERSION;
 
 		// Main script dependencies.
 		$main_script_dependencies = array( 'jquery' );
@@ -353,10 +344,10 @@ final class EMTHEME_Theme_Class {
 
 		$nonCache_version = rand( 1, 99999999999 );
 
-		wp_enqueue_script( 'emTheme-general', $dir . 'general.js', array(), $nonCache_version, true );
+		wp_enqueue_script( 'emclient-general', $dir . 'general.js', array(), $nonCache_version, true );
 		wp_enqueue_script( 'mixitup', $dir . 'mixitup.min.js', array(), $theme_version, true );
 
-		array_push( $main_script_dependencies, 'emTheme-main' );
+		array_push( $main_script_dependencies, 'emclient-main' );
 	}
 
 
@@ -378,18 +369,18 @@ final class EMTHEME_Theme_Class {
 	 */
 	public static function register_sidebars() {
 
-		$heading = get_theme_mod( 'emTheme_sidebar_widget_heading_tag', 'h4' );
-		$heading = apply_filters( 'emTheme_sidebar_widget_heading_tag', $heading );
+		$heading = get_theme_mod( 'emclient_sidebar_widget_heading_tag', 'h4' );
+		$heading = apply_filters( 'emclient_sidebar_widget_heading_tag', $heading );
 
-		$foo_heading = get_theme_mod( 'emTheme_footer_widget_heading_tag', 'h4' );
-		$foo_heading = apply_filters( 'emTheme_footer_widget_heading_tag', $foo_heading );
+		$foo_heading = get_theme_mod( 'emclient_footer_widget_heading_tag', 'h4' );
+		$foo_heading = apply_filters( 'emclient_footer_widget_heading_tag', $foo_heading );
 
 		// Default Sidebar.
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Default Sidebar', 'emTheme' ),
+				'name'          => esc_html__( 'Default Sidebar', 'emclient' ),
 				'id'            => 'sidebar',
-				'description'   => esc_html__( 'Widgets in this area will be displayed in the left or right sidebar area if you choose the Left or Right Sidebar layout.', 'emTheme' ),
+				'description'   => esc_html__( 'Widgets in this area will be displayed in the left or right sidebar area if you choose the Left or Right Sidebar layout.', 'emclient' ),
 				'before_widget' => '<div id="%1$s" class="sidebar-box %2$s clr">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<' . $heading . ' class="widget-title">',
@@ -400,9 +391,9 @@ final class EMTHEME_Theme_Class {
 		// Left Sidebar.
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Left Sidebar', 'emTheme' ),
+				'name'          => esc_html__( 'Left Sidebar', 'emclient' ),
 				'id'            => 'sidebar-2',
-				'description'   => esc_html__( 'Widgets in this area are used in the left sidebar region if you use the Both Sidebars layout.', 'emTheme' ),
+				'description'   => esc_html__( 'Widgets in this area are used in the left sidebar region if you use the Both Sidebars layout.', 'emclient' ),
 				'before_widget' => '<div id="%1$s" class="sidebar-box %2$s clr">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<' . $heading . ' class="widget-title">',
@@ -411,12 +402,12 @@ final class EMTHEME_Theme_Class {
 		);
 
 		// Search Results Sidebar.
-		if ( get_theme_mod( 'emTheme_search_custom_sidebar', true ) ) {
+		if ( get_theme_mod( 'emclient_search_custom_sidebar', true ) ) {
 			register_sidebar(
 				array(
-					'name'          => esc_html__( 'Search Results Sidebar', 'emTheme' ),
+					'name'          => esc_html__( 'Search Results Sidebar', 'emclient' ),
 					'id'            => 'search_sidebar',
-					'description'   => esc_html__( 'Widgets in this area are used in the search result page.', 'emTheme' ),
+					'description'   => esc_html__( 'Widgets in this area are used in the search result page.', 'emclient' ),
 					'before_widget' => '<div id="%1$s" class="sidebar-box %2$s clr">',
 					'after_widget'  => '</div>',
 					'before_title'  => '<' . $heading . ' class="widget-title">',
@@ -428,9 +419,9 @@ final class EMTHEME_Theme_Class {
 		// Footer 1.
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Footer 1', 'emTheme' ),
+				'name'          => esc_html__( 'Footer 1', 'emclient' ),
 				'id'            => 'footer-one',
-				'description'   => esc_html__( 'Widgets in this area are used in the first footer region.', 'emTheme' ),
+				'description'   => esc_html__( 'Widgets in this area are used in the first footer region.', 'emclient' ),
 				'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<' . $foo_heading . ' class="widget-title">',
@@ -441,9 +432,9 @@ final class EMTHEME_Theme_Class {
 		// Footer 2.
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Footer 2', 'emTheme' ),
+				'name'          => esc_html__( 'Footer 2', 'emclient' ),
 				'id'            => 'footer-two',
-				'description'   => esc_html__( 'Widgets in this area are used in the second footer region.', 'emTheme' ),
+				'description'   => esc_html__( 'Widgets in this area are used in the second footer region.', 'emclient' ),
 				'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<' . $foo_heading . ' class="widget-title">',
@@ -454,9 +445,9 @@ final class EMTHEME_Theme_Class {
 		// Footer 3.
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Footer 3', 'emTheme' ),
+				'name'          => esc_html__( 'Footer 3', 'emclient' ),
 				'id'            => 'footer-three',
-				'description'   => esc_html__( 'Widgets in this area are used in the third footer region.', 'emTheme' ),
+				'description'   => esc_html__( 'Widgets in this area are used in the third footer region.', 'emclient' ),
 				'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<' . $foo_heading . ' class="widget-title">',
@@ -467,9 +458,9 @@ final class EMTHEME_Theme_Class {
 		// Footer 4.
 		register_sidebar(
 			array(
-				'name'          => esc_html__( 'Footer 4', 'emTheme' ),
+				'name'          => esc_html__( 'Footer 4', 'emclient' ),
 				'id'            => 'footer-four',
-				'description'   => esc_html__( 'Widgets in this area are used in the fourth footer region.', 'emTheme' ),
+				'description'   => esc_html__( 'Widgets in this area are used in the fourth footer region.', 'emclient' ),
 				'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<' . $foo_heading . ' class="widget-title">',
@@ -480,4 +471,4 @@ final class EMTHEME_Theme_Class {
 	}
 }
 
-new EMTHEME_Theme_Class();
+new EMCLIENT_Theme_Class();

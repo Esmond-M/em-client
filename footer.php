@@ -9,7 +9,7 @@
  * @package em-client
  */
 ?>
- <footer id="colophon" class="site-footer emThemefooter">
+ <footer id="colophon" class="site-footer emclientfooter">
 <?php
  if ( is_active_sidebar( 'footer-one' ) || is_active_sidebar( 'footer-two' ) || is_active_sidebar( 'footer-three' ) ) : ?>
 	<div class="footer-widgets">
