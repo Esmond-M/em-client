@@ -8,7 +8,7 @@
  */
 
 get_header();
-header("Location: /");
+
 die();
 ?>
 
