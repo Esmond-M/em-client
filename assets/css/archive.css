@@ -2,10 +2,14 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 10px;
 }
 .em-client-blog article {
   width: 30%;
   font-family: sans-serif;
+  padding: 20px;
 }
 
 /*# sourceMappingURL=archive.css.map */
