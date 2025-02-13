@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
         if (currentScroll >= fixmeTop) {
             jQuery(".site-header").last().addClass("scroll-with");
 
-            jQuery('.emTheme-fixedheader-placeholder').css({
+            jQuery('.emclient-fixedheader-placeholder').css({
                 display: 'block'
             });
         } else {
@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
             if (jQuery('.scroll-with').length) {
                 jQuery(".site-header").removeClass('scroll-with');
             }
-            jQuery('.emTheme-fixedheader-placeholder').css({
+            jQuery('.emclient-fixedheader-placeholder').css({
                 display: 'none'
             });
         }
@@ -34,9 +34,6 @@ jQuery(document).ready(function($) {
             scrollTop: jQuery("#services").offset().top
         }, 500);
     });
-    var containerEl = document.querySelector('.em-modal-container');
-
-    var mixer = mixitup(containerEl);
 
     /*
     //Added padding if page content is not bigger than height of monitor

@@ -1,0 +1,56 @@
+
+$font-stack: sans-serif;
+$hover-color: red;
+
+/*--------------------------------------------------------------
+>>>Blog Page
+----------------------------------------------------------------
+*/
+@mixin emFlexRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+ }
+@mixin emContentWidthOne{
+    max-width: 1400px;
+    margin:auto;
+    padding:0 10px;
+}
+
+.em-client-blog {
+    @include emFlexRow();
+    @include emContentWidthOne();
+    article{
+        width:30%;
+        font-family:$font-stack;
+        padding: 20px;
+
+        .featured-img{
+            width: 100%;
+            height: 200px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: initial;
+            background-size: cover
+        }    
+    }
+
+
+}
+/*--------------------------------------------------------------
+>>>Single Posts
+----------------------------------------------------------------
+*/
+
+.em-single-content{
+    @include emContentWidthOne();
+    padding: 20px 10px;
+    .featured-img{
+        width: 100%;
+        height: 500px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: initial;
+        background-size: cover
+    }    
+}

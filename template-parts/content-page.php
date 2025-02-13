@@ -14,7 +14,7 @@
 		
 	</header><!-- .entry-header -->
 
-	<?php emTheme_post_thumbnail(); ?>
+	<?php emclient_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php

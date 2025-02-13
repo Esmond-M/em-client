@@ -14,5 +14,8 @@
   },
   "scripts": {
     "lint:js": "wp-scripts lint-js 'js/*.js'"
+  },
+  "dependencies": {
+    "sass": "^1.84.0"
   }
 }

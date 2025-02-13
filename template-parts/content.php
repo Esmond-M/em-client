@@ -8,56 +8,56 @@
  */
 
 ?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
-
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<header class="entry-header">
 				<?php
-				emTheme_posted_on();
-				emTheme_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+				if ( is_singular() ) :
+					the_title( '<h1 class="entry-title">', '</h1>' );
+				else :
+					the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				endif;
 
-	<?php emTheme_post_thumbnail(); ?>
+				if ( 'post' === get_post_type() ) :
+					?>
+					<div class="entry-meta">
+						<?php
+						emclient_posted_on();
+						emclient_posted_by();
+						?>
+					</div><!-- .entry-meta -->
+				<?php endif; ?>
+			</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'em-client' ),
-					array(
-						'span' => array(
-							'class' => array(),
+			<?php emclient_post_thumbnail(); ?>
+
+			<div class="entry-content">
+				<?php
+				the_content(
+					sprintf(
+						wp_kses(
+							/* translators: %s: Name of current post. Only visible to screen readers */
+							__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'em-client' ),
+							array(
+								'span' => array(
+									'class' => array(),
+								),
+							)
 						),
+						wp_kses_post( get_the_title() )
 					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
+				);
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'em-client' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
+				wp_link_pages(
+					array(
+						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'em-client' ),
+						'after'  => '</div>',
+					)
+				);
+				?>
+			</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php emTheme_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+			<footer class="entry-footer">
+				<?php emclient_entry_footer(); ?>
+			</footer><!-- .entry-footer -->
+		</article><!-- #post-<?php the_ID(); ?> -->
+
