@@ -1,0 +1,17 @@
+
+$font-stack: sans-serif;
+$hover-color: red;
+@mixin emflexrow{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+ }
+
+.em-client-blog {
+    @include emflexrow();
+
+    article{
+        width:30%;
+        font-family:$font-stack;    
+    }
+}
