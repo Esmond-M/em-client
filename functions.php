@@ -138,7 +138,7 @@ final class EMCLIENT_Theme_Class {
 		// Register navigation menus.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'emclient' ),
+				'primary_menu' => esc_html__( 'Primary', 'emclient' ),
 				'topbar_menu' => esc_html__( 'Top Bar', 'emclient' ),
 				'main_menu'   => esc_html__( 'Main', 'emclient' ),
 				'footer_menu' => esc_html__( 'Footer', 'emclient' ),
