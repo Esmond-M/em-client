@@ -306,12 +306,15 @@ final class EMCLIENT_Theme_Class {
 		// Enqueue Main style.
 		//wp_enqueue_style( 'emclient-style', $dir . 'style.min.css', false, $theme_version );
 		wp_enqueue_style( 'emclientstyle', get_stylesheet_uri(), array(), $nonCache_version );
-		wp_enqueue_style( 'animatecss', get_stylesheet_directory_uri() ."/assets/css/animate.css", array(), $theme_version );
+		//wp_enqueue_style( 'animatecss', get_stylesheet_directory_uri() ."/assets/css/animate.css", array(), $theme_version );
 		wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() ."/assets/css/g-fonts.css", array(), $theme_version );
 		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
 		wp_enqueue_style('font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css');
 		wp_enqueue_style('font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css');
-			
+		if(is_home() )
+		{
+			wp_enqueue_style( 'archive-page', get_stylesheet_directory_uri() ."/assets/css/archive.css", array(), $nonCache_version );
+		}
 		if (is_page(128)) {
 			wp_enqueue_style( 'test-css', $dir . 'test-css.css' , array(), $nonCache_version );
 		}
