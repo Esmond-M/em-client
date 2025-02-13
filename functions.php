@@ -311,9 +311,9 @@ final class EMCLIENT_Theme_Class {
 		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
 		wp_enqueue_style('font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css');
 		wp_enqueue_style('font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css');
-		if(is_home() )
+		if(is_home() || is_archive() || is_single() ||  is_tag() || is_tax() || is_category() )
 		{
-			wp_enqueue_style( 'archive-page', get_stylesheet_directory_uri() ."/assets/css/archive.css", array(), $nonCache_version );
+			wp_enqueue_style( 'singular-page', get_stylesheet_directory_uri() ."/assets/css/single.css", array(), $nonCache_version );
 		}
 		if (is_page(128)) {
 			wp_enqueue_style( 'test-css', $dir . 'test-css.css' , array(), $nonCache_version );
