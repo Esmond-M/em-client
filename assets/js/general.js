@@ -34,9 +34,6 @@ jQuery(document).ready(function($) {
             scrollTop: jQuery("#services").offset().top
         }, 500);
     });
-    var containerEl = document.querySelector('.em-modal-container');
-
-    var mixer = mixitup(containerEl);
 
     /*
     //Added padding if page content is not bigger than height of monitor
