@@ -9,9 +9,12 @@ $hover-color: red;
 
 .em-client-blog {
     @include emflexrow();
-
+    max-width: 1400px;
+    margin:auto;
+    padding:0 10px;
     article{
         width:30%;
-        font-family:$font-stack;    
+        font-family:$font-stack;
+        padding: 20px;    
     }
 }
