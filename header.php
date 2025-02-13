@@ -28,8 +28,8 @@
 		<?php 
 			wp_nav_menu(
 				array(
-					'menu'            =>17,
-					'container'            => '',
+				//	'menu'            =>17,
+					'container'            => 'ul',
 					'container_class'      => '',
 					'container_id'         => '',
 					'container_aria_label' => '',
