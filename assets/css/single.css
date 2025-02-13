@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------
+>>>Blog Page
+----------------------------------------------------------------
+*/
 .em-client-blog {
   display: flex;
   flex-direction: row;
@@ -14,6 +18,25 @@
 .em-client-blog article .featured-img {
   width: 100%;
   height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: initial;
+  background-size: cover;
+}
+
+/*--------------------------------------------------------------
+>>>Single Posts
+----------------------------------------------------------------
+*/
+.em-single-content {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 10px;
+  padding: 20px 10px;
+}
+.em-single-content .featured-img {
+  width: 100%;
+  height: 500px;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: initial;
