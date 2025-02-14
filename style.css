@@ -105,7 +105,10 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 >>>Page Content
 ----------------------------------------------------------------
 */
-
+.page-header {
+    display: block;
+    width: 100%;
+}
 
 .entry-figure {
     background: #f6f6f6;
@@ -597,7 +600,9 @@ button.control:hover:before{
 >>> Footer
 ----------------------------------------------------------------
 */
-
+.navigation.posts-navigation{
+    width: 100%;
+}
 .emclientfooter {
 	background: #343a40;
 }
@@ -1739,10 +1744,6 @@ textarea {
 a {
     color: #ee3b24;
     text-decoration: none
-}
-
-a:visited {
-    color: #ee3b24
 }
 
 a:hover,a:focus,a:active {
