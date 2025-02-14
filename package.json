@@ -14,5 +14,8 @@
   },
   "dependencies": {
     "sass": "^1.84.0"
+  },
+  "scripts": {
+    "watch": "sass --watch sass/style.scss style.min.css --no-source-map"
   }
 }
