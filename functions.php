@@ -304,8 +304,7 @@ final class EMCLIENT_Theme_Class {
 		$theme_version = EMCLIENT_Theme_VERSION;
 		$nonCache_version = rand( 1, 99999999999 );
 		// Enqueue Main style.
-		//wp_enqueue_style( 'emclient-style', $dir . 'style.min.css', false, $theme_version );
-		wp_enqueue_style( 'emclientstyle', get_stylesheet_uri(), array(), $nonCache_version );
+		wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/style.min.css', array(), $nonCache_version );
 		//wp_enqueue_style( 'animatecss', get_stylesheet_directory_uri() ."/assets/css/animate.css", array(), $theme_version );
 		wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() ."/assets/css/g-fonts.css", array(), $theme_version );
 		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
