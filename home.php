@@ -31,7 +31,7 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
             ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <article id="post-<?php the_ID(); ?>" <?php post_class("post-item"); ?>>
 				<?php 
 				if( get_the_post_thumbnail_url() ){
 

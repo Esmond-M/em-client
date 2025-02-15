@@ -10,6 +10,7 @@ $hover-color: red;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
  }
 @mixin emContentWidthOne{
     max-width: 1400px;
@@ -21,7 +22,7 @@ $hover-color: red;
 .em-client-blog {
     @include emFlexRow();
     @include emContentWidthOne();
-    article{
+    .post-item{
         width:30%;
         font-family:$font-stack;
         padding: 20px;
@@ -35,7 +36,18 @@ $hover-color: red;
             background-size: cover
         }    
     }
-
+    @media only screen 
+    and (max-width : 1199px) {
+    .post-item{
+      width:50%;
+    }
+    }
+    @media only screen 
+    and (max-width : 800px) {
+    .post-item{
+      width:100%;
+    }
+    }
 
 }
 /*--------------------------------------------------------------
