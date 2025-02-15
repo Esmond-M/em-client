@@ -444,58 +444,48 @@ article.comment-body {
   margin-bottom: 30px;
 }
 
-.comment-list a {
+.comment-list a a {
   color: #404040;
 }
-
-.comment-list a:hover {
+.comment-list a a:hover {
   color: #ee3b24 !important;
 }
-
-.comment-list .comment-respond {
+.comment-list a .comment-respond {
   margin-top: 40px;
   background: #fff;
 }
-
-.comment-list .vcard img {
+.comment-list a .vcard img {
   border-radius: 50%;
   margin-right: 10px;
 }
-
-.comment-list .vcard .fn {
+.comment-list a .vcard .fn {
   font-weight: 400;
   font-size: 16px;
   font-family: roboto condensed, sans-serif;
 }
-
-.comment-list .edit-link {
+.comment-list a .edit-link {
   position: absolute;
   right: 0;
   top: 0;
 }
-
-.comment-list .edit-link a {
+.comment-list a .edit-link a {
   font-size: 13px;
   display: inline-block;
   padding: 10px;
 }
-
-.comment-list .comment-meta {
+.comment-list a .comment-meta {
   margin-bottom: 15px;
 }
-
-.comment-list .comment-metadata {
+.comment-list a .comment-metadata {
   border-top: 1px solid #eee;
   padding-top: 10px;
   font-size: 13px;
   font-family: roboto condensed, sans-serif;
 }
-
-.comment-list .comment-metadata a {
+.comment-list a .comment-metadata a {
   float: left;
 }
-
-.comment-list .comment-metadata .reply {
+.comment-list a .comment-metadata .reply {
   float: right;
 }
 
@@ -767,16 +757,6 @@ button.control:hover:before {
     text-align: center;
   }
 }
-/*misc */
-section#em-404 {
-  text-align: center;
-  padding: 20px;
-}
-
-section#em-404 {
-  font-size: 25px;
-}
-
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
