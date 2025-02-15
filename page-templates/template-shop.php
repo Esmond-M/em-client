@@ -20,8 +20,12 @@
     ?>	
     <?php
 	   foreach( $categories as $category ) {
-		   ?> 
-		   <li> <label><input type="checkbox" <?php if ($_GET['product-cate'] == $category->name) echo 'checked" '; ?> value="<?php echo $category->name ; ?>" name="product-cate"><?php echo $category->name; ?></label></li> 
+		?> 
+		<li>
+			<label>
+			<input type="checkbox" <?php if ($_GET['product-cate'] == $category->name) echo 'checked" '; ?> value="<?php echo $category->name ; ?>" name="product-cate">
+			<?php echo $category->name; ?></label>
+		</li> 
 	   <?php
 	   } 
 
