@@ -257,7 +257,7 @@ final class EMCLIENT_Theme_Class {
 		 * Load WooCommerce compatibility file.
 		 */
 		if ( class_exists( 'WooCommerce' ) ) {
-			require $dir_include . 'woocommerce-functions.php';
+			require $dir_include . 'EMCLIENT_class_woo_function.php';
 		}
 
 
