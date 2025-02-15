@@ -159,23 +159,6 @@ final class EMCLIENT_Theme_Class {
 		add_theme_support( 'post-thumbnails' );
 
 		/**
-		 * Enable support for header image
-		 */
-		add_theme_support(
-			'custom-header',
-			apply_filters(
-				'emclient_custom_header_args',
-				array(
-					'width'       => 2000,
-					'height'      => 1200,
-					'flex-height' => true,
-					'video'       => true,
-					'video-active-callback' => '__return_true'
-				)
-			)
-		);
-
-		/**
 		 * Enable support for site logo
 		 */
 		add_theme_support(
@@ -224,16 +207,8 @@ final class EMCLIENT_Theme_Class {
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
 
-		// Add editor style.
-		add_editor_style( 'assets/css/editor-style.min.css' );
-
 		// Declare support for selective refreshing of widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
-
-		/**
-		 * Implement the Custom Header feature.
-		 */
-		require $dir_include . 'custom-header.php';
 
 		/**
 		 * Custom template tags for this theme.
