@@ -598,20 +598,6 @@ button.control:hover:before{
     padding: 20px;
 }
 
-.emclientfooter a {
-	font-size:17px;
-    color: white;
-}
-.emclientfooter a:hover {
-    color: #ee9836;
-}
-.emclientfooter a:focus {
-    color: #ee9836;
-}
-.emclientfooter a:active {
-    color: #ee9836;
-}
-
 
 @media only screen 
 and (max-width : 767px) {
@@ -621,14 +607,6 @@ and (max-width : 767px) {
     text-align: center;
 }
 
-}
-.emclientwaitr-footer-contain {
-    padding-left: 10px;
-    text-decoration: none!important;
-	font-size: 17px!important;
-}
-.emclientfooter .container .row:first-child {
-    padding: 29px 10% 15px 10%;
 }
 /*misc */
 section#em-404 {
