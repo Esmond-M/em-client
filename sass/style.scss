@@ -563,13 +563,27 @@ button.control:hover:before{
     background: #000
 }
 
+/*--------------------------------------------------------------
+>>> 404 page
+----------------------------------------------------------------
+*/
+.em-404 {
+    .entry-content{
+        max-width: 1400px;
+        margin: auto;
+        text-align: center;
+        padding:40px 10px;
+        img{
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+        p{
+           color: black;
+           font-size: 24px; 
+        }    
+    }
 
-.error404 .error-404 {
-    display: block;
-    text-align: center;
-    font-size: 200px;
-    color: #f6f6f6;
-    line-height: 1.2
 }
 
 .error404 .oops-text {
