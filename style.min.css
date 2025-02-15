@@ -100,6 +100,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 1400px;
+  width: 100%;
   margin: auto;
   padding: 0 10px;
 }
@@ -123,6 +124,7 @@
 */
 .em-single-content {
   max-width: 1400px;
+  width: 100%;
   margin: auto;
   padding: 0 10px;
   padding: 20px 10px;
@@ -130,6 +132,50 @@
 .em-single-content .featured-img {
   width: 100%;
   height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: initial;
+  background-size: cover;
+}
+
+/*--------------------------------------------------------------
+>>> Shop - Woocommerce Products
+----------------------------------------------------------------
+*/
+.em-shop-page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px 20px 50px 20px;
+}
+
+.product-filter-sidebar {
+  width: 10%;
+}
+.product-filter-sidebar form {
+  background-color: #DDDDDD;
+  padding: 0 5px;
+}
+.product-filter-sidebar li {
+  list-style-type: none;
+}
+
+.shop-results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  padding: 0 10px;
+}
+.shop-results .product-item {
+  width: 30%;
+  font-family: sans-serif;
+  padding: 0 20px 20px 20px;
+}
+.shop-results .product-item .featured-img {
+  width: 100%;
+  height: 200px;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: initial;
@@ -651,23 +697,6 @@ button.control:hover:before {
   padding: 20px;
 }
 
-.emclientfooter a {
-  font-size: 17px;
-  color: white;
-}
-
-.emclientfooter a:hover {
-  color: #ee9836;
-}
-
-.emclientfooter a:focus {
-  color: #ee9836;
-}
-
-.emclientfooter a:active {
-  color: #ee9836;
-}
-
 @media only screen and (max-width: 767px) {
   /* Styles */
   .emclientfooter-section {
@@ -676,16 +705,6 @@ button.control:hover:before {
     text-align: center;
   }
 }
-.emclientwaitr-footer-contain {
-  padding-left: 10px;
-  text-decoration: none !important;
-  font-size: 17px !important;
-}
-
-.emclientfooter .container .row:first-child {
-  padding: 29px 10% 15px 10%;
-}
-
 /*misc */
 section#em-404 {
   text-align: center;
