@@ -5,10 +5,10 @@
    ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class("em-shop-page"); ?>>
     <aside class="product-filter-sidebar">
-	<form role="search" method="get" action="<?php echo the_permalink();?>" class="">
-		<label class="wp-block-search__label" for="wp-block-search__input-1">Search</label>
-		<div class="wp-block-search__inside-wrapper ">
-		<input class="wp-block-search__input" id="wp-block-search__input-1" placeholder="Search products…" value="" type="search" name="product-search" >
+	<form role="search" method="get" action="<?php echo the_permalink();?>">
+		<label class="em-search-label" for="em-search-input-1">Search</label>
+		<div class="search-wrapper ">
+		<input class="search-input" id="em-search-input-1" placeholder="Search products…" value="" type="search" name="product-search" >
 	    </div>
 		<ul> 
 		<?php
@@ -29,7 +29,11 @@
 		
 		?>
 		</ul> 
-		<button aria-label="Filter" class="wp-block-search__button wp-element-button" type="submit">Filter</button>	
+		<div class="btn-wrappers">
+		<a href="<?php echo the_permalink();?>"><button aria-label="Reset" >Clear</button></a>
+		<button aria-label="Filter" type="submit">Filter</button>	
+		</div>
+
     </form>	
 
 	</aside>
