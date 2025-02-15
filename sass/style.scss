@@ -14,8 +14,53 @@
     background: #343a40;
     border-top: 2px solid #ee3b24;
     position: relative;
+
+    #primary-menu {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0px;
+        max-width: 1200px;
+        margin: auto;
+        li {
+            list-style-type: none;
+            padding: 10px;
+            font-weight: 500;
+            font-size: 18px;
+            color: black;
+            a{
+                text-decoration: none;
+                color: #fff;
+                text-transform: uppercase;
+                font-family: open sans, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                position: relative;
+                transition: all .3s ease-in-out;
+                -moz-transition: all .3s ease-in-out;
+                -webkit-transition: all .3s ease-in-out;
+            }
+            a:hover {
+                cursor:pointer;
+                color: #ee3b24;
+                padding-bottom:5px;
+                 border-bottom: 2px solid #ee3b24;
+                transition: all .3s ease-in-out;
+                -moz-transition: all .3s ease-in-out;
+                -webkit-transition: all .3s ease-in-out;
+            }
+        }    
+    }    
 }
-.site-header.scroll-with {
+
+.scroll-with {
     position: fixed;
     z-index:1000;
     width:100%;
@@ -24,53 +69,7 @@
 }
 .admin-bar .site-header.scroll-with {
     top: 32px;    
-}
-.site-header #primary-menu {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0px;
-	max-width: 1200px;
-	margin: auto;
-}
 
-.site-header #primary-menu li {
-    list-style-type: none;
-	padding: 10px;
-	font-weight: 500;
-	font-size: 18px;
-	color: black;
-}
-.site-header #primary-menu li a{
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-family: open sans, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    position: relative;
-    transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
-}
-.site-header #primary-menu li a:hover {
-	cursor:pointer;
-	color: #ee3b24;
-	padding-bottom:5px;
-     border-bottom: 2px solid #ee3b24;
-    transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
-}
-.site-header #primary-menu li:hover {
-	cursor:pointer;
 }
 .site-branding {
 	margin: auto;
@@ -1300,24 +1299,7 @@ textarea {
 	padding: 3px;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-input[type="tel"]:focus,
-input[type="range"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="time"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="color"]:focus,
-textarea:focus {
-	color: white;
-}
+
 
 select {
 	border: 1px solid #ccc;
