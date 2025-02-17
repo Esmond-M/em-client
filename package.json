@@ -8,14 +8,50 @@
     "WordPress",
     "Theme"
   ],
-  "devDependencies": {
-    "@wordpress/scripts": "^12.1.0",
-    "dir-archiver": "^1.1.1"
-  },
+  "files": [
+    "/assets",
+    "/inc",
+    "/languages",
+    "/page-templates",
+    "/sass",
+    "/template-parts",
+    "404.php",
+    "archive.php",
+    "comments.php",
+    "footer.php",
+    "functions.php",
+    "header.php",
+    "home.php",
+    "index.php",
+    "page.php",
+    "screenshot.jpg",
+    "search.php",
+    "sidebar.php",
+    "single.php",
+    "style.css",
+    "style.min.css",
+    "woocommerce.css"
+  ],
+	"devDependencies": {
+		"@wordpress/scripts": "^27.9.0"
+	},
   "dependencies": {
     "sass": "^1.84.0"
   },
   "scripts": {
+    "build": "wp-scripts build",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "lint:md:docs": "wp-scripts lint-md-docs",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "start": "wp-scripts start",
+    "test:e2e": "wp-scripts test-e2e",
+    "test:unit": "wp-scripts test-unit-js",  
     "watch": "sass --watch sass/style.scss style.min.css --no-source-map"
   }
 }
