@@ -89,6 +89,7 @@
 			$shop_post_url_link_value = get_post_meta($post_id, 'portfolio_post_url_link_value', true);
 			$product = wc_get_product($post_id);
 			$product_url = $product->add_to_cart_url();
+			$product_price = $product->get_price();
 			?>
         <div class="product-item">
 		  <?php
@@ -106,7 +107,8 @@
 			<?php
 			}
 			?>
-		  <p class="product-name"><?php echo $title; ?></p>
+		  <a href="<?php echo $link;?>" class="product-name"><?php echo $title; ?></a>
+		  <p class="product-price">$<?php echo $product_price;?></p>
 		  <a href="<?php echo $product_url ?>" class="product-link"><button >Add to cart</button></a>	
 		</div>	
 		<?php
