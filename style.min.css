@@ -184,6 +184,10 @@
   justify-content: center;
   justify-content: space-between;
 }
+.em-shop-page .product-filter-sidebar ul {
+  text-align: left;
+  margin: 5px 0px 10px 10px;
+}
 .em-shop-page .product-filter-sidebar li {
   list-style-type: none;
 }
@@ -209,6 +213,10 @@
   background-repeat: no-repeat;
   background-attachment: initial;
   background-size: cover;
+}
+.em-shop-page .shop-results .product-item .product-name {
+  display: block;
+  padding: 10px 0;
 }
 @media only screen and (max-width: 1199px) {
   .em-shop-page .shop-results .product-item {
