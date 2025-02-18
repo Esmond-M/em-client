@@ -51,11 +51,12 @@
 	{
 		return str_pad($string, strlen($string) + 2, $char, STR_PAD_BOTH);
 	}
-
+    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 		$shop_post_args = array(
 		'post_type' => 'product',
 		'post_status' => 'publish',
-		'posts_per_page' => 8,
+		'posts_per_page' => 2,
+		'paged' => $paged ,
 		'orderby'   => 'date',
 			'order' => 'ASC',
 		);
@@ -122,7 +123,25 @@
 		wp_reset_postdata();
 
 		?> 
-
+	<div class="pagination">
+    <?php 
+        echo paginate_links( array(
+            'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+            'total'        => $shop_post_the_query->max_num_pages,
+            'current'      => max( 1, get_query_var( 'paged' ) ),
+            'format'       => '?paged=%#%',
+            'show_all'     => false,
+            'type'         => 'plain',
+            'end_size'     => 2,
+            'mid_size'     => 1,
+            'prev_next'    => true,
+            'prev_text'    => sprintf( '<i>←</i> %1$s', __( '', 'em-client' ) ),
+            'next_text'    => sprintf( '%1$s <i>→</i>', __( '', 'em-client' ) ),
+            'add_args'     => false,
+            'add_fragment' => '',
+        ) );
+    ?>
+</div>
 	</section> 	<!-- .em-shop-page -->
 
 	

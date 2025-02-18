@@ -218,6 +218,10 @@
   display: block;
   padding: 10px 0;
 }
+.em-shop-page .shop-results .pagination {
+  width: 100%;
+  text-align: center;
+}
 @media only screen and (max-width: 1199px) {
   .em-shop-page .shop-results .product-item {
     width: 50%;

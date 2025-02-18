@@ -133,8 +133,13 @@ $hover-color: red;
             .product-name{
                 display: block;
                 padding: 10px 0;
-            } 
+            }
+
         }
+        .pagination{
+            width: 100%;
+            text-align: center;
+        } 
         @media only screen 
         and (max-width : 1199px) {
         .product-item{
