@@ -4,7 +4,9 @@
    
    ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class("em-shop-page"); ?>>
+<h1>Shop</h1>
     <aside class="product-filter-sidebar">
+	
 	<form role="search" method="get" action="<?php echo the_permalink();?>">
 		<label class="em-search-label" for="em-search-input-1">Search</label>
 		<div class="search-wrapper ">
@@ -85,6 +87,8 @@
 			$post_id = get_the_ID();
 			$shop_category = get_the_category($post_id);
 			$shop_post_url_link_value = get_post_meta($post_id, 'portfolio_post_url_link_value', true);
+			$product = wc_get_product($post_id);
+			$product_url = $product->add_to_cart_url();
 			?>
         <div class="product-item">
 		  <?php
@@ -103,7 +107,7 @@
 			}
 			?>
 		  <p class="product-name"><?php echo $title; ?></p>
-		  <a href="<?php echo $link; ?>" class="product-link"><button >Read More</button></a>	
+		  <a href="<?php echo $product_url ?>" class="product-link"><button >Add to cart</button></a>	
 		</div>	
 		<?php
 		$shop_query_count++;
