@@ -71,10 +71,13 @@ if (!class_exists('EMCLIENT_theme_woo_function_Class')) {
 			$custom_shop_pages = $wpdb->get_results("SELECT `post_id` FROM $wpdb->postmeta WHERE `meta_key` ='_wp_page_template' AND `meta_value` = 'page-templates/template-shop.php' ", ARRAY_A);
 			/* Get permalink using post ID of first page in the results */
 			$custom_shop_pages_permalink = get_permalink($custom_shop_pages[0]['post_id']);
+			if(!current_user_can( 'edit_posts' )){ // for testing
+	    
+			}
 			if( is_shop() ){
 				wp_redirect( $custom_shop_pages_permalink); // Assign custom internal page here
 				exit();
-			}
+			}	
 		}
 
 				
