@@ -25,7 +25,7 @@
 		?> 
 		<li>
 			<label>
-			<input type="checkbox" <?php if ($_GET['product-cate'] == $category->name) echo 'checked" '; ?> value="<?php echo $category->name ; ?>" name="product-cate">
+			<input type="checkbox" <?php if ( in_array($category->slug, $_GET['product-cate'])  ) echo 'checked="checked"" '; ?> value="<?php echo $category->slug ; ?>" name="product-cate[]">
 			<?php echo $category->name; ?></label>
 		</li> 
 	   <?php
