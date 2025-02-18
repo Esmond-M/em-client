@@ -19,29 +19,4 @@ jQuery(document).ready(function($) {
             });
         }
     });
-    jQuery(".about").click(function() {
-        jQuery('html, body').animate({
-            scrollTop: jQuery("#about").offset().top
-        }, 500);
-    });
-    jQuery(".portfolio").click(function() {
-        jQuery('html, body').animate({
-            scrollTop: jQuery("#portfolio").offset().top
-        }, 500);
-    });
-    jQuery(".services").click(function() {
-        jQuery('html, body').animate({
-            scrollTop: jQuery("#services").offset().top
-        }, 500);
-    });
-
-    /*
-    //Added padding if page content is not bigger than height of monitor
-    var div = jQuery(".em-page-content").height();
-    var win = jQuery(window).height();
-
-    if ( win <= 1080 ) {
-        jQuery(".em-page-content").addClass('em-padding');
-    }
-    */
 });

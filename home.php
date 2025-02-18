@@ -31,7 +31,7 @@ get_header();
 			while ( have_posts() ) :
 				the_post();
             ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <article id="post-<?php the_ID(); ?>" <?php post_class("post-item"); ?>>
 				<?php 
 				if( get_the_post_thumbnail_url() ){
 
@@ -43,7 +43,7 @@ get_header();
 
 				else{
 				?>	
-				<div class="featured-img" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/img/blog-placholder.jpg"?>');">
+				<div class="featured-img" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/img/blog-placholder.jpg"?>');"></div>
 				<?php
 				}
 		

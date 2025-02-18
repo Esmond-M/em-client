@@ -1,17 +1,3 @@
-/*!
-Theme Name: Esmond
-Theme URI: https://esmondmccain.com/
-Author: Esmond Mccain
-Author URI: https://esmondmccain.com/
-Description: Boilerplate theme for clients.
-Version: 1.2.0
-License: GNU General Public License v2 or later
-License URI: LICENSE
-Text Domain: em-client
-Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
-
-*/
-
 /*--------------------------------------------------------------
 # Header & Nav
 --------------------------------------------------------------*/
@@ -28,8 +14,53 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
     background: #343a40;
     border-top: 2px solid #ee3b24;
     position: relative;
+
+    #primary-menu {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0px;
+        max-width: 1200px;
+        margin: auto;
+        li {
+            list-style-type: none;
+            padding: 10px;
+            font-weight: 500;
+            font-size: 18px;
+            color: black;
+            a{
+                text-decoration: none;
+                color: #fff;
+                text-transform: uppercase;
+                font-family: open sans, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                position: relative;
+                transition: all .3s ease-in-out;
+                -moz-transition: all .3s ease-in-out;
+                -webkit-transition: all .3s ease-in-out;
+            }
+            a:hover {
+                cursor:pointer;
+                color: #ee3b24;
+                padding-bottom:5px;
+                 border-bottom: 2px solid #ee3b24;
+                transition: all .3s ease-in-out;
+                -moz-transition: all .3s ease-in-out;
+                -webkit-transition: all .3s ease-in-out;
+            }
+        }    
+    }    
 }
-.site-header.scroll-with {
+
+.scroll-with {
     position: fixed;
     z-index:1000;
     width:100%;
@@ -39,53 +70,6 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 .admin-bar .site-header.scroll-with {
     top: 32px;    
 
-}
-.site-header #primary-menu {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0px;
-	max-width: 1200px;
-	margin: auto;
-}
-
-.site-header #primary-menu li {
-    list-style-type: none;
-	padding: 10px;
-	font-weight: 500;
-	font-size: 18px;
-	color: black;
-}
-.site-header #primary-menu li a{
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-family: open sans, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    position: relative;
-    transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
-}
-.site-header #primary-menu li a:hover {
-	cursor:pointer;
-	color: #ee3b24;
-	padding-bottom:5px;
-     border-bottom: 2px solid #ee3b24;
-    transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
-}
-.site-header #primary-menu li:hover {
-	cursor:pointer;
 }
 .site-branding {
 	margin: auto;
@@ -99,7 +83,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 	display: block;
     margin: auto;
 }
-
+@import "single";
 
 /*--------------------------------------------------------------
 >>>Page Content
@@ -314,60 +298,51 @@ article.comment-body {
 }
 
 .comment-list a {
-    color: #404040
+    a {
+        color: #404040
+    }
+    a:hover {
+        color: #ee3b24!important
+    }
+    .comment-respond {
+        margin-top: 40px;
+        background: #fff
+    }
+    .vcard img {
+        border-radius: 50%;
+        margin-right: 10px
+    }
+    .vcard .fn {
+        font-weight: 400;
+        font-size: 16px;
+        font-family: roboto condensed,sans-serif
+    }    
+    .edit-link {
+        position: absolute;
+        right: 0;
+        top: 0
+    }
+    .edit-link a {
+        font-size: 13px;
+        display: inline-block;
+        padding: 10px
+    }
+    .comment-meta {
+        margin-bottom: 15px
+    }
+    .comment-metadata {
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+        font-size: 13px;
+        font-family: roboto condensed,sans-serif
+    }
+    .comment-metadata a {
+        float: left
+    }
+    .comment-metadata .reply {
+        float: right
+    }   
 }
-
-.comment-list a:hover {
-    color: #ee3b24!important
-}
-
-.comment-list .comment-respond {
-    margin-top: 40px;
-    background: #fff
-}
-
-.comment-list .vcard img {
-    border-radius: 50%;
-    margin-right: 10px
-}
-
-.comment-list .vcard .fn {
-    font-weight: 400;
-    font-size: 16px;
-    font-family: roboto condensed,sans-serif
-}
-
-.comment-list .edit-link {
-    position: absolute;
-    right: 0;
-    top: 0
-}
-
-.comment-list .edit-link a {
-    font-size: 13px;
-    display: inline-block;
-    padding: 10px
-}
-
-.comment-list .comment-meta {
-    margin-bottom: 15px
-}
-
-.comment-list .comment-metadata {
-    border-top: 1px solid #eee;
-    padding-top: 10px;
-    font-size: 13px;
-    font-family: roboto condensed,sans-serif
-}
-
-.comment-list .comment-metadata a {
-    float: left
-}
-
-.comment-list .comment-metadata .reply {
-    float: right
-}
-
 #cancel-comment-reply-link {
     float: right
 }
@@ -579,13 +554,27 @@ button.control:hover:before{
     background: #000
 }
 
+/*--------------------------------------------------------------
+>>> 404 page
+----------------------------------------------------------------
+*/
+.em-404 {
+    .entry-content{
+        max-width: 1400px;
+        margin: auto;
+        text-align: center;
+        padding:40px 10px;
+        img{
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+        p{
+           color: black;
+           font-size: 24px; 
+        }    
+    }
 
-.error404 .error-404 {
-    display: block;
-    text-align: center;
-    font-size: 200px;
-    color: #f6f6f6;
-    line-height: 1.2
 }
 
 .error404 .oops-text {
@@ -613,20 +602,6 @@ button.control:hover:before{
     padding: 20px;
 }
 
-.emclientfooter a {
-	font-size:17px;
-    color: white;
-}
-.emclientfooter a:hover {
-    color: #ee9836;
-}
-.emclientfooter a:focus {
-    color: #ee9836;
-}
-.emclientfooter a:active {
-    color: #ee9836;
-}
-
 
 @media only screen 
 and (max-width : 767px) {
@@ -636,24 +611,6 @@ and (max-width : 767px) {
     text-align: center;
 }
 
-}
-.emclientwaitr-footer-contain {
-    padding-left: 10px;
-    text-decoration: none!important;
-	font-size: 17px!important;
-}
-.emclientfooter .container .row:first-child {
-    padding: 29px 10% 15px 10%;
-}
-/*misc */
-section#em-404 {
-    text-align: center;
-     padding:20px;
-}
-
-section#em-404 {
-    font-size:25px;
-    
 }
 
 /*--------------------------------------------------------------
@@ -1337,24 +1294,7 @@ textarea {
 	padding: 3px;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-input[type="tel"]:focus,
-input[type="range"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="time"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="color"]:focus,
-textarea:focus {
-	color: white;
-}
+
 
 select {
 	border: 1px solid #ccc;
@@ -2076,4 +2016,5 @@ a:hover,a:active {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 1.5em;
+}
 }

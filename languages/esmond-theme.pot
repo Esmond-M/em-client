@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Esmond 1.2.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/esmond-theme\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/em-client\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-11T23:59:58+01:00\n"
+"POT-Creation-Date: 2025-02-14T17:23:33+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: em-client\n"
@@ -31,6 +31,26 @@ msgstr ""
 msgid "Esmond Mccain"
 msgstr ""
 
+#. translators: %s: Name of current post. Only visible to screen readers
+#: archive.php:65
+#: home.php:75
+#: single.php:61
+#: template-parts/content-search.php:52
+#: template-parts/content.php:39
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: archive.php:78
+#: home.php:88
+#: page-templates/template-fullwidth.php:15
+#: page.php:15
+#: single.php:74
+#: template-parts/content-page.php:25
+#: template-parts/content-search.php:68
+#: template-parts/content.php:52
+msgid "Pages:"
+msgstr ""
+
 #. translators: 1: title.
 #: comments.php:35
 msgid "One thought on &ldquo;%1$s&rdquo;"
@@ -45,11 +65,6 @@ msgstr[0] ""
 
 #: comments.php:68
 msgid "Comments are closed."
-msgstr ""
-
-#: front-page.php:141
-#: front-page.php:190
-msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
 #. translators: %s: post date.
@@ -110,27 +125,15 @@ msgstr[0] ""
 msgid "Fullwidth Page"
 msgstr ""
 
-#: page-templates/template-fullwidth.php:15
-#: page.php:15
-#: template-parts/content-page.php:25
-#: template-parts/content.php:53
-msgid "Pages:"
-msgstr ""
-
 #. translators: %s: search query.
 #: search.php:21
 msgid "Search Results for: %s"
 msgstr ""
 
-#: single.php:23
+#: single.php:89
 msgid "Previous:"
 msgstr ""
 
-#: single.php:24
+#: single.php:90
 msgid "Next:"
-msgstr ""
-
-#. translators: %s: Name of current post. Only visible to screen readers
-#: template-parts/content.php:40
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr ""

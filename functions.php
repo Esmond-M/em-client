@@ -138,7 +138,7 @@ final class EMCLIENT_Theme_Class {
 		// Register navigation menus.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'emclient' ),
+				'primary_menu' => esc_html__( 'Primary', 'emclient' ),
 				'topbar_menu' => esc_html__( 'Top Bar', 'emclient' ),
 				'main_menu'   => esc_html__( 'Main', 'emclient' ),
 				'footer_menu' => esc_html__( 'Footer', 'emclient' ),
@@ -157,23 +157,6 @@ final class EMCLIENT_Theme_Class {
 
 		// Enable support for Post Thumbnails on posts and pages.
 		add_theme_support( 'post-thumbnails' );
-
-		/**
-		 * Enable support for header image
-		 */
-		add_theme_support(
-			'custom-header',
-			apply_filters(
-				'emclient_custom_header_args',
-				array(
-					'width'       => 2000,
-					'height'      => 1200,
-					'flex-height' => true,
-					'video'       => true,
-					'video-active-callback' => '__return_true'
-				)
-			)
-		);
 
 		/**
 		 * Enable support for site logo
@@ -224,16 +207,8 @@ final class EMCLIENT_Theme_Class {
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
 
-		// Add editor style.
-		add_editor_style( 'assets/css/editor-style.min.css' );
-
 		// Declare support for selective refreshing of widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
-
-		/**
-		 * Implement the Custom Header feature.
-		 */
-		require $dir_include . 'custom-header.php';
 
 		/**
 		 * Custom template tags for this theme.
@@ -257,7 +232,7 @@ final class EMCLIENT_Theme_Class {
 		 * Load WooCommerce compatibility file.
 		 */
 		if ( class_exists( 'WooCommerce' ) ) {
-			require $dir_include . 'woocommerce.php';
+			require $dir_include . 'EMCLIENT_class_woo_function.php';
 		}
 
 
@@ -304,14 +279,13 @@ final class EMCLIENT_Theme_Class {
 		$theme_version = EMCLIENT_Theme_VERSION;
 		$nonCache_version = rand( 1, 99999999999 );
 		// Enqueue Main style.
-		//wp_enqueue_style( 'emclient-style', $dir . 'style.min.css', false, $theme_version );
-		wp_enqueue_style( 'emclientstyle', get_stylesheet_uri(), array(), $nonCache_version );
+		wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/style.min.css', array(), $nonCache_version );
 		//wp_enqueue_style( 'animatecss', get_stylesheet_directory_uri() ."/assets/css/animate.css", array(), $theme_version );
 		wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() ."/assets/css/g-fonts.css", array(), $theme_version );
 		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
 		wp_enqueue_style('font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css');
 		wp_enqueue_style('font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css');
-		if(is_home() || is_archive() || is_single() ||  is_tag() || is_tax() || is_category() )
+		if(is_home() || is_archive() || is_single() ||  is_tag() || is_tax() || is_category() || is_search() )
 		{
 			wp_enqueue_style( 'singular-page', get_stylesheet_directory_uri() ."/assets/css/single.css", array(), $nonCache_version );
 		}
