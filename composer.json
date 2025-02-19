@@ -1,24 +1,24 @@
 {
-    "name": "esmond/em-client",
-    "type": "wordpress-theme",
-    "description": "Wordpress Boilerplate theme",
-    "keywords": [
-        "WordPress",
-        "Themes"
-    ],
-    "homepage": "https://www.esmondmccain.com/",
-    "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "Contributors",
-            "homepage": "https://www.esmondmccain.com/"
-        }
-    ],
-    "require": {
-        "php": ">=5.6"
-    },
-    "require-dev": {
-        "wptrt/wpthemereview": "^0.2.1",
-        "wp-cli/i18n-command": "^2.2.5"
-    }
+	"name": "esmond/em-client",
+	"type": "wordpress-theme",
+	"description": "Wordpress Boilerplate theme",
+	"keywords": [
+		"WordPress",
+		"Themes"
+	],
+	"homepage": "https://www.esmondmccain.com/",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Contributors",
+			"homepage": "https://www.esmondmccain.com/"
+		}
+	],
+	"require": {
+		"php": ">=5.6"
+	},
+	"require-dev": {
+		"wptrt/wpthemereview": "^0.2.1",
+		"wp-cli/i18n-command": "^2.2.5"
+	}
 }

@@ -30,6 +30,7 @@ if (!class_exists('EMCLIENT_theme_woo_function_Class')) {
         {
 
 			add_action( 'after_setup_theme',  [$this, 'emclient_woocommerce_setup' ]  );
+			add_action( 'template_redirect', [$this, 'wpc_shop_url_redirect' ]  );
 			add_filter( 'body_class',  [$this, 'emclient_woocommerce_active_body_class' ]  );
 			add_filter( 'woocommerce_output_related_products_args',  [$this, 'emclient_woocommerce_related_products_args' ]  );
 			add_action( 'woocommerce_before_main_content',  [$this, 'emclient_woocommerce_wrapper_before' ]  );
@@ -62,8 +63,24 @@ if (!class_exists('EMCLIENT_theme_woo_function_Class')) {
 			add_theme_support( 'wc-product-gallery-slider' );
 		}
 		
-		
-		
+		// Redirect WooCommerce Shop URL
+		public static function wpc_shop_url_redirect() {
+			global $wpdb;
+			/* Get post IDs of all pages using "page-templates/template-shop.php" */
+			// If no page random redirect to a product
+			$custom_shop_pages = $wpdb->get_results("SELECT `post_id` FROM $wpdb->postmeta WHERE `meta_key` ='_wp_page_template' AND `meta_value` = 'page-templates/template-shop.php' ", ARRAY_A);
+			/* Get permalink using post ID of first page in the results */
+			$custom_shop_pages_permalink = get_permalink($custom_shop_pages[0]['post_id']);
+			if(!current_user_can( 'edit_posts' )){ // for testing
+	    
+			}
+			if( is_shop() ){
+				wp_redirect( $custom_shop_pages_permalink); // Assign custom internal page here
+				exit();
+			}	
+		}
+
+				
 		/**
 		 * Add 'woocommerce-active' class to the body tag.
 		 *

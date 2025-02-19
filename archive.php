@@ -86,7 +86,7 @@ get_header();
 		<?php
             endwhile;
         else :
-            _e( 'Sorry, no posts matched your criteria.', 'textdomain' );
+            _e( 'Sorry, no posts matched your criteria.', 'em-client' );
         endif;
         ?>
 	</main><!-- #main -->
