@@ -1074,6 +1074,12 @@ ul.products li.product .button {
 /**
  * Checkout
  */
+.em-page-content .wp-block-woocommerce-checkout {
+  max-width: 1280px;
+  margin: 150px auto;
+  padding: 0 50px;
+}
+
 @media screen and (min-width: 768px) {
   .col2-set .form-row-first {
     float: left;
@@ -1092,8 +1098,13 @@ ul.products li.product .button {
  * General WooCommerce components
  */
 /**
- * Header cart
+ *  cart
  */
+.wp-block-woocommerce-cart {
+  max-width: 1280px;
+  margin: 150px auto;
+}
+
 .site-header-cart {
   position: relative;
   margin: 0;
