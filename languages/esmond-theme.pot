@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-14T17:23:33+01:00\n"
+"POT-Creation-Date: 2025-02-19T18:07:15+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: em-client\n"
@@ -33,22 +33,27 @@ msgstr ""
 
 #. translators: %s: Name of current post. Only visible to screen readers
 #: archive.php:65
-#: home.php:75
 #: single.php:61
+#: template-parts/content-blog.php:49
 #: template-parts/content-search.php:52
 #: template-parts/content.php:39
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr ""
 
 #: archive.php:78
-#: home.php:88
 #: page-templates/template-fullwidth.php:15
 #: page.php:15
 #: single.php:74
+#: template-parts/content-blog.php:62
 #: template-parts/content-page.php:25
 #: template-parts/content-search.php:68
 #: template-parts/content.php:52
 msgid "Pages:"
+msgstr ""
+
+#: archive.php:89
+#: page-templates/template-shop.php:120
+msgid "Sorry, no posts matched your criteria."
 msgstr ""
 
 #. translators: 1: title.
@@ -66,6 +71,16 @@ msgstr[0] ""
 #: comments.php:68
 msgid "Comments are closed."
 msgstr ""
+
+#: inc/EMCLIENT_class_woo_function.php:165
+msgid "View your shopping cart"
+msgstr ""
+
+#. translators: number of items in the mini cart.
+#: inc/EMCLIENT_class_woo_function.php:169
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] ""
 
 #. translators: %s: post date.
 #: inc/template-tags.php:30
@@ -111,18 +126,12 @@ msgstr ""
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
 
-#: inc/woocommerce.php:151
-msgid "View your shopping cart"
-msgstr ""
-
-#. translators: number of items in the mini cart.
-#: inc/woocommerce.php:155
-msgid "%d item"
-msgid_plural "%d items"
-msgstr[0] ""
-
 #. Template Name of the theme
 msgid "Fullwidth Page"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Shop"
 msgstr ""
 
 #. translators: %s: search query.
@@ -136,4 +145,28 @@ msgstr ""
 
 #: single.php:90
 msgid "Next:"
+msgstr ""
+
+#: template-parts/content-front.php:16
+msgid "Customization"
+msgstr ""
+
+#: template-parts/content-front.php:17
+msgid "Straight forward template structure. Convenient NPM commands for automated processes."
+msgstr ""
+
+#: template-parts/content-front.php:21
+msgid "Woocommerce Compatibility"
+msgstr ""
+
+#: template-parts/content-front.php:22
+msgid "WooCommerce compatibility. Includes pre-built features with easily updated template files."
+msgstr ""
+
+#: template-parts/content-front.php:26
+msgid "Sass Files"
+msgstr ""
+
+#: template-parts/content-front.php:27
+msgid "All the conveniences of using sass. Variables that can be easily updated etc."
 msgstr ""
