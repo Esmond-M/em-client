@@ -1,3 +1,4 @@
+$site-color-Pomegranate: #EE3B24;
 /*--------------------------------------------------------------
 # Header & Nav
 --------------------------------------------------------------*/
@@ -12,7 +13,7 @@
     align-items: center;
     width: 100%;
     background: #343a40;
-    border-top: 2px solid #ee3b24;
+    border-top: 2px solid $site-color-Pomegranate;
     position: relative;
 
     #primary-menu {
@@ -49,9 +50,9 @@
             }
             a:hover {
                 cursor:pointer;
-                color: #ee3b24;
+                color: $site-color-Pomegranate;
                 padding-bottom:5px;
-                 border-bottom: 2px solid #ee3b24;
+                 border-bottom: 2px solid $site-color-Pomegranate;
                 transition: all .3s ease-in-out;
                 -moz-transition: all .3s ease-in-out;
                 -webkit-transition: all .3s ease-in-out;
@@ -117,7 +118,7 @@
 }
 
 .entry-header .entry-title:first-letter {
-    color: #ee3b24
+    color: $site-color-Pomegranate
 }
 
 .entry-header .entry-title a {
@@ -133,7 +134,7 @@
 }
 
 .entry-categories .fa {
-    color: #ee3b24;
+    color: $site-color-Pomegranate;
     margin-right: 5px
 }
 
@@ -147,7 +148,7 @@
 }
 
 .entry-readmore a {
-    background: #ee3b24;
+    background: $site-color-Pomegranate;
     color: #fff;
     display: inline-block;
     padding: 10px 20px
@@ -183,7 +184,7 @@
     left: 0;
     top: 100%;
     width: 30px;
-    background: #ee3b24;
+    background: $site-color-Pomegranate;
     height: 2px
 }
 
@@ -217,7 +218,7 @@
 }
 
 .widget-area a:hover {
-    color: #ee3b24
+    color: $site-color-Pomegranate
 }
 
 .widget-area .widget {
@@ -264,7 +265,7 @@ h3#reply-title:after,h3.comments-title:after {
     left: 0;
     top: 100%;
     width: 30px;
-    background: #ee3b24;
+    background: $site-color-Pomegranate;
     height: 2px
 }
 
@@ -302,7 +303,7 @@ article.comment-body {
         color: #404040
     }
     a:hover {
-        color: #ee3b24!important
+        color: $site-color-Pomegranate!important
     }
     .comment-respond {
         margin-top: 40px;
@@ -348,7 +349,7 @@ article.comment-body {
 }
 
 .nav-previous a,.nav-next a {
-    background: #ee3b24;
+    background: $site-color-Pomegranate;
     color: #fff;
     display: inline-block;
     padding: 0 10px;
@@ -364,7 +365,7 @@ article.comment-body {
 .nav-next a:after {
     content: "";
     position: absolute;
-    border-left: 11px solid #ee3b24;
+    border-left: 11px solid $site-color-Pomegranate;
     border-top: 11px solid transparent;
     border-bottom: 11px solid transparent;
     top: 0;
@@ -378,7 +379,7 @@ article.comment-body {
 .nav-previous a:after {
     content: "";
     position: absolute;
-    border-right: 11px solid #ee3b24;
+    border-right: 11px solid $site-color-Pomegranate;
     border-top: 11px solid transparent;
     border-bottom: 11px solid transparent;
     top: 0;
@@ -386,7 +387,7 @@ article.comment-body {
 }
 
 .no-comments {
-    color: #ee3b24
+    color: $site-color-Pomegranate
 }
 
 .page-content .wp-smiley,.entry-content .wp-smiley,.comment-content .wp-smiley {
@@ -479,12 +480,12 @@ button.control {
 }
 
 button.control.mixitup-control-active {
-    background: #ee3b24;
+    background: $site-color-Pomegranate;
     color: white;
 
 }
 button.control:hover{
-	background: #ee3b24;
+	background: $site-color-Pomegranate;
     color: white;
 }
 button.control.mixitup-control-active:before{
@@ -493,7 +494,7 @@ button.control.mixitup-control-active:before{
     opacity: 1;
     position: absolute;
     left: 50%;
-    border-color: #ee3b24 transparent transparent transparent;
+    border-color: $site-color-Pomegranate transparent transparent transparent;
     border-width: 8px 10px 0;
     border-style: solid;
     margin-left: -10px;
@@ -515,7 +516,7 @@ button.control:hover:before{
     opacity: 1;
     position: absolute;
     left: 50%;
-    border-color: #ee3b24 transparent transparent transparent;
+    border-color: $site-color-Pomegranate transparent transparent transparent;
     border-width: 8px 10px 0;
     border-style: solid;
     margin-left: -10px;
@@ -543,7 +544,7 @@ button.control:hover:before{
 
 .pagination .nav-links a,.pagination .nav-links span {
     display: inline-block;
-    background: #ee3b24;
+    background: $site-color-Pomegranate;
     padding: 10px;
     color: #fff;
     line-height: 1;
@@ -633,6 +634,7 @@ button.control:hover:before{
 >>> 404 page
 ----------------------------------------------------------------
 */
+
 .em-404 {
     .entry-content{
         max-width: 1400px;
@@ -652,18 +654,11 @@ button.control:hover:before{
 
 }
 
-.error404 .oops-text {
-    text-align: center
-}
-
-
-.em-padding{
-	 padding: 0 0 500px 0;
-}
 /*--------------------------------------------------------------
 >>> Footer
 ----------------------------------------------------------------
 */
+
 .navigation.posts-navigation{
     width: 100%;
 }
@@ -2260,7 +2255,7 @@ table {
 }
 
 button,input[type=button],input[type=reset],input[type=submit] {
-    background: #ee3b24;
+    background: $site-color-Pomegranate;
     padding: 0 20px;
     color: #fff;
     border: 0;
@@ -2305,12 +2300,12 @@ textarea {
 }
 
 a {
-    color: #ee3b24;
+    color: $site-color-Pomegranate;
     text-decoration: none
 }
 
 a:hover,a:focus,a:active {
-    color: #ee3b24
+    color: $site-color-Pomegranate
 }
 
 a:focus {
