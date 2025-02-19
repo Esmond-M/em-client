@@ -721,6 +721,80 @@ button.control:hover:before {
 }
 
 /*--------------------------------------------------------------
+>>>Default Front Page Content
+----------------------------------------------------------------
+*/
+.em-front-page-content .intro {
+  max-width: 1280px;
+  padding: 100px 0 50px 0;
+  margin: auto;
+  text-align: center;
+}
+.em-front-page-content .intro h2 {
+  max-width: 500px;
+  margin: auto;
+  font-size: 40px;
+  font-weight: 500;
+}
+.em-front-page-content .intro p {
+  max-width: 600px;
+  margin: auto auto 16px auto;
+  font-size: 18px;
+  font-weight: normal;
+}
+.em-front-page-content .intro .bg-img {
+  width: 100%;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: initial;
+  background-size: cover;
+  border-radius: 30px;
+}
+.em-front-page-content .features h2 {
+  max-width: 500px;
+  margin: auto;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+}
+.em-front-page-content .features .em-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1400px;
+  width: 100%;
+  margin: auto;
+  padding: 0 10px;
+}
+.em-front-page-content .features .em-container .feature-item {
+  width: 33%;
+  font-family: sans-serif;
+  padding: 20px;
+}
+.em-front-page-content .features .em-container .feature-item .title {
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+}
+.em-front-page-content .features .em-container .feature-item .description {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+}
+@media only screen and (max-width: 1199px) {
+  .em-front-page-content .features .em-container .feature-item {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .em-front-page-content .features .em-container .feature-item {
+    width: 100%;
+  }
+}
+
+/*--------------------------------------------------------------
 >>> 404 page
 ----------------------------------------------------------------
 */
