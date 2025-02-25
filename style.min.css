@@ -167,7 +167,7 @@
 }
 .em-shop-page .product-filter-sidebar form {
   background-color: #DDDDDD;
-  padding: 0 5px;
+  padding: 20px 10px 20px 10px;
 }
 .em-shop-page .product-filter-sidebar form .search-input {
   height: initial;
@@ -200,6 +200,10 @@
   justify-content: initial;
   margin: auto;
   padding: 0 10px;
+}
+.em-shop-page .shop-results .number-results {
+  width: 100%;
+  padding: 0 20px 10px 20px;
 }
 .em-shop-page .shop-results .product-item {
   width: 33.3%;
