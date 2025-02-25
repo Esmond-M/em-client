@@ -91,7 +91,17 @@
 			$product = wc_get_product($post_id);
 			$product_url = $product->add_to_cart_url();
 			$product_price = $product->get_price();
-			?>
+		
+		if($shop_query_count == 1){
+		?>
+		<div class="number-results">
+		<p>Results: <?php echo $shop_post_the_query->found_posts; ?></p>
+		</div>	
+		<?php	
+		}
+		
+		?>
+		
         <div class="product-item">
 		  <?php
 		if( get_the_post_thumbnail_url() ){
@@ -104,7 +114,7 @@
 
 			else{
 			?>	
-			<div class="featured-img" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/img/blog-placholder.jpg"?>');"></div>
+			<div class="featured-img" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/img/product-placeholder.png"?>');"></div>
 			<?php
 			}
 			?>
