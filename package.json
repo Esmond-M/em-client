@@ -52,6 +52,6 @@
 		"start": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js",
-		"watch": "sass --watch sass/style.scss style.min.css --no-source-map"
+		"watch": "sass --watch sass/style.scss assets/css/style.min.css --no-source-map"
 	}
 }
