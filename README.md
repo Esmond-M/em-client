@@ -5,7 +5,7 @@
 * [Features](#features)
     + [Theme Files and Functionality](#theme-files-and-functionality)
 
-Simple bolierplate WordPress theme.
+Simple boilerplate WordPress theme.
 
 Project: [https://github.com/Esmond-M/em-client](https://github.com/Esmond-M/em-client)<br>
 Author: [esmondmccain.com](https://esmondmccain.com/)
