@@ -279,8 +279,7 @@ final class EMCLIENT_Theme_Class {
 		$theme_version = EMCLIENT_Theme_VERSION;
 		$nonCache_version = rand( 1, 99999999999 );
 		// Enqueue Main style.
-		wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/style.min.css', array(), $nonCache_version );
-		//wp_enqueue_style( 'animatecss', get_stylesheet_directory_uri() ."/assets/css/animate.css", array(), $theme_version );
+		wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/assets/css/style.min.css', array(), $nonCache_version );
 		wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() ."/assets/css/g-fonts.css", array(), $theme_version );
 		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
 		wp_enqueue_style('font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css');
@@ -288,9 +287,6 @@ final class EMCLIENT_Theme_Class {
 		if(is_home() || is_archive() || is_single() ||  is_tag() || is_tax() || is_category() || is_search() )
 		{
 			wp_enqueue_style( 'singular-page', get_stylesheet_directory_uri() ."/assets/css/single.css", array(), $nonCache_version );
-		}
-		if (is_page(128)) {
-			wp_enqueue_style( 'test-css', $dir . 'test-css.css' , array(), $nonCache_version );
 		}
 	}
 
