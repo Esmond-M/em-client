@@ -15,7 +15,13 @@ $site-color-Pomegranate: #EE3B24;
     background: #343a40;
     border-top: 2px solid $site-color-Pomegranate;
     position: relative;
-
+    .ham-btn{
+        display: none;
+        background: transparent;
+        svg{
+            max-width: 30px;
+        }
+    }    
     #primary-menu {
         display: -webkit-box;
         display: -moz-box;
@@ -58,7 +64,7 @@ $site-color-Pomegranate: #EE3B24;
                 -webkit-transition: all .3s ease-in-out;
             }
         }    
-    }    
+    } 
 }
 
 .scroll-with {
@@ -83,6 +89,24 @@ $site-color-Pomegranate: #EE3B24;
 	max-width: 180px;
 	display: block;
     margin: auto;
+}
+
+@media only screen 
+and (max-width : 1199px) {
+    .site-header  {
+        #primary-menu{
+            display: none;
+        }
+        .ham-btn{
+            display: block;
+            svg{
+            }
+        }
+    #primary-menu.show-menu{
+        display: flex; 
+        flex-direction: column;
+    }               
+    }
 }
 @import "single";
 

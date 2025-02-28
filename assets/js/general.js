@@ -17,4 +17,9 @@ jQuery( document ).ready( function ( $ ) {
 			} );
 		}
 	} );
+
+    jQuery(".site-header .ham-btn").click(function() {
+        jQuery(".site-header #primary-menu").toggleClass("show-menu");
+    });
+
 } );
