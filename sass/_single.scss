@@ -90,7 +90,7 @@ $hover-color: red;
         width: 20%;
         form{
             background-color:#DDDDDD;
-            padding: 0 5px;
+            padding: 20px 10px 20px 10px;
             .search-input {
                 height: initial;
                 width: 100%;
@@ -118,6 +118,10 @@ $hover-color: red;
         justify-content: initial;
         margin:auto;
         padding:0 10px;
+        .number-results{
+            width: 100%;
+            padding: 0 20px 10px 20px;
+        }
         .product-item{
             width:33.3%;
             font-family:$font-stack;
