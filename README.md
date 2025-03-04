@@ -1,11 +1,9 @@
-# em-client
- 
 # [EM client](https://github.com/Esmond-M/em-client)
 
 * [Features](#features)
     + [Theme Files and Functionality](#theme-files-and-functionality)
 
-Simple boilerplate WordPress theme.
+Boilerplate WordPress theme with some custom features. Sometimes used as a start point for websites I create. 
 
 Project: [https://github.com/Esmond-M/em-client](https://github.com/Esmond-M/em-client)<br>
 Author: [esmondmccain.com](https://esmondmccain.com/)
@@ -19,6 +17,8 @@ Download the latest version from [https://github.com/Esmond-M/em-client](https:/
 ### Theme Files and Functionality
 * Custom frontpage template
 * Straight forward template structure. 
-* WooCommerce Comparability
+* WooCommerce compatibility
+* WooCommerce templates
+* Custom Elementor widget
 * Sass files
 * NPM scripts
