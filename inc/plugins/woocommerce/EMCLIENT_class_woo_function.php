@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace inc\EMCLIENT_class_woo_function;
+namespace inc\plugins\woocommerce\EMCLIENT_class_woo_function;
 /**
  * WooCommerce Compatibility File
  *
@@ -210,5 +210,5 @@ if (!class_exists('EMCLIENT_theme_woo_function_Class')) {
 
 }
 
-use inc\EMCLIENT_class_woo_function;
+use inc\plugins\woocommerce\EMCLIENT_class_woo_function;
 new EMCLIENT_theme_woo_function_Class;
