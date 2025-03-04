@@ -2,6 +2,7 @@
 declare(strict_types=1);
 namespace inc\plugins\elementor\classes\elementor_card_widget;
 
+if (!class_exists('EMCLIENT_elementor_card_widget')) {
     class EMCLIENT_elementor_card_widget extends \Elementor\Widget_Base
     {
   	/**
@@ -89,4 +90,5 @@ namespace inc\plugins\elementor\classes\elementor_card_widget;
        }
 
 	} // Closing bracket for classes
+}
     use inc\plugins\elementor\classes\elementor_card_widget;
