@@ -8,9 +8,13 @@ Boilerplate WordPress theme with some custom features. Sometimes used as a start
 Project: [https://github.com/Esmond-M/em-client](https://github.com/Esmond-M/em-client)<br>
 Author: [esmondmccain.com](https://esmondmccain.com/)
 
-## Getting Started with em-client Theme
+## Installation
 
-Download the latest version from [https://github.com/Esmond-M/em-client](https://github.com/Esmond-M/em-client/blob/master/em-client.zip)
+1. Download the latest version from [https://github.com/Esmond-M/em-client/blob/main/em-client.zip](https://github.com/Esmond-M/em-client/blob/main/em-client.zip)
+2. Upload `em-client` zip to the `/wp-content/theme/` directory
+3. Extract zip.
+4. Activate the theme through the 'Themes' menu in WordPress
+
 
 ## Features
 
