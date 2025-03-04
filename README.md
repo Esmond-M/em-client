@@ -1,5 +1,6 @@
 # [EM client](https://github.com/Esmond-M/em-client)
 
+* [Installation](#installation)
 * [Features](#features)
     + [Theme Files and Functionality](#theme-files-and-functionality)
 
