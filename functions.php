@@ -51,7 +51,7 @@ final class EMCLIENT_Theme_Class {
 
 		// register sidebar widget areas.
 		add_action( 'widgets_init', array( 'EMCLIENT_Theme_Class', 'register_sidebars' ) );
-		add_action( 'elementor/widgets/register',  [$this, 'register_hello_world_widget' ]  );
+		add_action( 'elementor/widgets/register',  [$this, 'elementor_card_widget' ]  );
 
 		/** Admin only actions */
 		if ( is_admin() ) {
@@ -112,8 +112,15 @@ final class EMCLIENT_Theme_Class {
 	 * @since   1.0.0
 	 */
 	public static function classes() {
+		$dir_include = EMTHEME_INC_DIR;
+		/**
+		 * Load WooCommerce compatibility file.
+		 */
+		if ( class_exists( 'WooCommerce' ) ) {
+			require $dir_include . '/plugins/woocommerce/EMCLIENT_class_woo_function.php';
 
-
+			
+		}
 
 	}
 
@@ -229,24 +236,14 @@ final class EMCLIENT_Theme_Class {
 			require $dir_include . 'jetpack.php';
 		}
 
-		/**
-		 * Load WooCommerce compatibility file.
-		 */
-		if ( class_exists( 'WooCommerce' ) ) {
-			require $dir_include . '/plugins/woocommerce/EMCLIENT_class_woo_function.php';
-
-			
-		}
-
-
 	}
 
-	public static function register_hello_world_widget( $widgets_manager ) {
+	public static function elementor_card_widget( $widgets_manager ) {
 		$dir_include = EMTHEME_INC_DIR;
 
-		require $dir_include . '/plugins/elementor/EMCLIENT_class_elementor_function.php';
+		require $dir_include . '/plugins/elementor/classes/elementor_card_widget.php';
 	
-		$widgets_manager->register( new inc\plugins\elementor\EMCLIENT_class_elementor_function() );
+		$widgets_manager->register( new inc\plugins\elementor\classes\elementor_card_widget\EMCLIENT_elementor_card_widget() );
 	
 	}
 	/**
