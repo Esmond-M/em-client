@@ -51,7 +51,7 @@ final class EMCLIENT_Theme_Class {
 
 		// register sidebar widget areas.
 		add_action( 'widgets_init', array( 'EMCLIENT_Theme_Class', 'register_sidebars' ) );
-
+		add_action( 'elementor/widgets/register',  [$this, 'register_hello_world_widget' ]  );
 
 		/** Admin only actions */
 		if ( is_admin() ) {
@@ -79,6 +79,7 @@ final class EMCLIENT_Theme_Class {
 
 			add_filter( 'emclient_enqueue_generated_files', '__return_false' );
 		}
+
 	}
 
 
@@ -232,12 +233,22 @@ final class EMCLIENT_Theme_Class {
 		 * Load WooCommerce compatibility file.
 		 */
 		if ( class_exists( 'WooCommerce' ) ) {
-			require $dir_include . 'EMCLIENT_class_woo_function.php';
+			require $dir_include . '/plugins/woocommerce/EMCLIENT_class_woo_function.php';
+
+			
 		}
 
 
 	}
 
+	public static function register_hello_world_widget( $widgets_manager ) {
+		$dir_include = EMTHEME_INC_DIR;
+
+		require $dir_include . '/plugins/elementor/EMCLIENT_class_elementor_function.php';
+	
+		$widgets_manager->register( new inc\plugins\elementor\EMCLIENT_class_elementor_function() );
+	
+	}
 	/**
 	 * Adds the meta tag to the site header
 	 *
