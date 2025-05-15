@@ -89,6 +89,6 @@ if (!class_exists('EMCLIENT_elementor_card_widget')) {
     
        }
 
-	} // Closing bracket for classes
+	} // Closing bracket for class
 }
     use inc\plugins\elementor\classes\elementor_card_widget;
