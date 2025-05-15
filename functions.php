@@ -238,13 +238,16 @@ final class EMCLIENT_Theme_Class {
 
 	}
 
+	// Function specifically for elementor classes
 	public static function elementor_card_widget( $widgets_manager ) {
 		$dir_include = EMTHEME_INC_DIR;
 
 		require $dir_include . '/plugins/elementor/classes/elementor_card_widget.php';
-	
+		require $dir_include . '/plugins/elementor/classes/elementor_nav_menu.php';
+
 		$widgets_manager->register( new inc\plugins\elementor\classes\elementor_card_widget\EMCLIENT_elementor_card_widget() );
-	
+		$widgets_manager->register( new inc\plugins\elementor\classes\elementor_nav_menu\EMCLIENT_elementor_nav_menu() );
+
 	}
 	/**
 	 * Adds the meta tag to the site header

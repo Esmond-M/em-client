@@ -1,0 +1,9 @@
+.emClient-menu {
+    background: transparent;;
+    color: black;
+}
+
+.emClient-menu-menu li {
+    display: inline-block;
+    margin: 0 20px;
+}
