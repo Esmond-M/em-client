@@ -31,6 +31,7 @@ define( 'EMCLIENT_Theme_URI', get_template_directory_uri() );
 /**
  * emclientWP theme class
  */
+
 final class EMCLIENT_Theme_Class {
 
 	/**
@@ -329,7 +330,7 @@ final class EMCLIENT_Theme_Class {
 		$nonCache_version = rand( 1, 99999999999 );
 
 		wp_enqueue_script( 'emclient-general', $dir . 'general.js', array(), $nonCache_version, true );
-		wp_enqueue_script( 'mixitup', $dir . 'mixitup.min.js', array(), $theme_version, true );
+		//wp_enqueue_script( 'mixitup', $dir . 'mixitup.min.js', array(), $theme_version, true );
 
 		array_push( $main_script_dependencies, 'emclient-main' );
 	}
