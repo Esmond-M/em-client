@@ -1,8 +1,7 @@
 <?php
    /* Template Name: Shop*/ 
    get_header(); 
-   
-   ?>
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class("em-shop-page"); ?>>
 <h1>Shop</h1>
     <aside class="product-filter-sidebar">
@@ -59,60 +58,59 @@
 	<section class="shop-results">
 		
 		<?php
+        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+        $posts_per_page = 2;
+        $shop_post_args = array(
+            'post_type' => 'product',
+            'post_status' => 'publish',
+            'posts_per_page' => $posts_per_page,
+            'paged' => $paged,
+            'orderby'   => 'date',
+            'order' => 'ASC',
+        );
+        if(isset($_GET['product-cate'])){
+            $shop_post_args["tax_query"] = [
+                "relation" => "OR",
+                [
+                    "taxonomy" => "product_cat",
+                    "field" => "slug",
+                    "terms" => $_GET['product-cate'],
+                ]
+            ];
+            if ( strlen($_GET['product-search']) > 0 && strlen(trim($_GET['product-search'])) !== 0) { 
+                $shop_post_args['s'] =  EMCLIENT_Theme_Class::em_client_str_wrap_global($_GET['product-search']) ;
+            }
+        }
 
-    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-		$shop_post_args = array(
-		'post_type' => 'product',
-		'post_status' => 'publish',
-		'posts_per_page' => 2,
-		'paged' => $paged ,
-		'orderby'   => 'date',
-			'order' => 'ASC',
-		);
-		if(isset($_GET['product-cate'])){
-			
-			$shop_post_args["tax_query"] = [
-				"relation" => "OR",
-				[
-					"taxonomy" => "product_cat",
-					"field" => "slug",
-					"terms" => $_GET['product-cate'],
-				]
-			];
+        $shop_post_the_query = new WP_Query($shop_post_args);
+        $total_items = $shop_post_the_query->found_posts;
+        $start_item = ($paged - 1) * $posts_per_page + 1;
+        $end_item = $start_item + $shop_post_the_query->post_count - 1;
 
-			if ( strlen($_GET['product-search']) > 0 && strlen(trim($_GET['product-search'])) !== 0) { 
-				$shop_post_args['s'] =  EMCLIENT_Theme_Class::em_client_str_wrap_global($_GET['product-search']) ;
-		
-			}
-		}
+        ?>
+        <div class="number-results">
+            <p>
+                <?php if ($total_items > 0): ?>
+                    Items <?php echo $start_item; ?>-<?php echo $end_item; ?> of <?php echo $total_items; ?>
+                <?php else: ?>
+                    No items found.
+                <?php endif; ?>
+            </p>
+        </div>
+        <?php
 
-
-		$shop_post_the_query = new WP_Query($shop_post_args);
-		if ( $shop_post_the_query->have_posts() ) :
-
-		$shop_query_count = 1;
-		while ( $shop_post_the_query->have_posts() ) : $shop_post_the_query->the_post();
-			// Start the Loop
-			$title = get_the_title();
-			$excerpt = get_the_excerpt();
-			$link = get_the_permalink();
-			$post_id = get_the_ID();
-			$shop_category = get_the_category($post_id);
-			$shop_post_url_link_value = get_post_meta($post_id, 'portfolio_post_url_link_value', true);
-			$product = wc_get_product($post_id);
-			$product_url = $product->add_to_cart_url();
-			$product_price = $product->get_price();
-		
-		if($shop_query_count == 1){
-		?>
-		<div class="number-results">
-		<p>Results: <?php echo $shop_post_the_query->found_posts; ?></p>
-		</div>	
-		<?php	
-		}
-		
-		?>
-		
+        if ( $shop_post_the_query->have_posts() ) :
+            while ( $shop_post_the_query->have_posts() ) : $shop_post_the_query->the_post();
+                $title = get_the_title();
+                $excerpt = get_the_excerpt();
+                $link = get_the_permalink();
+                $post_id = get_the_ID();
+                $shop_category = get_the_category($post_id);
+                $shop_post_url_link_value = get_post_meta($post_id, 'portfolio_post_url_link_value', true);
+                $product = wc_get_product($post_id);
+                $product_url = $product->add_to_cart_url();
+                $product_price = $product->get_price();
+        ?>
         <div class="product-item">
 		  <?php
 		if( get_the_post_thumbnail_url() ){
@@ -134,16 +132,13 @@
 		  <a href="<?php echo $product_url ?>" class="product-link"><button >Add to cart</button></a>	
 		</div>	
 		<?php
-		$shop_query_count++;
-		endwhile;
-		else:
-		// If no posts match this query, output this text.
-		_e( 'Sorry, no posts matched your criteria.', 'em-client' );
-		endif; 
+            endwhile;
+        else:
+            _e( 'Sorry, no posts matched your criteria.', 'em-client' );
+        endif; 
 
-		wp_reset_postdata();
-
-		?> 
+        wp_reset_postdata();
+        ?> 
 	<div class="pagination">
     <?php 
         echo paginate_links( array(
