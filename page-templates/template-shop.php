@@ -22,12 +22,24 @@
     ?>	
     <?php
 	   foreach( $categories as $category ) {
-		?> 
-		<li>
+		if(isset($_GET['product-cate']) && in_array($category->slug, $_GET['product-cate'])){
+			$checked = "checked";
+		}
+		else{
+			$checked = "";
+		}
+	   ?> 
+	   <li>
 			<label>
-			<input type="checkbox" <?php if ( in_array($category->slug, $_GET['product-cate'])  ) echo 'checked="checked"" '; ?> value="<?php echo $category->slug ; ?>" name="product-cate[]">
-			<?php echo $category->name; ?></label>
-		</li> 
+			<input type="checkbox" name="product-cate[]" value="<?php echo $category->slug; ?>" <?php echo $checked; ?> />
+			<?php echo $category->name; ?>
+			</label> 
+	   </li> 
+	   <?php
+	   } 
+	   if(empty($categories)){
+	   ?>
+
 	   <?php
 	   } 
 
@@ -47,10 +59,7 @@
 	<section class="shop-results">
 		
 		<?php
-	function em_client_str_wrap_global($string = '', $char = '"')
-	{
-		return str_pad($string, strlen($string) + 2, $char, STR_PAD_BOTH);
-	}
+
     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 		$shop_post_args = array(
 		'post_type' => 'product',
@@ -70,11 +79,13 @@
 					"terms" => $_GET['product-cate'],
 				]
 			];
+
+			if ( strlen($_GET['product-search']) > 0 && strlen(trim($_GET['product-search'])) !== 0) { 
+				$shop_post_args['s'] =  EMCLIENT_Theme_Class::em_client_str_wrap_global($_GET['product-search']) ;
+		
+			}
 		}
-		if ( strlen($_GET['product-search']) > 0 && strlen(trim($_GET['product-search'])) !== 0) { 
-			$shop_post_args['s'] = em_client_str_wrap_global($_GET['product-search']) ;
-	
-		}
+
 
 		$shop_post_the_query = new WP_Query($shop_post_args);
 		if ( $shop_post_the_query->have_posts() ) :
