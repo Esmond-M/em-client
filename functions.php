@@ -454,6 +454,14 @@ final class EMCLIENT_Theme_Class {
 		);
 
 	}
+
+	/**
+	 * Wrap a string with a character (default: double quotes)
+	 */
+	public static function em_client_str_wrap_global($string = '', $char = '"')
+	{
+		return str_pad($string, strlen($string) + 2, $char, STR_PAD_BOTH);
+	}
 }
 
 new EMCLIENT_Theme_Class();
