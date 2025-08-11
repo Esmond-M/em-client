@@ -99,8 +99,7 @@ and (max-width : 1199px) {
         }
         .ham-btn{
             display: block;
-            svg{
-            }
+
         }
     #primary-menu.show-menu{
         display: flex; 
@@ -944,7 +943,8 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-	-webkit-appearance: button;
+    appearance: button;
+    -webkit-appearance: button;
 }
 
 
@@ -1045,7 +1045,8 @@ textarea {
  */
 
 [type="search"] {
-	-webkit-appearance: textfield;
+    appearance: textfield;
+    -webkit-appearance: textfield;
 	outline-offset: -2px;
 }
 
@@ -1454,9 +1455,6 @@ svg:not(:root) {
     overflow: hidden
 }
 
-figure {
-}
-
 hr {
     box-sizing: content-box;
     height: 0
@@ -1486,6 +1484,7 @@ button,select {
 }
 
 button,html input[type=button],input[type=reset],input[type=submit] {
+    appearance: button;    
     -webkit-appearance: button;
     cursor: pointer
 }
@@ -1513,6 +1512,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 }
 
 input[type=search] {
+    appearance: textfield;
     -webkit-appearance: textfield;
     box-sizing: content-box
 }

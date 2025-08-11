@@ -1799,6 +1799,7 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
+  appearance: button;
   -webkit-appearance: button;
 }
 
@@ -1882,6 +1883,7 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 [type=search] {
+  appearance: textfield;
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
@@ -2284,6 +2286,7 @@ button, select {
 }
 
 button, html input[type=button], input[type=reset], input[type=submit] {
+  appearance: button;
   -webkit-appearance: button;
   cursor: pointer;
 }
@@ -2311,6 +2314,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 }
 
 input[type=search] {
+  appearance: textfield;
   -webkit-appearance: textfield;
   box-sizing: content-box;
 }
