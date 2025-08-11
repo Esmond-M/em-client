@@ -1,5 +1,3 @@
-
-
 // Variables
 $color-modal-bg: #fff;
 $color-modal-text: #111;
@@ -16,6 +14,13 @@ $border-radius-btn: 10px;
 $border-radius-field: 8px;
 $box-shadow-modal: 0 20px 60px rgba(0,0,0,.25);
 $box-shadow-masonry: 0 6px 18px rgba(0,0,0,.08);
+
+$carousel-gap: 1rem !default;
+$carousel-radius: $border-radius-modal !default;
+$carousel-shadow: $box-shadow-masonry !default;
+$carousel-bg: $color-masonry-bg !default;
+$carousel-text: $color-masonry-text !default;
+$carousel-meta: $color-masonry-meta !default;
 
 /*--------------------------------------------------------------
 >>> Modal Styles
@@ -161,7 +166,7 @@ body.modal-lock {
 }
 
 // ===================
-// Hero (plays nice with your vars)
+// Hero 
 // ===================
 
 // New (safe) defaults — won't override if you already define them elsewhere
@@ -188,13 +193,200 @@ $color-hero-text: #fff !default;
   &__overlay {
     position: absolute;
     inset: 0;
-    // Reuse your modal overlay color for a consistent glassy feel
+
     background: linear-gradient($color-modal-overlay, $color-modal-overlay);
     // Keep the blur subtle; matches your modal
+$color-modal-bg: #fff;
+$color-modal-text: #111;
+$color-modal-overlay: rgba(17, 24, 39, .55);
+$color-btn-bg: #111827;
+$color-btn-primary: #2563eb;
+$color-btn-border: #e5e7eb;
+$color-field-border: #d1d5db;
+$color-masonry-bg: #ffffff;
+$color-masonry-text: #111827;
+$color-masonry-meta: #6b7280;
+$border-radius-modal: 12px;
+$border-radius-btn: 10px;
+$border-radius-field: 8px;
+$box-shadow-modal: 0 20px 60px rgba(0,0,0,.25);
+$box-shadow-masonry: 0 6px 18px rgba(0,0,0,.08);
+
+// Carousel variables
+$carousel-gap: 1rem !default;
+$carousel-radius: $border-radius-modal !default;
+$carousel-shadow: $box-shadow-masonry !default;
+$carousel-bg: $color-masonry-bg !default;
+$carousel-text: $color-masonry-text !default;
+$carousel-meta: $color-masonry-meta !default;
+
+/*--------------------------------------------------------------
+>>> Modal Styles
+--------------------------------------------------------------*/
     backdrop-filter: saturate(1.1) blur(2px);
+
+/*--------------------------------------------------------------
+>>> Basic UI Elements
+--------------------------------------------------------------*/
   }
 
+/*--------------------------------------------------------------
+>>> Masonry Layout
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+>>> Hero Section Styles
+--------------------------------------------------------------*/
   &__content {
+
+/*--------------------------------------------------------------
+>>> Carousel (Slick Slider) Styles
+--------------------------------------------------------------*/
+.carousel {
+  position: relative;
+  padding: 1rem 0 2rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+  }
+
+  &__controls {
+    display: flex;
+    gap: .5rem;
+  }
+
+  &__btn {
+    border: 1px solid $color-btn-border;
+    background: $color-btn-bg;
+    color: #fff;
+    border-radius: $border-radius-btn;
+    padding: .5rem .75rem;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 1.1rem;
+
+    &:hover {
+      border-color: $color-btn-primary;
+      background: $color-btn-primary;
+    }
+    &:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden; // masks partial slides
+  }
+
+  // Horizontal scroller with scroll-snap
+  &__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: $carousel-gap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0 $carousel-gap;
+    margin: 0;
+    list-style: none;
+
+    // Hide scrollbar (keeps accessibility)
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // Responsive slides per view
+    @media (min-width: 700px) {
+      grid-auto-columns: calc(50% - #{$carousel-gap} / 2);
+    }
+    @media (min-width: 1024px) {
+      grid-auto-columns: calc(33.333% - #{$carousel-gap} * 2 / 3);
+    }
+  }
+
+  &__slide {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  // Dots
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: 1rem;
+    button {
+      width: .6rem;
+      height: .6rem;
+      border-radius: 50%;
+      border: 1px solid $color-btn-border;
+      background: transparent;
+      cursor: pointer;
+      &.is-active {
+        background: $color-btn-primary;
+        border-color: $color-btn-primary;
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+>>> Card Styles (used in carousel and masonry)
+--------------------------------------------------------------*/
+.card {
+  background: $carousel-bg;
+  color: $carousel-text;
+  border-radius: $carousel-radius;
+  box-shadow: $carousel-shadow;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  &__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__body {
+    padding: .9rem 1rem;
+  }
+
+  &__title {
+    margin: .25rem 0 .4rem;
+    font-size: 1rem;
+    line-height: 1.3;
+    a {
+      color: inherit;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__meta {
+    color: $carousel-meta;
+    font-size: .9rem;
+    margin-bottom: .4rem;
+  }
+
+  &__excerpt {
+    margin: 0 0 .75rem;
+  }
+}
     position: relative;
     z-index: 1;
     text-align: center;
@@ -216,10 +408,117 @@ $color-hero-text: #fff !default;
   }
 }
 
-// Reuse your .btn + .btn--primary styles; just add a size modifier
+
 .btn {
   &--lg {
     font-size: 1.125rem;
     padding: 1rem 2rem;
   }
+}
+
+.carousel {
+  position: relative;
+  padding: 1rem 0 2rem;
+
+  &__header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  &__title { margin: 0; font-size: clamp(1.25rem, 2vw, 1.75rem); }
+
+  &__controls { display: flex; gap: .5rem; }
+
+  &__btn {
+    border: 1px solid $color-btn-border;
+    background: $color-btn-bg;
+    color: #fff;
+    border-radius: $border-radius-btn;
+    padding: .5rem .75rem;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 1.1rem;
+
+    &:hover { border-color: $color-btn-primary; background: $color-btn-primary; }
+    &:disabled { opacity: .5; cursor: not-allowed; }
+  }
+
+  &__viewport {
+    overflow: hidden; // masks partial slides
+  }
+
+  // Horizontal scroller with scroll-snap
+  &__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: $carousel-gap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0 $carousel-gap;
+    margin: 0;
+    list-style: none;
+
+    // Hide scrollbar (keeps accessibility)
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+
+    // Responsive slides per view
+    @media (min-width: 700px) {
+      grid-auto-columns: calc(50% - #{$carousel-gap} / 2);
+    }
+    @media (min-width: 1024px) {
+      grid-auto-columns: calc(33.333% - #{$carousel-gap} * 2 / 3);
+    }
+  }
+
+  &__slide {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  // Dots
+  &__dots {
+    display: flex; justify-content: center; gap: .5rem;
+    margin-top: 1rem;
+    button {
+      width: .6rem; height: .6rem; border-radius: 50%;
+      border: 1px solid $color-btn-border; background: transparent;
+      cursor: pointer;
+      &.is-active { background: $color-btn-primary; border-color: $color-btn-primary; }
+    }
+  }
+}
+
+// Card styling (reuses your masonry look)
+.card {
+  background: $carousel-bg; color: $carousel-text;
+  border-radius: $carousel-radius;
+  box-shadow: $carousel-shadow;
+  overflow: hidden;
+  display: grid; grid-template-rows: auto 1fr;
+
+  &__media img { display: block; width: 100%; height: auto; }
+
+  &__body { padding: .9rem 1rem; }
+
+  &__title {
+    margin: .25rem 0 .4rem;
+    font-size: 1rem; line-height: 1.3;
+    a { color: inherit; text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  &__meta { color: $carousel-meta; font-size: .9rem; margin-bottom: .4rem; }
+
+  &__excerpt { margin: 0 0 .75rem; }
+}
+.demo-slider {
+    max-width: 600px;
+    margin: auto;
+    .slider-caption {
+        text-align: center;
+    }    
 }

@@ -75,21 +75,21 @@ get_header();
 
       <?php
       // Query latest 12 posts; swap 'post' for 'project' if needed
-      $q = new WP_Query([
+      $masonryQuery = new WP_Query([
         'post_type'      => 'post',
         'posts_per_page' => 12,
         'ignore_sticky_posts' => true,
       ]);
       ?>
 
-      <?php if ($q->have_posts()) : ?>
+      <?php if ($masonryQuery->have_posts()) : ?>
         <!-- =========================
              Masonry Grid of Recent Posts
         ========================= -->
         <section class="container">
           <h2 class="section-title">Recent Work</h2>
           <div class="masonry">
-            <?php while ($q->have_posts()) : $q->the_post(); ?>
+            <?php while ($masonryQuery->have_posts()) : $masonryQuery->the_post(); ?>
               <article <?php post_class('masonry__item'); ?>>
                 <!-- Featured Image or Placeholder -->
                 <?php if (has_post_thumbnail()) : ?>
@@ -119,5 +119,39 @@ get_header();
       <?php endif; ?>
     </div><!-- .entry-content -->
   </section>
+
+
+<!-- =========================
+     Demo Slick Slider (Posts)
+========================= -->
+<div class="demo-slider">
+  <?php
+  $sliderQuery = new WP_Query([
+    'post_type'      => 'post',
+    'posts_per_page' => 6,
+    'ignore_sticky_posts' => true,
+    'orderby'        => 'date',
+    'order'          => 'DESC',
+  ]);
+  if ($sliderQuery->have_posts()) :
+    while ($sliderQuery->have_posts()) : $sliderQuery->the_post();
+      $image_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_stylesheet_directory_uri() . '/assets/img/blog-placeholder.jpg';
+  ?>
+    <div class="slider-item">
+      <a href="<?php the_permalink(); ?>">
+        <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title_attribute(); ?>" />
+      </a>
+      <div class="slider-caption">
+        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+        <p><?php echo wp_trim_words(get_the_excerpt(), 18, '…'); ?></p>
+      </div>
+    </div>
+  <?php
+    endwhile;
+    wp_reset_postdata();
+  endif;
+  ?>
+</div>
+
 </article>
 <?php get_footer(); ?>

@@ -433,20 +433,162 @@ body.modal-lock {
   display: flex;
   align-items: center;
   color: #fff;
+  /*--------------------------------------------------------------
+  >>> Masonry Layout
+  --------------------------------------------------------------*/
+  /*--------------------------------------------------------------
+  >>> Hero Section Styles
+  --------------------------------------------------------------*/
 }
 .hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.55));
+  /*--------------------------------------------------------------
+  >>> Modal Styles
+  --------------------------------------------------------------*/
   backdrop-filter: saturate(1.1) blur(2px);
+  /*--------------------------------------------------------------
+  >>> Basic UI Elements
+  --------------------------------------------------------------*/
 }
 .hero__content {
+  /*--------------------------------------------------------------
+  >>> Carousel (Slick Slider) Styles
+  --------------------------------------------------------------*/
+  /*--------------------------------------------------------------
+  >>> Card Styles (used in carousel and masonry)
+  --------------------------------------------------------------*/
   position: relative;
   z-index: 1;
   text-align: center;
   max-width: 800px;
   margin-inline: auto;
   padding: 2rem 1rem;
+}
+.hero__content .carousel {
+  position: relative;
+  padding: 1rem 0 2rem;
+}
+.hero__content .carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.hero__content .carousel__title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+.hero__content .carousel__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+.hero__content .carousel__btn {
+  border: 1px solid #e5e7eb;
+  background: #111827;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 1.1rem;
+}
+.hero__content .carousel__btn:hover {
+  border-color: #2563eb;
+  background: #2563eb;
+}
+.hero__content .carousel__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.hero__content .carousel__viewport {
+  overflow: hidden;
+}
+.hero__content .carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0 1rem;
+  margin: 0;
+  list-style: none;
+  scrollbar-width: none;
+}
+.hero__content .carousel__track::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 700px) {
+  .hero__content .carousel__track {
+    grid-auto-columns: calc(50% - 1rem / 2);
+  }
+}
+@media (min-width: 1024px) {
+  .hero__content .carousel__track {
+    grid-auto-columns: calc(33.333% - 1rem * 2 / 3);
+  }
+}
+.hero__content .carousel__slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.hero__content .carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.hero__content .carousel__dots button {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: transparent;
+  cursor: pointer;
+}
+.hero__content .carousel__dots button.is-active {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+.hero__content .card {
+  background: #ffffff;
+  color: #111827;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.hero__content .card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hero__content .card__body {
+  padding: 0.9rem 1rem;
+}
+.hero__content .card__title {
+  margin: 0.25rem 0 0.4rem;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.hero__content .card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.hero__content .card__title a:hover {
+  text-decoration: underline;
+}
+.hero__content .card__meta {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+.hero__content .card__excerpt {
+  margin: 0 0 0.75rem;
 }
 .hero__title {
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -462,6 +604,140 @@ body.modal-lock {
 .btn--lg {
   font-size: 1.125rem;
   padding: 1rem 2rem;
+}
+
+.carousel {
+  position: relative;
+  padding: 1rem 0 2rem;
+}
+.carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.carousel__title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+.carousel__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+.carousel__btn {
+  border: 1px solid #e5e7eb;
+  background: #111827;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 1.1rem;
+}
+.carousel__btn:hover {
+  border-color: #2563eb;
+  background: #2563eb;
+}
+.carousel__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.carousel__viewport {
+  overflow: hidden;
+}
+.carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0 1rem;
+  margin: 0;
+  list-style: none;
+  scrollbar-width: none;
+}
+.carousel__track::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 700px) {
+  .carousel__track {
+    grid-auto-columns: calc(50% - 1rem / 2);
+  }
+}
+@media (min-width: 1024px) {
+  .carousel__track {
+    grid-auto-columns: calc(33.333% - 1rem * 2 / 3);
+  }
+}
+.carousel__slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.carousel__dots button {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: transparent;
+  cursor: pointer;
+}
+.carousel__dots button.is-active {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.card {
+  background: #ffffff;
+  color: #111827;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.card__body {
+  padding: 0.9rem 1rem;
+}
+.card__title {
+  margin: 0.25rem 0 0.4rem;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.card__title a:hover {
+  text-decoration: underline;
+}
+.card__meta {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+.card__excerpt {
+  margin: 0 0 0.75rem;
+}
+
+.demo-slider {
+  max-width: 600px;
+  margin: auto;
+}
+.demo-slider .slider-caption {
+  text-align: center;
 }
 
 /*--------------------------------------------------------------
