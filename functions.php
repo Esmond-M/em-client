@@ -65,8 +65,6 @@ final class EMCLIENT_Theme_Class {
 	}
 
 
-
-
 	/**
 	 * Static replacements for theme constants
 	 */
