@@ -21,14 +21,14 @@
 					?>
 					<div class="entry-meta">
 						<?php
-						emclient_posted_on();
-						emclient_posted_by();
+						EmClient_Template_Tags::posted_on();
+						EmClient_Template_Tags::posted_by();
 						?>
 					</div><!-- .entry-meta -->
 				<?php endif; ?>
 			</header><!-- .entry-header -->
 
-			<?php emclient_post_thumbnail(); ?>
+			<?php EmClient_Template_Tags::post_thumbnail(); ?>
 
 			<div class="entry-content">
 				<?php
@@ -57,7 +57,7 @@
 			</div><!-- .entry-content -->
 
 			<footer class="entry-footer">
-				<?php emclient_entry_footer(); ?>
+				<?php EmClient_Template_Tags::entry_footer(); ?>
 			</footer><!-- .entry-footer -->
 		</article><!-- #post-<?php the_ID(); ?> -->
 

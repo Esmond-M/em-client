@@ -30,7 +30,7 @@
         // Output meta info for posts only
         if ( 'post' === get_post_type() ) : ?>
             <div class="entry-meta">
-                <?php emclient_posted_on(); emclient_posted_by(); ?>
+                <?php EmClient_Template_Tags::posted_on(); EmClient_Template_Tags::posted_by(); ?>
             </div>
         <?php endif; ?>
     </header>
@@ -60,6 +60,6 @@
 
     <!-- Entry Footer -->
     <footer class="entry-footer">
-        <?php emclient_entry_footer(); ?>
+    <?php EmClient_Template_Tags::entry_footer(); ?>
     </footer>
 </article>
