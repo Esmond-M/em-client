@@ -1,3 +1,4 @@
+
 jQuery( document ).ready( function ( $ ) {
 
 // =========================
@@ -17,10 +18,27 @@ $(window).on('scroll', function () {
 // =========================
 // Mobile Menu Toggle
 // =========================
+
+function isMobileMenu() {
+    return window.matchMedia('(max-width: 1199px)').matches;
+}
 $('.site-header .ham-btn').on('click', function () {
     $('.site-header #primary-menu').toggleClass('show-menu');
 });
-
+// Mobile submenu toggle for small screens
+$('.site-header #primary-menu').on('click', '.submenu-toggle', function(e) {
+    if (isMobileMenu()) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $parentLi = $(this).closest('li');
+        var $subMenu = $parentLi.children('ul.sub-menu');
+        // Toggle submenu-open on the nearest ul.sub-menu
+        $subMenu.toggleClass('submenu-open');
+        // close sibling submenus at the same level
+        $parentLi.siblings('li').children('ul.sub-menu.submenu-open').removeClass('submenu-open');
+        $(this).focus();
+    }
+});
 // =========================
 // Accessible Modal Logic
 // =========================

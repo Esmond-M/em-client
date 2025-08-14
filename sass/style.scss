@@ -1,3 +1,4 @@
+
 $site-color-Pomegranate: #EE3B24;
 /*--------------------------------------------------------------
 # Header & Nav
@@ -14,7 +15,104 @@ $site-color-Pomegranate: #EE3B24;
     width: 100%;
     background: #343a40;
     border-top: 2px solid $site-color-Pomegranate;
-    position: relative;
+    position: relative;      
+ #primary-menu {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+        max-width: 1200px;
+        margin: auto;
+
+        .submenu-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+            svg {
+                max-width: 30px;
+            }
+        }
+        .submenu-icon {
+            display: inline-block;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        li {
+            list-style-type: none;
+            padding: 10px;
+            font-weight: 500;
+            font-size: 18px;
+            color: black;
+            position: relative;
+
+            a {
+                text-decoration: none;
+                color: #fff;
+                text-transform: uppercase;
+                font-family: open sans, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                position: relative;
+                transition: all .3s ease-in-out;
+            }
+            a:hover {
+                cursor: pointer;
+                color: $site-color-Pomegranate;
+                padding-bottom: 5px;
+                border-bottom: 2px solid $site-color-Pomegranate;
+                transition: all .3s ease-in-out;
+            }
+
+            ul {
+                &.sub-menu {
+                    display: none;
+                    position: absolute;
+                    left: 0;
+                    top: 100%;
+                    background: #343a40;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                    min-width: 180px;
+                    z-index: 100;
+
+                    // 3rd level submenu (flyout)
+                    li {
+                        position: relative;
+                        ul.sub-menu {
+                            left: 100%;   // Position to the right of parent
+                            top: 0;       // Align to top of parent
+                            margin-left: 0;
+                            min-width: 180px;
+                            background: #343a40;
+                            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                            z-index: 101;
+                        }
+                    }
+
+                    // Show submenu when .submenu-open is present (for mobile)
+                    &.submenu-open {
+                        display: block;
+                        position: static;
+                        box-shadow: none;
+                        background: transparent;
+                        min-width: 0;
+                    }
+                }
+            }
+
+            &.menu-item-has-children {
+                &:hover > ul.sub-menu,
+                &:focus-within > ul.sub-menu {
+                    display: block;
+                }
+            }
+        }
+    }
     .ham-btn{
         display: none;
         background: transparent;
@@ -24,52 +122,8 @@ $site-color-Pomegranate: #EE3B24;
     }
     #site-navigation {
         width: 100%;
-    }        
-    #primary-menu {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        padding: 0px;
-        max-width: 1200px;
-        margin: auto;
-        li {
-            list-style-type: none;
-            padding: 10px;
-            font-weight: 500;
-            font-size: 18px;
-            color: black;
-            a{
-                text-decoration: none;
-                color: #fff;
-                text-transform: uppercase;
-                font-family: open sans, sans-serif;
-                font-size: 14px;
-                font-weight: 600;
-                position: relative;
-                transition: all .3s ease-in-out;
-                -moz-transition: all .3s ease-in-out;
-                -webkit-transition: all .3s ease-in-out;
-            }
-            a:hover {
-                cursor:pointer;
-                color: $site-color-Pomegranate;
-                padding-bottom:5px;
-                 border-bottom: 2px solid $site-color-Pomegranate;
-                transition: all .3s ease-in-out;
-                -moz-transition: all .3s ease-in-out;
-                -webkit-transition: all .3s ease-in-out;
-            }
-        }    
-    } 
+    }      
 }
-
 .scroll-with {
     position: fixed;
     z-index:1000;
@@ -94,20 +148,46 @@ $site-color-Pomegranate: #EE3B24;
     margin: auto;
 }
 
-@media only screen 
-and (max-width : 1199px) {
-    .site-header  {
-        #primary-menu{
+// MOBILE STYLES
+@media only screen and (max-width : 1199px) {
+    .site-header {
+        #primary-menu {
             display: none;
-        }
-        .ham-btn{
-            display: block;
+            flex-direction: column;
 
+            li {
+                position: relative;
+
+                ul {
+                    &.sub-menu {
+                        position: static;
+                        display: none;
+                        box-shadow: none;
+                        background: transparent;
+                        min-width: 0;
+
+                        &.submenu-open {
+                            display: block!important;
+                        }
+                    }
+                }
+
+                // Remove hover/focus styles for mobile
+                &.menu-item-has-children {
+                    &:hover > ul.sub-menu,
+                    &:focus-within > ul.sub-menu {
+                        display: none;
+                    }
+                }
+            }
         }
-    #primary-menu.show-menu{
-        display: flex; 
-        flex-direction: column;
-    }               
+        .ham-btn {
+            display: block;
+        }
+        #primary-menu.show-menu {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
 @import "single";

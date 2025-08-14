@@ -52,8 +52,8 @@
 						'link_after'           => '',
 						'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 						'item_spacing'         => 'preserve',
-						'depth'                => 0,
-						'walker'               => '',
+						'depth'                => 3, // Enable submenu depth
+						'walker'               => new EMClient_Nav_Walker(),
 						'theme_location' => 'primary_menu',
 					)
 				);
