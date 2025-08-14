@@ -24,9 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Core Constants.
-define( 'EMCLIENT_Theme_DIR', get_template_directory() );
-define( 'EMCLIENT_Theme_URI', get_template_directory_uri() );
+
 
 /**
  * emclientWP theme class
@@ -34,76 +32,62 @@ define( 'EMCLIENT_Theme_URI', get_template_directory_uri() );
 
 final class EMCLIENT_Theme_Class {
 
+
 	/**
 	 * Main Theme Class Constructor
 	 *
 	 * @since   1.0.0
 	 */
 	public function __construct() {
-	
-		// Define theme constants.
-		$this->emclient_constants();
-
 		// Load framework classes.
 		add_action( 'after_setup_theme', array( 'EMCLIENT_Theme_Class', 'classes' ), 4 );
-
 		// Setup theme => add_theme_support, register_nav_menus, load_theme_textdomain, etc.
 		add_action( 'after_setup_theme', array( 'EMCLIENT_Theme_Class', 'theme_setup' ), 10 );
-
 		// register sidebar widget areas.
 		add_action( 'widgets_init', array( 'EMCLIENT_Theme_Class', 'register_sidebars' ) );
 		add_action( 'elementor/widgets/register',  [$this, 'elementor_card_widget' ]  );
-
 		/** Admin only actions */
 		if ( is_admin() ) {
-
-
 			/** Non Admin actions */
 		} else {
 			// Load theme js.
 			add_action( 'wp_enqueue_scripts',  [$this, 'theme_js' ]  );
-
 			// Load theme CSS.
 			add_action( 'wp_enqueue_scripts',  [$this, 'theme_css' ] );
-
-		
 			// Add a pingback url auto-discovery header for singularly identifiable articles.
 			add_action( 'wp_head',  [$this, 'pingback_header' ] , 1 );
 			// Add meta viewport tag to header.
 			add_action( 'wp_head',   [$this, 'meta_viewport' ] , 1 );
-
 			// Add an X-UA-Compatible header.
 			add_filter( 'wp_headers',  [$this, 'x_ua_compatible_headers' ] );
-
-
-
-
 			add_filter( 'emclient_enqueue_generated_files', '__return_false' );
 		}
-
 	}
 
 
-
 	/**
-	 * Define Constants
-	 *
-	 * @since   1.0.0
+	 * Static replacements for theme constants
 	 */
-	public static function emclient_constants() {
-
-		// Theme version.
-		define( 'EMCLIENT_Theme_VERSION', '3.6.0' );
-
-		define( 'EMTHEME_LIB_DIR_URI', EMCLIENT_Theme_DIR .'/lib/');
-
-		// Javascript and CSS Paths.
-		define( 'EMTHEME_JS_DIR_URI', EMCLIENT_Theme_URI . '/assets/js/' );
-		define( 'EMTHEME_CSS_DIR_URI', EMCLIENT_Theme_URI . '/assets/css/' );
-
-		// Include Paths.
-		define( 'EMTHEME_INC_DIR', EMCLIENT_Theme_DIR . '/inc/' );
-
+	public static function theme_dir() {
+		return get_template_directory();
+	}
+	public static function theme_uri() {
+		return get_template_directory_uri();
+	}
+	public static function theme_version() {
+		return '3.6.0';
+	}
+	public static function lib_dir() {
+		return self::theme_dir() . '/lib/';
+	}
+	public static function js_dir_uri() {
+		return self::theme_uri() . '/assets/js/';
+	}
+	public static function css_dir_uri() {
+		return self::theme_uri() . '/assets/css/';
+	}
+	public static function inc_dir() {
+		return self::theme_dir() . '/inc/';
 	}
 
 
@@ -113,7 +97,7 @@ final class EMCLIENT_Theme_Class {
 	 * @since   1.0.0
 	 */
 	public static function classes() {
-		$dir_include = EMTHEME_INC_DIR;
+		$dir_include = self::inc_dir();
 		/**
 		 * Load WooCommerce compatibility file.
 		 */
@@ -131,10 +115,10 @@ final class EMCLIENT_Theme_Class {
 	 * @since   1.0.0
 	 */
 	public static function theme_setup() {
-		$dir_include = EMTHEME_INC_DIR;
-		$dir_lib = EMTHEME_LIB_DIR_URI;
+	$dir_include = self::inc_dir();
+	$dir_lib = self::lib_dir();
 		// Load text domain.
-		load_theme_textdomain( 'emclient', EMCLIENT_Theme_DIR . '/languages' );
+	load_theme_textdomain( 'emclient', self::theme_dir() . '/languages' );
 
 		// Get globals.
 		global $content_width;
@@ -241,7 +225,7 @@ final class EMCLIENT_Theme_Class {
 
 	// Function specifically for elementor classes
 	public static function elementor_card_widget( $widgets_manager ) {
-		$dir_include = EMTHEME_INC_DIR;
+		$dir_include =  self::inc_dir();
 
 		require $dir_include . '/plugins/elementor/classes/elementor_card_widget.php';
 		require $dir_include . '/plugins/elementor/classes/elementor_nav_menu.php';
@@ -287,19 +271,17 @@ final class EMCLIENT_Theme_Class {
 	public static function theme_css() {
 
 		// Define dir.
-		$dir           = EMTHEME_CSS_DIR_URI;
-		$theme_version = EMCLIENT_Theme_VERSION;
+		$dir           =  self::css_dir_uri();
+		$theme_version = self::theme_version();
 		$nonCache_version = rand( 1, 99999999999 );
 		// Enqueue Main style.
 		wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/assets/css/style.min.css', array(), $nonCache_version );
+		wp_enqueue_style( 'emclient-slick', get_stylesheet_directory_uri() . '/assets/css/slick.css', array(), $nonCache_version );
 		wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() ."/assets/css/g-fonts.css", array(), $theme_version );
 		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
 		wp_enqueue_style('font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css');
 		wp_enqueue_style('font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css');
-		if(is_home() || is_archive() || is_single() ||  is_tag() || is_tax() || is_category() || is_search() )
-		{
-			wp_enqueue_style( 'singular-page', get_stylesheet_directory_uri() ."/assets/css/single.css", array(), $nonCache_version );
-		}
+	
 	}
 
 	/**
@@ -310,10 +292,10 @@ final class EMCLIENT_Theme_Class {
 	public static function theme_js() {
 
 		// Get js directory uri.
-		$dir = EMTHEME_JS_DIR_URI;
+	$dir = self::js_dir_uri();
 
-		// Get current theme version.
-		$theme_version = EMCLIENT_Theme_VERSION;
+	// Get current theme version.
+	$theme_version = self::theme_version();
 
 		// Main script dependencies.
 		$main_script_dependencies = array( 'jquery' );
@@ -330,6 +312,7 @@ final class EMCLIENT_Theme_Class {
 		$nonCache_version = rand( 1, 99999999999 );
 
 		wp_enqueue_script( 'emclient-general', $dir . 'general.js', array(), $nonCache_version, true );
+        wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/assets/js/slick.min.js', ['jquery'],$nonCache_version, true);		
 		//wp_enqueue_script( 'mixitup', $dir . 'mixitup.min.js', array(), $theme_version, true );
 
 		array_push( $main_script_dependencies, 'emclient-main' );

@@ -1,5 +1,17 @@
 <?php
 /* Template Name: Shop */
+/*
+ * Shop Page Template
+ *
+ * This template displays a WooCommerce shop page with product filtering and pagination.
+ * Features:
+ * - Product filter sidebar with search and category checkboxes
+ * - Displays products with thumbnail, name, price, and add-to-cart button
+ * - Handles pagination and shows results count
+ * - Uses WP_Query to fetch products and applies filters from GET parameters
+ * - Shows placeholder image if product has no thumbnail
+ */
+
 get_header();
 ?>
 
