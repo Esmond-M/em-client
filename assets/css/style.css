@@ -46,6 +46,7 @@
   font-weight: 500;
   font-size: 18px;
   color: black;
+  position: relative;
 }
 .site-header #primary-menu li a {
   text-decoration: none;
@@ -67,6 +68,19 @@
   transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
+}
+.site-header #primary-menu li ul.sub-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #343a40;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-width: 180px;
+  z-index: 100;
+}
+.site-header #primary-menu li.menu-item-has-children:hover > ul.sub-menu, .site-header #primary-menu li.menu-item-has-children:focus-within > ul.sub-menu {
+  display: block;
 }
 
 .scroll-with {
