@@ -32,7 +32,7 @@ class EMClient_Nav_Walker extends Walker_Nav_Menu {
         $title = apply_filters( 'the_title', $item->title, $item->ID );
         // Add submenu icon if item has children
         if ( in_array( 'menu-item-has-children', $classes ) ) {
-            $title .= '<span class="submenu-icon" aria-hidden="true" style="display:inline-block;margin-left:6px;vertical-align:middle;">&#9662;</span>';
+            $title .= '<button class="submenu-toggle" aria-label="Expand submenu" tabindex="0"><span class="submenu-icon" aria-hidden="true">&#9662;</span></button>';
         }
         $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
 
