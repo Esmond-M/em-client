@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -25,13 +26,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-
 /**
  * emclientWP theme class
  */
 
 final class EMCLIENT_Theme_Class {
-
 
 	/**
 	 * Main Theme Class Constructor
@@ -106,7 +105,7 @@ final class EMCLIENT_Theme_Class {
 
 			
 		}
-
+		require $dir_include . '/class-emclient-nav-walker.php';
 	}
 
 	/**
