@@ -22,6 +22,9 @@
 .site-header .ham-btn svg {
   max-width: 30px;
 }
+.site-header #site-navigation {
+  width: 100%;
+}
 .site-header #primary-menu {
   display: -webkit-box;
   display: -moz-box;

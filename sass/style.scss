@@ -21,7 +21,10 @@ $site-color-Pomegranate: #EE3B24;
         svg{
             max-width: 30px;
         }
-    }    
+    }
+    #site-navigation {
+        width: 100%;
+    }        
     #primary-menu {
         display: -webkit-box;
         display: -moz-box;

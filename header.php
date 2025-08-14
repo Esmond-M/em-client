@@ -24,35 +24,39 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 <div class="emclient-fixedheader-placeholder"></div>
+
 	<header id="masthead" class="site-header">
-	<button class="ham-btn">
-          <svg viewBox="0 0 100 80" width="40" height="40" fill="white">
-           <rect width="100" height="10"></rect>
-           <rect y="30" width="100" height="10"></rect>
-           <rect y="60" width="100" height="10"></rect>
-         </svg></button>
-		<?php 
-			wp_nav_menu(
-				array(
-					'menu'                 =>17,
-					'container'            => 'ul',
-					'container_class'      => '',
-					'container_id'         => '',
-					'container_aria_label' => '',
-					'menu_class'           => 'menu',
-					'menu_id'              => 'primary-menu',
-					'echo'                 => true,
-					'fallback_cb'          => 'wp_page_menu',
-					'before'               => '',
-					'after'                => '',
-					'link_before'          => '',
-					'link_after'           => '',
-					'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-					'item_spacing'         => 'preserve',
-					'depth'                => 0,
-					'walker'               => '',
-					'theme_location' => 'primary_menu',
-				)
-			);
+		<button class="ham-btn" aria-label="Open menu">
+			<svg viewBox="0 0 100 80" width="40" height="40" fill="white">
+				<rect width="100" height="10"></rect>
+				<rect y="30" width="100" height="10"></rect>
+				<rect y="60" width="100" height="10"></rect>
+			</svg>
+		</button>
+		<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Primary Menu">
+			<?php 
+				wp_nav_menu(
+					array(
+						'menu'                 =>17,
+						'container'            => 'ul',
+						'container_class'      => '',
+						'container_id'         => '',
+						'container_aria_label' => '',
+						'menu_class'           => 'menu',
+						'menu_id'              => 'primary-menu',
+						'echo'                 => true,
+						'fallback_cb'          => 'wp_page_menu',
+						'before'               => '',
+						'after'                => '',
+						'link_before'          => '',
+						'link_after'           => '',
+						'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						'item_spacing'         => 'preserve',
+						'depth'                => 0,
+						'walker'               => '',
+						'theme_location' => 'primary_menu',
+					)
+				);
 			?>
+		</nav>
 	</header><!-- #masthead -->
