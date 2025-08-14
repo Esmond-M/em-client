@@ -283,10 +283,7 @@ final class EMCLIENT_Theme_Class {
 		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
 		wp_enqueue_style('font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css');
 		wp_enqueue_style('font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css');
-		if(is_home() || is_archive() || is_single() ||  is_tag() || is_tax() || is_category() || is_search() )
-		{
-			wp_enqueue_style( 'singular-page', get_stylesheet_directory_uri() ."/assets/css/single.css", array(), $nonCache_version );
-		}
+	
 	}
 
 	/**
