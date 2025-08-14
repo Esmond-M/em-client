@@ -50,8 +50,8 @@ get_header();
 						?>
 						<div class="entry-meta">
 							<?php
-							emclient_posted_on();
-							emclient_posted_by();
+							EmClient_Template_Tags::posted_on();
+							EmClient_Template_Tags::posted_by();
 							?>
 						</div><!-- .entry-meta -->
 					<?php endif; ?>
