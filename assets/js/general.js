@@ -23,7 +23,17 @@ function isMobileMenu() {
     return window.matchMedia('(max-width: 1199px)').matches;
 }
 $('.site-header .ham-btn').on('click', function () {
-    $('.site-header #primary-menu').toggleClass('show-menu');
+    $('#site-navigation').toggleClass('open');
+    $('.nav-overlay').toggleClass('active');
+});
+// Close drawer when overlay is clicked
+$('.nav-overlay').on('click', function () {
+    $('#site-navigation').removeClass('open');
+    $(this).removeClass('active');
+});
+$('.close-nav-btn').on('click', function () {
+    $('#site-navigation').removeClass('open');
+    $('.nav-overlay').removeClass('active');
 });
 // Mobile submenu toggle for small screens
 $('.site-header #primary-menu').on('click', '.submenu-toggle', function(e) {
