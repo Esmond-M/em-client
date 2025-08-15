@@ -30,5 +30,3 @@ node_modules/
 
 # dotenv environment variables file
 .env
-/build
-assets/css/archive.css.map
