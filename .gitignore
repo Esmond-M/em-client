@@ -1,7 +1,4 @@
 .DS_Store
-emclientstyle.min.css
-assets/css/animatecss.min.css
-assets/css/gfont-css.min.css
 
 # Logs
 logs
@@ -30,5 +27,3 @@ node_modules/
 
 # dotenv environment variables file
 .env
-/build
-assets/css/archive.css.map

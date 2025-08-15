@@ -48,7 +48,7 @@
         "lint:md:docs": "wp-scripts lint-md-docs",
         "lint:pkg-json": "wp-scripts lint-pkg-json",
         "packages-update": "wp-scripts packages-update",
-        "plugin-zip": "wp-scripts plugin-zip",
+        "plugin-zip": "wp-scripts plugin-zip && move *.zip build\\",
         "start": "wp-scripts start",
         "watch:css": "sass --watch sass/style.scss:assets/css/style.css --no-source-map --style=expanded",
         "watch:min": "sass --watch sass/style.scss:assets/css/style.min.css --no-source-map --style=compressed",
