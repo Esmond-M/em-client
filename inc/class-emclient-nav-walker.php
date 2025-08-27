@@ -17,6 +17,14 @@ class EMClient_Nav_Walker extends Walker_Nav_Menu {
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+        // Add submenu-active to all top-level li
+        if ( $depth === 0 ) {
+            $classes[] = 'toplevel-item';
+           // $classes[] = 'submenu-active';
+        }
+
+
+
         $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
         $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
         $output .= $indent . '<li' . $class_names . '>';

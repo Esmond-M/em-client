@@ -42,21 +42,27 @@ jQuery(document).ready(function ($) {
 
 
     // Open submenu as sidenav on mobile
-    $('#site-navigation .submenu-toggle').on('click', function(e) {
-        if (isMobileMenu()) {
-            e.preventDefault();
-            e.stopPropagation();
-            var $subMenu = $(this).closest('li').children('ul.sub-menu');
-            $subMenu.addClass('submenu-open');
-        }
-    });
+$('#site-navigation .submenu-toggle').on('click', function(e) {
+    if (isMobileMenu()) {
+        e.preventDefault();
+        e.stopPropagation();
+                // Select all top-level li
+        var $toplevelLi = $('#primary-menu > li.toplevel-item');
+        var $parentLi = $(this).closest('li');
+        var $subMenu = $parentLi.children('ul.sub-menu');
+        $subMenu.addClass('submenu-open');
+        $toplevelLi.addClass('submenu-active');
+    }
+});
 
     // Back button closes submenu
-    $('#site-navigation .submenu-back-btn').on('click', function(e) {
-        e.preventDefault();
-        var $subMenu = $(this).closest('ul.sub-menu');
-        $subMenu.removeClass('submenu-open');
-    });
+$('#site-navigation .submenu-back-btn').on('click', function(e) {
+    e.preventDefault();
+    var $subMenu = $(this).closest('ul.sub-menu');
+ var $toplevelLi = $('#primary-menu > li.toplevel-item');
+    $subMenu.removeClass('submenu-open');
+    $toplevelLi.removeClass('submenu-active');
+});
     // =========================
     // Mobile Submenu Toggle
     // =========================
