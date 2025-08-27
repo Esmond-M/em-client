@@ -4,6 +4,13 @@
  * Adds submenu icon to menu items with children
  */
 class EMClient_Nav_Walker extends Walker_Nav_Menu {
+
+
+    public function start_lvl( &$output, $depth = 0, $args = array() ) {
+    $indent = str_repeat( "\t", $depth );
+    $output .= "\n$indent<ul class=\"sub-menu\">\n";
+    $output .= "$indent<li><button class=\"submenu-back-btn\" aria-label=\"Back\">&larr; Back</button></li>\n";
+    }
     /**
      * Starts the element output.
      */
