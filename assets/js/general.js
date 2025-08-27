@@ -40,6 +40,23 @@ jQuery(document).ready(function ($) {
         $('.nav-overlay').removeClass('active');
     });
 
+
+    // Open submenu as sidenav on mobile
+    $('#site-navigation .submenu-toggle').on('click', function(e) {
+        if (isMobileMenu()) {
+            e.preventDefault();
+            e.stopPropagation();
+            var $subMenu = $(this).closest('li').children('ul.sub-menu');
+            $subMenu.addClass('submenu-open');
+        }
+    });
+
+    // Back button closes submenu
+    $('#site-navigation .submenu-back-btn').on('click', function(e) {
+        e.preventDefault();
+        var $subMenu = $(this).closest('ul.sub-menu');
+        $subMenu.removeClass('submenu-open');
+    });
     // =========================
     // Mobile Submenu Toggle
     // =========================

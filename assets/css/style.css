@@ -140,6 +140,10 @@
   margin: auto;
 }
 
+.submenu-back-btn {
+  display: none;
+}
+
 @media only screen and (max-width: 1199px) {
   .site-header #primary-menu {
     flex-direction: column;
@@ -148,14 +152,21 @@
     position: relative;
   }
   .site-header #primary-menu li ul.sub-menu {
-    position: static;
-    display: none;
-    box-shadow: none;
-    background: transparent;
-    min-width: 0;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background: #343a40;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    transition: left 0.3s ease;
+    display: block;
+    padding: 60px 20px 20px 20px;
+    overflow-y: auto;
   }
   .site-header #primary-menu li ul.sub-menu.submenu-open {
-    display: block !important;
+    left: 0;
   }
   .site-header #primary-menu li.menu-item-has-children:hover > ul.sub-menu, .site-header #primary-menu li.menu-item-has-children:focus-within > ul.sub-menu {
     display: none;
@@ -180,6 +191,15 @@
   }
   .site-header .close-nav-btn {
     display: block;
+  }
+  .site-header .submenu-back-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    cursor: pointer;
   }
   .nav-overlay {
     display: none;
@@ -2182,7 +2202,7 @@ p.no-comments {
 --------------------------------------------- */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -2197,7 +2217,7 @@ html {
 }
 
 /* Sections
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * Remove the margin in all browsers.
  */
@@ -2223,7 +2243,7 @@ h1 {
 }
 
 /* Grouping content
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
@@ -2244,7 +2264,7 @@ pre {
 }
 
 /* Text-level semantics
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * Remove the gray background on active links in IE 10.
  */
@@ -2309,7 +2329,7 @@ sup {
 }
 
 /* Embedded content
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * Remove the border on images inside links in IE 10.
  */
@@ -2318,7 +2338,7 @@ img {
 }
 
 /* Forms
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
@@ -2465,7 +2485,7 @@ textarea {
 }
 
 /* Interactive
-	 ========================================================================== */
+     ========================================================================== */
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
@@ -2481,7 +2501,7 @@ summary {
 }
 
 /* Misc
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * Add the correct display in IE 10+.
  */

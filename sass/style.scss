@@ -154,7 +154,9 @@ $site-color-Pomegranate: #EE3B24;
     display: block;
     margin: auto;
 }
-
+.submenu-back-btn {
+    display: none;
+}
 // MOBILE STYLES
 @media only screen and (max-width : 1199px) {
     .site-header {
@@ -165,14 +167,22 @@ $site-color-Pomegranate: #EE3B24;
 
                 ul {
                     &.sub-menu {
-                        position: static;
-                        display: none;
-                        box-shadow: none;
-                        background: transparent;
-                        min-width: 0;
+                        // Sidenav style for sub-menu
+                        position: fixed;
+                        top: 0;
+                        left: -100vw; // Hidden off-screen left
+                        width: 100vw;
+                        height: 100vh;
+                        background: #343a40;
+                        box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+                        z-index: 9999;
+                        transition: left 0.3s ease;
+                        display: block!important;
+                        padding: 60px 20px 20px 20px;
+                        overflow-y: auto;
 
                         &.submenu-open {
-                            display: block!important;
+                            left: 0; // Slide in from left
                         }
                     }
                 }
@@ -208,6 +218,15 @@ $site-color-Pomegranate: #EE3B24;
         }
         .close-nav-btn {
             display: block;
+        }
+        .submenu-back-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            cursor: pointer;
         }
     }
     // Optionally, add overlay
