@@ -317,7 +317,7 @@ final class EMCLIENT_Theme_Class {
         wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/assets/js/slick.min.js', ['jquery'],$nonCache_version, true);		
 		//wp_enqueue_script( 'mixitup', $dir . 'mixitup.min.js', array(), $theme_version, true );
 	    if (!is_page_template('page-templates/template-demo.php')) {
-       wp_enqueue_script( 'emclient-general', $dir . 'header-none-template.js', array(), $nonCache_version, true );
+       wp_enqueue_script( 'emclient-non-template', $dir . 'header-none-template.js', array(), $nonCache_version, true );
     }
 	   if (is_page_template('page-templates/template-demo.php')) {
        wp_enqueue_script( 'emclient-template', $dir . 'header-template.js', array(), $nonCache_version, true );

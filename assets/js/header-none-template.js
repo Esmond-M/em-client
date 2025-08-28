@@ -22,64 +22,34 @@ jQuery(document).ready(function ($) {
         return window.matchMedia('(max-width: 1199px)').matches;
     }
 
-    // Hamburger button opens/closes side nav
-    $('.site-header .ham-btn').on('click', function () {
-        $('#site-navigation').toggleClass('open');
-        $('.nav-overlay').toggleClass('active');
-    });
-
-    // Overlay click closes side nav
-    $('.nav-overlay').on('click', function () {
-        $('#site-navigation').removeClass('open');
-        $(this).removeClass('active');
-    });
-
-    // Close button inside nav closes side nav
-    $('.close-nav-btn').on('click', function () {
-        $('#site-navigation').removeClass('open');
-        $('.nav-overlay').removeClass('active');
-    });
-
-
-    // Open submenu as sidenav on mobile
-$('#site-navigation .submenu-toggle').on('click', function(e) {
-    if (isMobileMenu()) {
-        e.preventDefault();
-        e.stopPropagation();
-                // Select all top-level li
-        var $toplevelLi = $('#primary-menu > li.toplevel-item');
-        var $parentLi = $(this).closest('li');
-        var $subMenu = $parentLi.children('ul.sub-menu');
-        $subMenu.addClass('submenu-open');
-        $toplevelLi.addClass('submenu-active');
-    }
+// Open menu
+$('.site-header .ham-btn').on('click', function () {
+  $('.mobile-navigation').addClass('open');
+  $('.nav-overlay').addClass('active');
 });
 
-    // Back button closes submenu
-$('#site-navigation .submenu-back-btn').on('click', function(e) {
-    e.preventDefault();
-    var $subMenu = $(this).closest('ul.sub-menu');
- var $toplevelLi = $('#primary-menu > li.toplevel-item');
-    $subMenu.removeClass('submenu-open');
-    $toplevelLi.removeClass('submenu-active');
+// Close menu
+$('.mobile-navigation .close-nav-btn, .nav-overlay').on('click', function () {
+  $('.mobile-navigation').removeClass('open');
+  $('.nav-overlay').removeClass('active');
+  $('.mobile-navigation .sub-menu').removeClass('open').hide(); // Close all submenus
 });
-    // =========================
-    // Mobile Submenu Toggle
-    // =========================
 
-    $('.site-header #primary-menu').on('click', '.submenu-toggle', function (e) {
-        if (isMobileMenu()) {
-            e.preventDefault();
-            e.stopPropagation();
-            var $parentLi = $(this).closest('li');
-            var $subMenu = $parentLi.children('ul.sub-menu');
-            // Toggle submenu-open on the nearest ul.sub-menu
-            $subMenu.toggleClass('submenu-open');
-            // Close sibling submenus at the same level
-            $parentLi.siblings('li').children('ul.sub-menu.submenu-open').removeClass('submenu-open');
-            $(this).focus();
-        }
-    });
+// Submenu toggle (recursive)
+$('.mobile-navigation .submenu-toggle').on('click', function (e) {
+  e.preventDefault();
+  var $submenu = $(this).closest('li').children('.sub-menu');
+  $(this).closest('ul').find('> li > .sub-menu').not($submenu).removeClass('open').hide();
+  $submenu.toggleClass('open').show();
+  $(this).toggleClass('open');
+});
+
+// Submenu back button (recursive)
+$('.mobile-navigation .submenu-back-btn').on('click', function (e) {
+  e.preventDefault();
+  $(this).closest('.sub-menu').removeClass('open').hide();
+});
+
 
  
 });
