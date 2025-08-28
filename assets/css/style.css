@@ -227,9 +227,9 @@
   transition: left 0.3s ease;
 }
 #mobile-site-navigation .sub-menu .submenu-close-btn {
-  position: relative;
+  position: absolute;
   left: 64%;
-  top: -63px;
+  top: 38px;
 }
 #mobile-site-navigation .sub-menu .submenu-close-btn button {
   background: transparent;
