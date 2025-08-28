@@ -52,6 +52,9 @@
         "start": "wp-scripts start",
         "watch:css": "sass --watch sass/style.scss:assets/css/style.css --no-source-map --style=expanded",
         "watch:min": "sass --watch sass/style.scss:assets/css/style.min.css --no-source-map --style=compressed",
-        "build:css": "sass sass/style.scss assets/css/style.css --no-source-map --style=expanded && sass sass/style.scss assets/css/style.min.css --no-source-map --style=compressed"
+        "build:css": "sass sass/style.scss assets/css/style.css --no-source-map --style=expanded && sass sass/style.scss assets/css/style.min.css --no-source-map --style=compressed",
+        "watch:demo": "sass --watch sass/demo.scss:assets/css/demo.css --no-source-map --style=expanded",
+        "watch:demo:min": "sass --watch sass/demo.scss:assets/css/demo.min.css --no-source-map --style=compressed",
+        "build:demo": "sass sass/demo.scss assets/css/demo.css --no-source-map --style=expanded && sass sass/demo.scss assets/css/demo.min.css --no-source-map --style=compressed"
     }
 }

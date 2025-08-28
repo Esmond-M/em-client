@@ -39,7 +39,6 @@ EM Client is a starter WordPress theme with a clean structure, WooCommerce compa
 - **Custom Frontpage Template:** Easily set up a unique homepage.
 - **Straightforward Template Structure:** Clean, readable PHP templates for rapid customization.
 - **WooCommerce Compatibility:** Ready for online shops with custom WooCommerce templates.
-- **Custom Elementor Widget:** Extend Elementor with your own widgets.
 - **Sass Files:** Modular SCSS for maintainable styles.
 - **NPM Scripts:** Streamlined asset compilation and development workflow.
 - **Custom Page Templates:** Includes templates for shop, portfolio, and more.
