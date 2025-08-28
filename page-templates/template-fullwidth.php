@@ -1,25 +1,18 @@
 <?php
-   /* Template Name: Fullwidth Page*/ 
-   get_header(); 
-   
-   ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class("em-page-content"); ?>>
-	
-<section>
-	<div class="entry-content">
-		<?php
-		the_content();
+/*
+Template Name: Fullwidth Page
+*/
+get_header();
+?>
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'em-client' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
-</section>
+<div id="primary" class="content-area em-fullwidth">
+    <main id="main" class="site-main">
+        <?php
+        while ( have_posts() ) : the_post();
+            get_template_part( 'template-parts/content', 'page' );
+        endwhile;
+        ?>
+    </main>
+</div>
 
-	
-</article>
 <?php get_footer(); ?>
