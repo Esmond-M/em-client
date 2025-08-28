@@ -41,7 +41,7 @@ final class EMCLIENT_Theme_Class {
         add_action( 'after_setup_theme', array( 'EMCLIENT_Theme_Class', 'theme_setup' ), 10 );
         // register sidebar widget areas.
         add_action( 'widgets_init', array( 'EMCLIENT_Theme_Class', 'register_sidebars' ) );
-        add_action( 'elementor/widgets/register',  [$this, 'elementor_card_widget' ]  );
+
         /** Admin only actions */
         if ( is_admin() ) {
             /** Non Admin actions */
@@ -212,17 +212,6 @@ final class EMCLIENT_Theme_Class {
         if ( defined( 'JETPACK__VERSION' ) ) {
             require $dir_include . 'jetpack.php';
         }
-    }
-
-    // Function specifically for elementor classes
-    public static function elementor_card_widget( $widgets_manager ) {
-        $dir_include =  self::inc_dir();
-
-        require $dir_include . '/plugins/elementor/classes/elementor_card_widget.php';
-        require $dir_include . '/plugins/elementor/classes/elementor_nav_menu.php';
-
-        $widgets_manager->register( new inc\plugins\elementor\classes\elementor_card_widget\EMCLIENT_elementor_card_widget() );
-        $widgets_manager->register( new inc\plugins\elementor\classes\elementor_nav_menu\EMCLIENT_elementor_nav_menu() );
     }
 
     /**
