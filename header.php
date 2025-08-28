@@ -37,7 +37,7 @@
             <?php 
                 wp_nav_menu(
                     array(
-                        'menu'                 =>17,
+                        'menu'                 => 17,
                         'container'            => 'ul',
                         'container_class'      => '',
                         'container_id'         => '',
@@ -50,49 +50,47 @@
                         'after'                => '',
                         'link_before'          => '',
                         'link_after'           => '',
-                        'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                        'items_wrap'           => '<ul id="%1$s" class="%2$s" role="menubar">%3$s</ul>',
                         'item_spacing'         => 'preserve',
                         'depth'                => 3, // Enable submenu depth
                         'walker'               => new EMClient_Desktop_Nav_Walker(),
-                        'theme_location' => 'primary_menu',
+                        'theme_location'       => 'primary_menu',
                     )
                 );
             ?>
         </nav>
-
-
-
     </header><!-- #masthead -->
-        <nav id="mobile-site-navigation" class="mobile-navigation" role="navigation" aria-label="Primary Menu">
+
+    <nav id="mobile-site-navigation" class="mobile-navigation" role="navigation" aria-label="Mobile Menu">
         <button class="close-nav-btn" aria-label="Close menu">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <line x1="8" y1="8" x2="24" y2="24" stroke="white" stroke-width="3" stroke-linecap="round"/>
                 <line x1="24" y1="8" x2="8" y2="24" stroke="white" stroke-width="3" stroke-linecap="round"/>
             </svg>
         </button>
-            <?php 
-                wp_nav_menu(
-                    array(
-                        'menu'                 => '',
-                        'container'            => 'ul',
-                        'container_class'      => '',
-                        'container_id'         => '',
-                        'container_aria_label' => '',
-                        'menu_class'           => 'menu',
-                        'menu_id'              => 'demo-menu',
-                        'echo'                 => true,
-                        'fallback_cb'          => 'wp_page_menu',
-                        'before'               => '',
-                        'after'                => '',
-                        'link_before'          => '',
-                        'link_after'           => '',
-                        'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                        'item_spacing'         => 'preserve',
-                        'depth'                => 3, // Enable submenu depth
-                        'walker'               => new EMClient_Mobile_Nav_Walker(),
-                        'theme_location' => 'primary_menu',
-                    )
-                );
-            ?>
-        </nav>
-        <div class="nav-overlay"></div>
+        <?php 
+            wp_nav_menu(
+                array(
+                    'menu'                 => '',
+                    'container'            => 'ul',
+                    'container_class'      => '',
+                    'container_id'         => '',
+                    'container_aria_label' => '',
+                    'menu_class'           => 'menu',
+                    'menu_id'              => 'demo-menu',
+                    'echo'                 => true,
+                    'fallback_cb'          => 'wp_page_menu',
+                    'before'               => '',
+                    'after'                => '',
+                    'link_before'          => '',
+                    'link_after'           => '',
+                    'items_wrap'           => '<ul id="%1$s" class="%2$s" role="menubar">%3$s</ul>',
+                    'item_spacing'         => 'preserve',
+                    'depth'                => 3, // Enable submenu depth
+                    'walker'               => new EMClient_Mobile_Nav_Walker(),
+                    'theme_location'       => 'primary_menu',
+                )
+            );
+        ?>
+    </nav>
+    <div class="nav-overlay"></div>
