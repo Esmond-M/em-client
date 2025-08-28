@@ -100,6 +100,7 @@ final class EMCLIENT_Theme_Class {
         }
         require $dir_include . '/class-nav-walker-mobile.php';
         require $dir_include . '/class-nav-walker-desktop.php';
+        require $dir_include . '/class-widget-recent-posts.php';
     }
 
     /**
@@ -419,6 +420,8 @@ final class EMCLIENT_Theme_Class {
             )
         );
 
+        // Register custom widgets
+        register_widget( 'EMClient_Recent_Posts_Widget' );        
     }
 
     /**
