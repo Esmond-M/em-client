@@ -5,24 +5,36 @@
  */
 class EMClient_Nav_Walker extends Walker_Nav_Menu {
 
-
+    /**
+     * Starts the list before the elements are added.
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param int    $depth  Depth of menu item. Used for padding.
+     * @param array  $args   An array of arguments. @see wp_nav_menu()
+     */
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
-    $indent = str_repeat( "\t", $depth );
-    $output .= "\n$indent<ul class=\"sub-menu\">\n";
+        $indent = str_repeat( "\t", $depth );
+        $output .= "\n$indent<ul class=\"sub-menu\">\n";
     }
+
     /**
      * Starts the element output.
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param object $item   Menu item data object.
+     * @param int    $depth  Depth of menu item. Used for padding.
+     * @param array  $args   An array of arguments. @see wp_nav_menu()
+     * @param int    $id     Current item ID.
      */
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
-        // Add submenu-active to all top-level li
+
+        // Add toplevel-item to all top-level li
         if ( $depth === 0 ) {
             $classes[] = 'toplevel-item';
-           // $classes[] = 'submenu-active';
+            // $classes[] = 'submenu-active';
         }
-
-
 
         $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
         $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
@@ -44,13 +56,15 @@ class EMClient_Nav_Walker extends Walker_Nav_Menu {
         }
 
         $title = apply_filters( 'the_title', $item->title, $item->ID );
+
         // Add submenu icon if item has children
         if ( in_array( 'menu-item-has-children', $classes ) ) {
             $title .= '<button class="submenu-toggle" aria-label="Expand submenu" tabindex="0"><span class="submenu-icon" aria-hidden="true">&#9662;</span></button>';
         }
+
         $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
 
-        $item_output = $args->before;
+        $item_output  = $args->before;
         $item_output .= '<a' . $attributes . '>';
         $item_output .= $args->link_before . $title . $args->link_after;
         $item_output .= '</a>';
@@ -61,6 +75,11 @@ class EMClient_Nav_Walker extends Walker_Nav_Menu {
 
     /**
      * Ends the element output, if needed.
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param object $item   Page data object. Not used.
+     * @param int    $depth  Depth of page. Not Used.
+     * @param array  $args   An array of arguments. @see wp_nav_menu()
      */
     public function end_el( &$output, $item, $depth = 0, $args = array() ) {
         $output .= "</li>\n";
