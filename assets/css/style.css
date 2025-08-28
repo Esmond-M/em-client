@@ -144,6 +144,10 @@
   display: none;
 }
 
+/*--------------------------------------------------------------
+>>>Mobile Menu
+----------------------------------------------------------------
+*/
 #mobile-site-navigation {
   position: relative;
   z-index: 1000;
@@ -197,6 +201,7 @@
 #mobile-site-navigation .menu li {
   color: #fff;
   padding: 12px 24px;
+  list-style-type: none;
 }
 #mobile-site-navigation .menu > li.menu-item-has-children {
   position: relative;
@@ -220,6 +225,17 @@
   z-index: 1250;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
   transition: left 0.3s ease;
+}
+#mobile-site-navigation .sub-menu .submenu-close-btn {
+  position: relative;
+  left: 64%;
+  top: -63px;
+}
+#mobile-site-navigation .sub-menu .submenu-close-btn button {
+  background: transparent;
+}
+#mobile-site-navigation .sub-menu .submenu-close-btn svg {
+  max-width: 30px;
 }
 #mobile-site-navigation .sub-menu .sub-menu {
   left: 640px;

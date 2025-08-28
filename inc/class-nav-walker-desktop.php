@@ -3,7 +3,7 @@
  * Custom Nav Walker for em-client theme
  * Adds submenu icon to menu items with children
  */
-class EMClient_Nav_Walker extends Walker_Nav_Menu {
+class EMClient_Desktop_Nav_Walker extends Walker_Nav_Menu {
 
     /**
      * Starts the list before the elements are added.

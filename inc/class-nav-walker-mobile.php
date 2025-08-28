@@ -3,13 +3,20 @@
  * Custom Nav Walker for em-client theme
  * Adds submenu icon to menu items with children
  */
-class Demo_Nav_Walker extends Walker_Nav_Menu {
+class EMClient_Mobile_Nav_Walker extends Walker_Nav_Menu {
 
 
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
     $indent = str_repeat( "\t", $depth );
     $output .= "\n$indent<ul class=\"sub-menu\">\n";
     $output .= "$indent<li><button class=\"submenu-back-btn\" aria-label=\"Back\">&larr; Back</button></li>\n";
+    $output .= "$indent<li class=\"submenu-close-btn\"><button aria-label=\"Close submenu\">
+        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"white\" xmlns=\"http://www.w3.org/2000/svg\">
+            <line x1=\"8\" y1=\"8\" x2=\"24\" y2=\"24\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\"/>
+            <line x1=\"24\" y1=\"8\" x2=\"8\" y2=\"24\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\"/>
+        </svg>
+        </button>
+        </li>\n";
     }
     /**
      * Starts the element output.

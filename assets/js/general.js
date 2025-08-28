@@ -49,7 +49,13 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         $(this).closest('.sub-menu').removeClass('open').hide();
     });
-
+        // Submenu close button (recursive)
+    $('.mobile-navigation .submenu-close-btn').on('click', function (e) {
+        e.preventDefault();
+        $('.mobile-navigation').removeClass('open');
+        $('.nav-overlay').removeClass('active');
+        $('.mobile-navigation .sub-menu').removeClass('open').hide(); // Close all submenus
+    });
     // =========================
     // Accessible Modal Logic
     // =========================

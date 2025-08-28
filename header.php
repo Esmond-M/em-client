@@ -53,7 +53,7 @@
                         'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                         'item_spacing'         => 'preserve',
                         'depth'                => 3, // Enable submenu depth
-                        'walker'               => new EMClient_Nav_Walker(),
+                        'walker'               => new EMClient_Desktop_Nav_Walker(),
                         'theme_location' => 'primary_menu',
                     )
                 );
@@ -89,7 +89,7 @@
                         'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                         'item_spacing'         => 'preserve',
                         'depth'                => 3, // Enable submenu depth
-                        'walker'               => new Demo_Nav_Walker(),
+                        'walker'               => new EMClient_Mobile_Nav_Walker(),
                         'theme_location' => 'primary_menu',
                     )
                 );
