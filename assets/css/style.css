@@ -138,10 +138,8 @@
   max-width: 180px;
   display: block;
   margin: auto;
-} /*
-.submenu-back-btn {
-    display: none;
-}*/
+}
+
 #mobile-site-navigation {
   display: none;
 }
@@ -252,7 +250,7 @@
   .site-header .ham-btn {
     display: block;
     position: relative;
-    top: 24px;
+    top: 5px;
     left: 24px;
     z-index: 1100;
     background: none;
