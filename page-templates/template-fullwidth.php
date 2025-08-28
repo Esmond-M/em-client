@@ -5,7 +5,7 @@ Template Name: Fullwidth Page
 get_header();
 ?>
 
-<div id="primary" class="content-area fullwidth">
+<div id="primary" class="content-area em-fullwidth">
     <main id="main" class="site-main">
         <?php
         while ( have_posts() ) : the_post();
