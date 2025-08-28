@@ -12,7 +12,7 @@
  * - Contact form section for user inquiries
  */
 
-get_header('newnav');
+get_header('');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("em-page-content"); ?>>

@@ -98,8 +98,8 @@ final class EMCLIENT_Theme_Class {
         if ( class_exists( 'WooCommerce' ) ) {
             require $dir_include . '/plugins/woocommerce/classes/woocommerce_function.php';
         }
-        require $dir_include . '/class-emclient-nav-walker.php';
-        require $dir_include . '/class-nav-walker-demo.php';
+        require $dir_include . '/class-nav-walker-mobile.php';
+        require $dir_include . '/class-nav-walker-desktop.php';
     }
 
     /**
