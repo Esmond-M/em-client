@@ -106,6 +106,7 @@ final class EMCLIENT_Theme_Class {
 			
 		}
 		require $dir_include . '/class-emclient-nav-walker.php';
+		require $dir_include . '/class-nav-walker-demo.php';
 	}
 
 	/**
@@ -280,7 +281,9 @@ final class EMCLIENT_Theme_Class {
 		wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
 		wp_enqueue_style('font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css');
 		wp_enqueue_style('font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css');
-	
+	    if (is_page_template('page-templates/template-demo.php')) {
+        wp_enqueue_style('emclient-demo', get_stylesheet_directory_uri() . '/assets/css/demo.min.css', array(), $nonCache_version);
+    }
 	}
 
 	/**
@@ -313,7 +316,12 @@ final class EMCLIENT_Theme_Class {
 		wp_enqueue_script( 'emclient-general', $dir . 'general.js', array(), $nonCache_version, true );
         wp_enqueue_script('slick-js', get_stylesheet_directory_uri() . '/assets/js/slick.min.js', ['jquery'],$nonCache_version, true);		
 		//wp_enqueue_script( 'mixitup', $dir . 'mixitup.min.js', array(), $theme_version, true );
-
+	    if (!is_page_template('page-templates/template-demo.php')) {
+       wp_enqueue_script( 'emclient-general', $dir . 'header-none-template.js', array(), $nonCache_version, true );
+    }
+	   if (is_page_template('page-templates/template-demo.php')) {
+       wp_enqueue_script( 'emclient-template', $dir . 'header-template.js', array(), $nonCache_version, true );
+    }
 		array_push( $main_script_dependencies, 'emclient-main' );
 	}
 
