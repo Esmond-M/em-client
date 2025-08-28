@@ -101,6 +101,7 @@ final class EMCLIENT_Theme_Class {
         require $dir_include . '/class-nav-walker-mobile.php';
         require $dir_include . '/class-nav-walker-desktop.php';
         require $dir_include . '/class-widget-recent-posts.php';
+        require $dir_include . '/class-widget-landing-cta.php'; 
     }
 
     /**
@@ -420,8 +421,22 @@ final class EMCLIENT_Theme_Class {
             )
         );
 
+        // Landing Page sidebar
+        register_sidebar(
+            array(
+                'name'          => esc_html__( 'Landing Page Widgets', 'emclient' ),
+                'id'            => 'landing-page-widgets',
+                'description'   => esc_html__( 'Widgets in this area will appear on the landing page.', 'emclient' ),
+                'before_widget' => '<div id="%1$s" class="widget %2$s em-landing-widget">',
+                'after_widget'  => '</div>',
+                'before_title'  => '<h3 class="widget-title">',
+                'after_title'   => '</h3>',
+            )
+        );        
+
         // Register custom widgets
-        register_widget( 'EMClient_Recent_Posts_Widget' );        
+        register_widget( 'EMClient_Recent_Posts_Widget' ); 
+        register_widget( 'EMClient_Landing_CTA_Widget' );           
     }
 
     /**
