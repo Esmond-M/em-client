@@ -14,14 +14,14 @@
 
 get_header();
 
-	$url = $_SERVER['REQUEST_URI'];	
-	$home_or_blog = str_contains( $url,"blog"); 
-	if ( $home_or_blog ) {
-	get_template_part( 'template-parts/content-blog');
+    $url = $_SERVER['REQUEST_URI'];
+    $home_or_blog = str_contains( $url,"blog");
+    if ( $home_or_blog ) {
+    get_template_part( 'template-parts/content-blog');
 
-	}
-	else{
-		get_template_part( 'template-parts/content-front');
-	}
+    }
+    else{
+        get_template_part( 'template-parts/content-front');
+    }
 get_sidebar();
 get_footer();

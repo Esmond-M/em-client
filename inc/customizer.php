@@ -1,4 +1,3 @@
-
 <?php
 /**
  * em-client Theme Customizer
