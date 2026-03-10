@@ -27,6 +27,7 @@ class EMClient_Desktop_Nav_Walker extends Walker_Nav_Menu {
      * @param int    $id     Current item ID.
      */
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        $args  = (object) $args;
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
