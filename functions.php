@@ -92,16 +92,8 @@ final class EMCLIENT_Theme_Class {
      */
     public static function classes() {
         $dir_include = self::inc_dir();
-        /**
-         * Load WooCommerce compatibility file.
-         */
-        if ( class_exists( 'WooCommerce' ) ) {
-            require $dir_include . 'plugins/woocommerce/classes/woocommerce_function.php';
-        }
         require $dir_include . '/class-nav-walker-mobile.php';
         require $dir_include . '/class-nav-walker-desktop.php';
-        require $dir_include . '/class-widget-recent-posts.php';
-        require $dir_include . '/class-widget-landing-cta.php';
     }
 
     /**
@@ -126,8 +118,6 @@ final class EMCLIENT_Theme_Class {
         register_nav_menus(
             array(
                 'primary_menu' => esc_html__( 'Primary', 'em-client' ),
-                'topbar_menu' => esc_html__( 'Top Bar', 'em-client' ),
-                'main_menu'   => esc_html__( 'Main', 'em-client' ),
                 'footer_menu' => esc_html__( 'Footer', 'em-client' ),
                 'mobile_menu' => esc_html__( 'Mobile (optional)', 'em-client' ),
             )
@@ -187,12 +177,6 @@ final class EMCLIENT_Theme_Class {
                 'widgets',
             )
         );
-
-        // Declare WooCommerce support.
-        add_theme_support( 'woocommerce' );
-        add_theme_support( 'wc-product-gallery-zoom' );
-        add_theme_support( 'wc-product-gallery-lightbox' );
-        add_theme_support( 'wc-product-gallery-slider' );
 
         // Declare support for selective refreshing of widgets.
         add_theme_support( 'customize-selective-refresh-widgets' );
@@ -256,14 +240,8 @@ final class EMCLIENT_Theme_Class {
         $theme_version = self::theme_version();
         // Enqueue Main style.
         wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/assets/css/style.min.css', array(), $theme_version );
-        wp_enqueue_style( 'emclient-slick', get_stylesheet_directory_uri() . '/assets/css/slick.css', array(), $theme_version );
         wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() . '/assets/css/g-fonts.css', array(), $theme_version );
         wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
-        wp_enqueue_style( 'font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css', array(), '5.14.0' );
-        wp_enqueue_style( 'font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css', array(), '5.14.0' );
-        if ( is_page_template( 'page-templates/template-demo.php' ) ) {
-            wp_enqueue_style( 'emclient-demo', get_stylesheet_directory_uri() . '/assets/css/demo.min.css', array(), $theme_version );
-        }
     }
 
     /**
@@ -292,10 +270,6 @@ final class EMCLIENT_Theme_Class {
          */
 
         wp_enqueue_script( 'emclient-general', $dir . 'general.js', array(), $theme_version, true );
-        wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri() . '/assets/js/slick.min.js', array( 'jquery' ), $theme_version, true );
-        if ( is_page_template( 'page-templates/template-demo.php' ) ) {
-            wp_enqueue_script( 'emclient-demo', $dir . 'demo.js', array(), $theme_version, true );
-        }
     }
 
 
@@ -389,49 +363,6 @@ final class EMCLIENT_Theme_Class {
                 'after_title'   => '</' . $foo_heading . '>',
             )
         );
-
-        // Footer 3.
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Footer 3', 'em-client' ),
-                'id'            => 'footer-three',
-                'description'   => esc_html__( 'Widgets in this area are used in the third footer region.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<' . $foo_heading . ' class="widget-title">',
-                'after_title'   => '</' . $foo_heading . '>',
-            )
-        );
-
-        // Footer 4.
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Footer 4', 'em-client' ),
-                'id'            => 'footer-four',
-                'description'   => esc_html__( 'Widgets in this area are used in the fourth footer region.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<' . $foo_heading . ' class="widget-title">',
-                'after_title'   => '</' . $foo_heading . '>',
-            )
-        );
-
-        // Landing Page sidebar
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Landing Page Widgets', 'em-client' ),
-                'id'            => 'landing-page-widgets',
-                'description'   => esc_html__( 'Widgets in this area will appear on the landing page.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="widget %2$s em-landing-widget">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<h3 class="widget-title">',
-                'after_title'   => '</h3>',
-            )
-        );
-
-        // Register custom widgets
-        register_widget( 'EMClient_Recent_Posts_Widget' );
-        register_widget( 'EMClient_Landing_CTA_Widget' );
     }
 
     /**
