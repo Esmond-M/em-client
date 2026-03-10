@@ -52,8 +52,7 @@
                         'link_after'           => '',
                         'items_wrap'           => '<ul id="%1$s" class="%2$s" role="menubar">%3$s</ul>',
                         'item_spacing'         => 'preserve',
-                        'depth'                => 3, // Enable submenu depth
-                        'walker'               => new EMClient_Desktop_Nav_Walker(),
+                        'depth'                => 3,
                         'theme_location'       => 'primary_menu',
                     )
                 );
@@ -86,8 +85,7 @@
                     'link_after'           => '',
                     'items_wrap'           => '<ul id="%1$s" class="%2$s" role="menubar">%3$s</ul>',
                     'item_spacing'         => 'preserve',
-                    'depth'                => 3, // Enable submenu depth
-                    'walker'               => new EMClient_Mobile_Nav_Walker(),
+                    'depth'                => 3,
                     'theme_location'       => 'primary_menu',
                 )
             );
