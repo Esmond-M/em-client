@@ -1,20 +1,11 @@
 <?php
 
 /**
- * Theme functions and definitions.
+ * Theme functions and definitions — Full Site Editing (FSE) variant.
  *
- * Sets up the theme and provides some helper functions
- *
- * When using a child theme (see http://codex.wordpress.org/Theme_Development
- * and http://codex.wordpress.org/Child_Themes), you can override certain
- * functions (those wrapped in a function_exists() call) by defining them first
- * in your child theme's functions.php file. The child theme's functions.php
- * file is included before the parent theme's file, so the child theme
- * functions would be used.
- *
- *
- * For more information on hooks, actions, and filters,
- * see http://codex.wordpress.org/Plugin_API
+ * Navigation and layout are managed via theme.json and block templates in
+ * /templates/ and /parts/. Nav walkers and the mobile-menu JS from the base
+ * theme are not loaded here; the Navigation block handles all of that.
  *
  * @package emclientWP WordPress theme
  */
@@ -52,10 +43,6 @@ final class EMCLIENT_Theme_Class {
             add_action( 'wp_enqueue_scripts',  [$this, 'theme_css' ] );
             // Add a pingback url auto-discovery header for singularly identifiable articles.
             add_action( 'wp_head',  [$this, 'pingback_header' ] , 1 );
-            // Add meta viewport tag to header.
-            add_action( 'wp_head',   [$this, 'meta_viewport' ] , 1 );
-            // Add an X-UA-Compatible header.
-            add_filter( 'wp_headers',  [$this, 'x_ua_compatible_headers' ] );
             add_filter( 'emclient_enqueue_generated_files', '__return_false' );
         }
     }
@@ -92,16 +79,11 @@ final class EMCLIENT_Theme_Class {
      */
     public static function classes() {
         $dir_include = self::inc_dir();
-        /**
-         * Load WooCommerce compatibility file.
-         */
+        // Nav walkers and custom widgets are not needed in the FSE variant.
+        // The Navigation block handles menus; block templates handle layout.
         if ( class_exists( 'WooCommerce' ) ) {
             require $dir_include . 'plugins/woocommerce/classes/woocommerce_function.php';
         }
-        require $dir_include . '/class-nav-walker-mobile.php';
-        require $dir_include . '/class-nav-walker-desktop.php';
-        require $dir_include . '/class-widget-recent-posts.php';
-        require $dir_include . '/class-widget-landing-cta.php';
     }
 
     /**
@@ -122,14 +104,11 @@ final class EMCLIENT_Theme_Class {
             $content_width = 1200;
         }
 
-        // Register navigation menus.
+        // Register navigation menus — the Navigation block can reference these by slug.
         register_nav_menus(
             array(
                 'primary_menu' => esc_html__( 'Primary', 'em-client' ),
-                'topbar_menu' => esc_html__( 'Top Bar', 'em-client' ),
-                'main_menu'   => esc_html__( 'Main', 'em-client' ),
-                'footer_menu' => esc_html__( 'Footer', 'em-client' ),
-                'mobile_menu' => esc_html__( 'Mobile (optional)', 'em-client' ),
+                'footer_menu'  => esc_html__( 'Footer', 'em-client' ),
             )
         );
 
@@ -187,6 +166,12 @@ final class EMCLIENT_Theme_Class {
                 'widgets',
             )
         );
+
+        // Block editor / FSE supports.
+        add_theme_support( 'editor-styles' );
+        add_editor_style( 'assets/css/style.min.css' );
+        add_theme_support( 'align-wide' );
+        add_theme_support( 'responsive-embeds' );
 
         // Declare WooCommerce support.
         add_theme_support( 'woocommerce' );
@@ -251,19 +236,10 @@ final class EMCLIENT_Theme_Class {
      */
     public static function theme_css() {
 
-        // Define dir.
-        $dir           =  self::css_dir_uri();
         $theme_version = self::theme_version();
-        // Enqueue Main style.
-        wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/assets/css/style.min.css', array(), $theme_version );
-        wp_enqueue_style( 'emclient-slick', get_stylesheet_directory_uri() . '/assets/css/slick.css', array(), $theme_version );
-        wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() . '/assets/css/g-fonts.css', array(), $theme_version );
-        wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
-        wp_enqueue_style( 'font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css', array(), '5.14.0' );
-        wp_enqueue_style( 'font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css', array(), '5.14.0' );
-        if ( is_page_template( 'page-templates/template-demo.php' ) ) {
-            wp_enqueue_style( 'emclient-demo', get_stylesheet_directory_uri() . '/assets/css/demo.min.css', array(), $theme_version );
-        }
+        // Supplemental front-end styles. Global design tokens come from theme.json.
+        wp_enqueue_style( 'emclient-style', get_stylesheet_directory_uri() . '/assets/css/style.min.css', array(), $theme_version );
+        wp_style_add_data( 'emclient-style', 'rtl', 'replace' );
     }
 
     /**
@@ -279,23 +255,12 @@ final class EMCLIENT_Theme_Class {
         // Get current theme version.
         $theme_version = self::theme_version();
 
-        // Main script dependencies.
-        $main_script_dependencies = array( 'jquery' );
-
         // Comment reply.
         if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
             wp_enqueue_script( 'comment-reply' );
         }
 
-        /**
-         * Load Theme Scripts.
-         */
-
         wp_enqueue_script( 'emclient-general', $dir . 'general.js', array(), $theme_version, true );
-        wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri() . '/assets/js/slick.min.js', array( 'jquery' ), $theme_version, true );
-        if ( is_page_template( 'page-templates/template-demo.php' ) ) {
-            wp_enqueue_script( 'emclient-demo', $dir . 'demo.js', array(), $theme_version, true );
-        }
     }
 
 
@@ -320,118 +285,18 @@ final class EMCLIENT_Theme_Class {
         $heading = get_theme_mod( 'emclient_sidebar_widget_heading_tag', 'h4' );
         $heading = apply_filters( 'emclient_sidebar_widget_heading_tag', $heading );
 
-        $foo_heading = get_theme_mod( 'emclient_footer_widget_heading_tag', 'h4' );
-        $foo_heading = apply_filters( 'emclient_footer_widget_heading_tag', $foo_heading );
-
-        // Default Sidebar.
+        // Default Sidebar — kept for widget/plugin compatibility.
         register_sidebar(
             array(
                 'name'          => esc_html__( 'Default Sidebar', 'em-client' ),
                 'id'            => 'sidebar',
-                'description'   => esc_html__( 'Widgets in this area will be displayed in the left or right sidebar area if you choose the Left or Right Sidebar layout.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="sidebar-box %2$s clr">',
+                'description'   => esc_html__( 'Widgets in this area will be displayed in the sidebar.', 'em-client' ),
+                'before_widget' => '<div id="%1$s" class="sidebar-box %2$s">',
                 'after_widget'  => '</div>',
                 'before_title'  => '<' . $heading . ' class="widget-title">',
                 'after_title'   => '</' . $heading . '>',
             )
         );
-
-        // Left Sidebar.
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Left Sidebar', 'em-client' ),
-                'id'            => 'sidebar-2',
-                'description'   => esc_html__( 'Widgets in this area are used in the left sidebar region if you use the Both Sidebars layout.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="sidebar-box %2$s clr">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<' . $heading . ' class="widget-title">',
-                'after_title'   => '</' . $heading . '>',
-            )
-        );
-
-        // Search Results Sidebar.
-        if ( get_theme_mod( 'emclient_search_custom_sidebar', true ) ) {
-            register_sidebar(
-                array(
-                    'name'          => esc_html__( 'Search Results Sidebar', 'em-client' ),
-                    'id'            => 'search_sidebar',
-                    'description'   => esc_html__( 'Widgets in this area are used in the search result page.', 'em-client' ),
-                    'before_widget' => '<div id="%1$s" class="sidebar-box %2$s clr">',
-                    'after_widget'  => '</div>',
-                    'before_title'  => '<' . $heading . ' class="widget-title">',
-                    'after_title'   => '</' . $heading . '>',
-                )
-            );
-        }
-
-        // Footer 1.
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Footer 1', 'em-client' ),
-                'id'            => 'footer-one',
-                'description'   => esc_html__( 'Widgets in this area are used in the first footer region.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<' . $foo_heading . ' class="widget-title">',
-                'after_title'   => '</' . $foo_heading . '>',
-            )
-        );
-
-        // Footer 2.
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Footer 2', 'em-client' ),
-                'id'            => 'footer-two',
-                'description'   => esc_html__( 'Widgets in this area are used in the second footer region.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<' . $foo_heading . ' class="widget-title">',
-                'after_title'   => '</' . $foo_heading . '>',
-            )
-        );
-
-        // Footer 3.
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Footer 3', 'em-client' ),
-                'id'            => 'footer-three',
-                'description'   => esc_html__( 'Widgets in this area are used in the third footer region.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<' . $foo_heading . ' class="widget-title">',
-                'after_title'   => '</' . $foo_heading . '>',
-            )
-        );
-
-        // Footer 4.
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Footer 4', 'em-client' ),
-                'id'            => 'footer-four',
-                'description'   => esc_html__( 'Widgets in this area are used in the fourth footer region.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="footer-widget %2$s clr">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<' . $foo_heading . ' class="widget-title">',
-                'after_title'   => '</' . $foo_heading . '>',
-            )
-        );
-
-        // Landing Page sidebar
-        register_sidebar(
-            array(
-                'name'          => esc_html__( 'Landing Page Widgets', 'em-client' ),
-                'id'            => 'landing-page-widgets',
-                'description'   => esc_html__( 'Widgets in this area will appear on the landing page.', 'em-client' ),
-                'before_widget' => '<div id="%1$s" class="widget %2$s em-landing-widget">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<h3 class="widget-title">',
-                'after_title'   => '</h3>',
-            )
-        );
-
-        // Register custom widgets
-        register_widget( 'EMClient_Recent_Posts_Widget' );
-        register_widget( 'EMClient_Landing_CTA_Widget' );
     }
 
     /**
@@ -442,5 +307,14 @@ final class EMCLIENT_Theme_Class {
         return str_pad($string, strlen($string) + 2, $char, STR_PAD_BOTH);
     }
 }
+
+/**
+ * [em_copyright] shortcode — outputs a dynamic copyright line.
+ * Use in the Site Editor by adding a Shortcode block containing [em_copyright].
+ */
+function emclient_copyright_shortcode() {
+    return '&copy; ' . esc_html( date( 'Y' ) ) . ' ' . esc_html( get_bloginfo( 'name' ) ) . '. All rights reserved.';
+}
+add_shortcode( 'em_copyright', 'emclient_copyright_shortcode' );
 
 new EMCLIENT_Theme_Class();
