@@ -111,4 +111,30 @@ For issues, suggestions, or contributions, please use the [GitHub Issues](https:
 
 ---
 
+## Branch Strategy
+
+This repo uses a tiered branching model so you can start from the right level of complexity for each client:
+
+| Branch | Purpose |
+|---|---|
+| `master` | Stable, production-ready base — merge target for completed `dev` work |
+| `dev` | Active development — all new features and fixes land here first |
+| `lean` | Minimal starter — no WooCommerce, no slick carousel, no Font Awesome CDN, no custom widgets, stripped-down sidebar/menu set. Best for simple brochure sites. |
+| `woocommerce` | E-commerce focused — full WooCommerce support, shop templates, product gallery features. Planned: cart/checkout styling, WooCommerce widget areas. |
+
+### Workflow
+
+```
+master ──── lean          (branch off master, keep trimmed)
+       └─── woocommerce   (branch off master, add e-commerce features)
+       └─── dev           (ongoing development, merges back to master)
+```
+
+**For a new client project:**
+1. Pick the closest branch (`lean`, `woocommerce`, or `master`)
+2. Create a new project branch from it: `git checkout -b project/client-name lean`
+3. Customize for the client without affecting the starter templates
+
+---
+
 *This theme is maintained by [Esmond McCain](https://esmondmccain.com/). Feel free to fork, extend, and use for your own projects.*
