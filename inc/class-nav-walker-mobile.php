@@ -24,6 +24,7 @@ class EMClient_Mobile_Nav_Walker extends Walker_Nav_Menu {
      * Starts the element output.
      */
     public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+        $args  = (object) $args;
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
         $classes = empty( $item->classes ) ? array() : (array) $item->classes;
         // Add toplevel-item to all top-level li
