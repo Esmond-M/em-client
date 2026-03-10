@@ -121,12 +121,14 @@ This repo uses a tiered branching model so you can start from the right level of
 | `dev` | Active development — all new features and fixes land here first |
 | `lean` | Minimal starter — no WooCommerce, no slick carousel, no Font Awesome CDN, no custom widgets, stripped-down sidebar/menu set. Best for simple brochure sites. |
 | `woocommerce` | E-commerce focused — full WooCommerce support, shop templates, product gallery features. Planned: cart/checkout styling, WooCommerce widget areas. |
+| `fse` | Full Site Editing — `theme.json` + block templates (`templates/`) + block template parts (`parts/`). Clients edit header, footer, and layout directly in the WordPress Site Editor. No nav walkers, no PHP layout files. |
 
 ### Workflow
 
 ```
 master ──── lean          (branch off master, keep trimmed)
        └─── woocommerce   (branch off master, add e-commerce features)
+       └─── fse           (branch off master, full block/site editor support)
        └─── dev           (ongoing development, merges back to master)
 ```
 
