@@ -26,14 +26,14 @@ get_header();
 				if( get_the_post_thumbnail_url() ){
 
 				?>
-				<div class="featured-img" style="background-image: url('<?php echo get_the_post_thumbnail_url();?>');"> 
+				<div class="featured-img" style="background-image: url('<?php echo esc_url( get_the_post_thumbnail_url() );?>');">
 				</div>
 				<?php
 				}
 
 				else{
 				?>	
-				<div class="featured-img" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/img/blog-placeholder.jpg"?>');"></div>
+				<div class="featured-img" style="background-image: url('<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/img/blog-placeholder.jpg' )?>');"></div>
 				<?php
 				}
 		
@@ -86,7 +86,7 @@ get_header();
 		<?php
             endwhile;
         else :
-            _e( 'Sorry, no posts matched your criteria.', 'em-client' );
+            esc_html_e( 'Sorry, no posts matched your criteria.', 'em-client' );
         endif;
         ?>
 	</main><!-- #main -->

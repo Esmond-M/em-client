@@ -19,18 +19,18 @@
         <div class="em-container" style="display:flex;flex-wrap:wrap;gap:2rem;">
             <!-- Feature: Customization -->
             <article class="feature-item" aria-label="Customization">
-                <h3 class="title"><?php _e('Customization', 'em-client'); ?></h3>
-                <p class="description"><?php _e('Straightforward template structure. Convenient NPM commands for automated processes.', 'em-client'); ?></p>
+                <h3 class="title"><?php esc_html_e( 'Customization', 'em-client' ); ?></h3>
+                <p class="description"><?php esc_html_e( 'Straightforward template structure. Convenient NPM commands for automated processes.', 'em-client' ); ?></p>
             </article>
             <!-- Feature: WooCommerce Compatibility -->
             <article class="feature-item" aria-label="WooCommerce Compatibility">
-                <h3 class="title"><?php _e('WooCommerce Compatibility', 'em-client'); ?></h3>
-                <p class="description"><?php _e('WooCommerce compatibility. Includes pre-built features with easily updated template files.', 'em-client'); ?></p>
+                <h3 class="title"><?php esc_html_e( 'WooCommerce Compatibility', 'em-client' ); ?></h3>
+                <p class="description"><?php esc_html_e( 'WooCommerce compatibility. Includes pre-built features with easily updated template files.', 'em-client' ); ?></p>
             </article>
             <!-- Feature: Sass Files -->
             <article class="feature-item" aria-label="Sass Files">
-                <h3 class="title"><?php _e('Sass Files', 'em-client'); ?></h3>
-                <p class="description"><?php _e('All the conveniences of using Sass. Variables that can be easily updated, etc.', 'em-client'); ?></p>
+                <h3 class="title"><?php esc_html_e( 'Sass Files', 'em-client' ); ?></h3>
+                <p class="description"><?php esc_html_e( 'All the conveniences of using Sass. Variables that can be easily updated, etc.', 'em-client' ); ?></p>
             </article>
         </div>
     </section>
