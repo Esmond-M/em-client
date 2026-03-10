@@ -50,7 +50,7 @@ class EmClient_Customizer {
      * Enqueue customizer preview JS
      */
     public static function preview_js() {
-        wp_enqueue_script( 'emclientcustomizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), defined('_S_VERSION') ? _S_VERSION : false, true );
+        wp_enqueue_script( 'emclientcustomizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), defined( '_S_VERSION' ) ? _S_VERSION : false, true );
     }
 }
 
