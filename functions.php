@@ -52,10 +52,7 @@ final class EMCLIENT_Theme_Class {
             add_action( 'wp_enqueue_scripts',  [$this, 'theme_css' ] );
             // Add a pingback url auto-discovery header for singularly identifiable articles.
             add_action( 'wp_head',  [$this, 'pingback_header' ] , 1 );
-            // Add meta viewport tag to header.
-            add_action( 'wp_head',   [$this, 'meta_viewport' ] , 1 );
-            // Add an X-UA-Compatible header.
-            add_filter( 'wp_headers',  [$this, 'x_ua_compatible_headers' ] );
+            // Add an X-UA-Compatible header removed (IE EOL).
             add_filter( 'emclient_enqueue_generated_files', '__return_false' );
         }
     }
@@ -98,10 +95,10 @@ final class EMCLIENT_Theme_Class {
         if ( class_exists( 'WooCommerce' ) ) {
             require $dir_include . 'plugins/woocommerce/classes/woocommerce_function.php';
         }
-        require $dir_include . '/class-nav-walker-mobile.php';
-        require $dir_include . '/class-nav-walker-desktop.php';
-        require $dir_include . '/class-widget-recent-posts.php';
-        require $dir_include . '/class-widget-landing-cta.php';
+        require $dir_include . 'class-nav-walker-mobile.php';
+        require $dir_include . 'class-nav-walker-desktop.php';
+        require $dir_include . 'class-widget-recent-posts.php';
+        require $dir_include . 'class-widget-landing-cta.php';
     }
 
     /**
@@ -229,22 +226,6 @@ final class EMCLIENT_Theme_Class {
     }
 
     /**
-     * Adds the meta tag to the site header
-     *
-     * @since 1.0.0
-     */
-    public static function meta_viewport() {
-
-        // Meta viewport.
-        $viewport = '<meta name="viewport" content="width=device-width, initial-scale=1">';
-
-        // Apply filters for child theme tweaking.
-        echo apply_filters( 'emclient_meta_viewport', $viewport ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-    }
-
-
-    /**
      * Load front-end scripts
      *
      * @since   1.0.0
@@ -258,7 +239,7 @@ final class EMCLIENT_Theme_Class {
         wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/assets/css/style.min.css', array(), $theme_version );
         wp_enqueue_style( 'emclient-slick', get_stylesheet_directory_uri() . '/assets/css/slick.css', array(), $theme_version );
         wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() . '/assets/css/g-fonts.css', array(), $theme_version );
-        wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
+        wp_style_add_data( 'emclient-min', 'rtl', 'replace' );
         wp_enqueue_style( 'font-awesome-official-css', 'https://use.fontawesome.com/releases/v5.14.0/css/all.css', array(), '5.14.0' );
         wp_enqueue_style( 'font-awesome-official-v4shim-css', 'https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css', array(), '5.14.0' );
         if ( is_page_template( 'page-templates/template-demo.php' ) ) {
@@ -278,9 +259,6 @@ final class EMCLIENT_Theme_Class {
 
         // Get current theme version.
         $theme_version = self::theme_version();
-
-        // Main script dependencies.
-        $main_script_dependencies = array( 'jquery' );
 
         // Comment reply.
         if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -305,11 +283,6 @@ final class EMCLIENT_Theme_Class {
      * @param obj $headers   header settings.
      * @since 1.0.0
      */
-    public static function x_ua_compatible_headers( $headers ) {
-        $headers['X-UA-Compatible'] = 'IE=edge';
-        return $headers;
-    }
-
     /**
      * Registers sidebars
      *
