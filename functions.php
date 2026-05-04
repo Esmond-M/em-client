@@ -214,22 +214,6 @@ final class EMCLIENT_Theme_Class {
     }
 
     /**
-     * Adds the meta tag to the site header
-     *
-     * @since 1.0.0
-     */
-    public static function meta_viewport() {
-
-        // Meta viewport.
-        $viewport = '<meta name="viewport" content="width=device-width, initial-scale=1">';
-
-        // Apply filters for child theme tweaking.
-        echo apply_filters( 'emclient_meta_viewport', $viewport ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-    }
-
-
-    /**
      * Load front-end scripts
      *
      * @since   1.0.0
@@ -263,17 +247,6 @@ final class EMCLIENT_Theme_Class {
         wp_enqueue_script( 'emclient-general', $dir . 'general.js', array(), $theme_version, true );
     }
 
-
-    /**
-     * Add headers for IE to override IE's Compatibility View Settings
-     *
-     * @param obj $headers   header settings.
-     * @since 1.0.0
-     */
-    public static function x_ua_compatible_headers( $headers ) {
-        $headers['X-UA-Compatible'] = 'IE=edge';
-        return $headers;
-    }
 
     /**
      * Registers sidebars
