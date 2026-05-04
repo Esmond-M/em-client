@@ -52,10 +52,7 @@ final class EMCLIENT_Theme_Class {
             add_action( 'wp_enqueue_scripts',  [$this, 'theme_css' ] );
             // Add a pingback url auto-discovery header for singularly identifiable articles.
             add_action( 'wp_head',  [$this, 'pingback_header' ] , 1 );
-            // Add meta viewport tag to header.
-            add_action( 'wp_head',   [$this, 'meta_viewport' ] , 1 );
-            // Add an X-UA-Compatible header.
-            add_filter( 'wp_headers',  [$this, 'x_ua_compatible_headers' ] );
+            // Add an X-UA-Compatible header removed (IE EOL).
             add_filter( 'emclient_enqueue_generated_files', '__return_false' );
         }
     }
@@ -92,8 +89,8 @@ final class EMCLIENT_Theme_Class {
      */
     public static function classes() {
         $dir_include = self::inc_dir();
-        require $dir_include . '/class-nav-walker-mobile.php';
-        require $dir_include . '/class-nav-walker-desktop.php';
+        require $dir_include . 'class-nav-walker-mobile.php';
+        require $dir_include . 'class-nav-walker-desktop.php';
     }
 
     /**
@@ -213,22 +210,6 @@ final class EMCLIENT_Theme_Class {
     }
 
     /**
-     * Adds the meta tag to the site header
-     *
-     * @since 1.0.0
-     */
-    public static function meta_viewport() {
-
-        // Meta viewport.
-        $viewport = '<meta name="viewport" content="width=device-width, initial-scale=1">';
-
-        // Apply filters for child theme tweaking.
-        echo apply_filters( 'emclient_meta_viewport', $viewport ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-    }
-
-
-    /**
      * Load front-end scripts
      *
      * @since   1.0.0
@@ -241,7 +222,7 @@ final class EMCLIENT_Theme_Class {
         // Enqueue Main style.
         wp_enqueue_style( 'emclient-min', get_stylesheet_directory_uri() . '/assets/css/style.min.css', array(), $theme_version );
         wp_enqueue_style( 'gfont-css', get_stylesheet_directory_uri() . '/assets/css/g-fonts.css', array(), $theme_version );
-        wp_style_add_data( 'emclientstyle', 'rtl', 'replace' );
+        wp_style_add_data( 'emclient-min', 'rtl', 'replace' );
     }
 
     /**
@@ -257,9 +238,6 @@ final class EMCLIENT_Theme_Class {
         // Get current theme version.
         $theme_version = self::theme_version();
 
-        // Main script dependencies.
-        $main_script_dependencies = array( 'jquery' );
-
         // Comment reply.
         if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
             wp_enqueue_script( 'comment-reply' );
@@ -272,17 +250,6 @@ final class EMCLIENT_Theme_Class {
         wp_enqueue_script( 'emclient-general', $dir . 'general.js', array(), $theme_version, true );
     }
 
-
-    /**
-     * Add headers for IE to override IE's Compatibility View Settings
-     *
-     * @param obj $headers   header settings.
-     * @since 1.0.0
-     */
-    public static function x_ua_compatible_headers( $headers ) {
-        $headers['X-UA-Compatible'] = 'IE=edge';
-        return $headers;
-    }
 
     /**
      * Registers sidebars
