@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once dirname( __FILE__ ) . '/headless-ops-seeder.php';
+require_once dirname( __FILE__ ) . '/headless-ops-smoke-test.php';
 
 /**
  * Register Case Study Custom Post Type & Taxonomies.
