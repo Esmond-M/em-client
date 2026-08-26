@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+require_once dirname( __FILE__ ) . '/headless-ops-seeder.php';
+
 /**
  * Register Portfolio Item Custom Post Type & Taxonomies
  */
