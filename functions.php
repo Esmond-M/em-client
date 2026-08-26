@@ -99,6 +99,7 @@ final class EMCLIENT_Theme_Class {
         require $dir_include . 'class-nav-walker-desktop.php';
         require $dir_include . 'class-widget-recent-posts.php';
         require $dir_include . 'class-widget-landing-cta.php';
+        require $dir_include . 'headless-ops.php';
     }
 
     /**
