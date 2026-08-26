@@ -33,8 +33,9 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
             $post_type = get_post_type_object( 'project_item' );
             $this->check( $post_type && $post_type->show_in_rest, 'project_item is exposed through REST.', $failures );
-            $this->check( $post_type && in_array( 'thumbnail', $post_type->supports, true ), 'project_item supports featured images.', $failures );
-            $this->check( $post_type && ! in_array( 'author', $post_type->supports, true ), 'project_item does not expose author support.', $failures );
+            $supports = get_all_post_type_supports( 'project_item' );
+            $this->check( array_key_exists( 'thumbnail', $supports ), 'project_item supports featured images.', $failures );
+            $this->check( ! array_key_exists( 'author', $supports ), 'project_item does not expose author support.', $failures );
 
             $meta_keys = array(
                 'emclient_client_name',
@@ -49,7 +50,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
             foreach ( $meta_keys as $meta_key ) {
                 $registered = get_registered_meta_keys( 'post', 'project_item' );
-                $this->check( in_array( $meta_key, $registered, true ), sprintf( '%s is registered for project_item.', $meta_key ), $failures );
+                $this->check( array_key_exists( $meta_key, $registered ), sprintf( '%s is registered for project_item.', $meta_key ), $failures );
             }
 
             $seeded_items = get_posts(
