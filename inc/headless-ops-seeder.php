@@ -2,7 +2,7 @@
 /**
  * Headless Ops Seed Data Generator
  *
- * Provides a WP Admin tool to auto-generate realistic sample portfolio items,
+ * Provides a WP Admin tool to auto-generate realistic sample case studies,
  * blog posts, and taxonomy terms to populate the Headless Operations Dashboard.
  *
  * @package emclientWP
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register Seed Generator Admin Menu under Portfolio Items
+ * Register Seed Generator Admin Menu under Case Studies
  */
 function emclient_seed_generator_menu() {
     add_submenu_page(
@@ -45,7 +45,7 @@ function emclient_render_seed_generator_page() {
         if ( 'generate' === $action ) {
             $counts = emclient_generate_seed_data();
             $message = sprintf(
-                __( 'Successfully generated %d Portfolio Items, %d Blog Posts, and taxonomy terms!', 'em-client' ),
+                __( 'Successfully generated %d Case Studies, %d Blog Posts, and taxonomy terms!', 'em-client' ),
                 $counts['portfolio'],
                 $counts['posts']
             );
@@ -78,7 +78,7 @@ function emclient_render_seed_generator_page() {
             <span class="dashicons dashicons-database-add" style="font-size:32px; width:32px; height:32px;"></span>
             <?php esc_html_e( 'Headless Dashboard Seed Generator', 'em-client' ); ?>
         </h1>
-        <p><?php esc_html_e( 'Auto-generate realistic sample data (Portfolio Items, Blog Posts, Types, and Stacks) to test the Headless Operations React Dashboard.', 'em-client' ); ?></p>
+        <p><?php esc_html_e( 'Auto-generate realistic sample data (Case Studies, Blog Posts, Types, and Stacks) to test the Headless Operations React Dashboard.', 'em-client' ); ?></p>
 
         <?php if ( ! empty( $message ) ) : ?>
             <div class="notice <?php echo esc_attr( $message_type ); ?> is-dismissible">
@@ -89,15 +89,15 @@ function emclient_render_seed_generator_page() {
         <div style="background:#fff; border:1px solid #c3c4c7; padding:20px; border-radius:8px; max-width:700px; margin-top:20px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
             <h2><?php esc_html_e( 'Current Status', 'em-client' ); ?></h2>
             <ul>
-                <li><strong><?php esc_html_e( 'Total Portfolio Items:', 'em-client' ); ?></strong> <?php echo esc_html( $portfolio_count->publish ?? 0 ); ?></li>
-                <li><strong><?php esc_html_e( 'Seeded Portfolio Items:', 'em-client' ); ?></strong> <?php echo esc_html( $seeded_portfolio ); ?></li>
+                <li><strong><?php esc_html_e( 'Total Case Studies:', 'em-client' ); ?></strong> <?php echo esc_html( $portfolio_count->publish ?? 0 ); ?></li>
+                <li><strong><?php esc_html_e( 'Seeded Case Studies:', 'em-client' ); ?></strong> <?php echo esc_html( $seeded_portfolio ); ?></li>
                 <li><strong><?php esc_html_e( 'Seeded Blog Posts:', 'em-client' ); ?></strong> <?php echo esc_html( $seeded_posts ); ?></li>
             </ul>
 
             <hr style="margin:20px 0; border-color:#f0f0f1;" />
 
             <h3><?php esc_html_e( 'Actions', 'em-client' ); ?></h3>
-            <p><?php esc_html_e( 'Generate items with a mix of complete fields and deliberate missing fields (to test quality scoring & audit warnings in the dashboard).', 'em-client' ); ?></p>
+            <p><?php esc_html_e( 'Generate case studies with complete and deliberately missing fields to test quality scoring and audit warnings in the dashboard.', 'em-client' ); ?></p>
 
             <div style="display:flex; gap:15px; margin-top:15px;">
                 <form method="post" action="">
@@ -228,7 +228,7 @@ function emclient_generate_seed_data() {
             'type'    => 'Open Source Plugin',
             'stacks'  => array( 'WordPress', 'PHP' ),
             'days_ago'=> 30,
-            'complete'=> false, // Intentionally missing excerpt/tags test
+            'complete'=> false, // Intentionally missing structured fields for audit testing
         ),
         array(
             'title'   => 'Woo Team Manage Plugin',
@@ -291,6 +291,7 @@ function emclient_generate_seed_data() {
     $portfolio_count = 0;
     foreach ( $portfolio_seeds as $seed ) {
         $post_date = date( 'Y-m-d H:i:s', strtotime( "-{$seed['days_ago']} days" ) );
+        $is_complete = ! empty( $seed['complete'] );
 
         $post_id = wp_insert_post( array(
             'post_title'   => $seed['title'],
@@ -300,7 +301,15 @@ function emclient_generate_seed_data() {
             'post_type'    => 'project_item',
             'post_date'    => $post_date,
             'meta_input'   => array(
-                '_is_seeded_data' => 1,
+                '_is_seeded_data'          => 1,
+                'emclient_client_name'     => $is_complete ? 'Sample Client Organization' : '',
+                'emclient_role'            => $is_complete ? 'Lead WordPress Developer' : '',
+                'emclient_project_url'     => '',
+                'emclient_repository_url'  => '',
+                'emclient_completion_year' => (int) gmdate( 'Y', strtotime( "-{$seed['days_ago']} days" ) ),
+                'emclient_challenge'       => $is_complete ? 'The team needed a reliable digital workflow that was easier to maintain and measure.' : '',
+                'emclient_solution'        => $is_complete ? 'Designed and implemented a maintainable solution with clear content and technical boundaries.' : '',
+                'emclient_outcome'         => $is_complete ? 'Improved consistency, maintainability, and the team\'s ability to manage the work.' : '',
             ),
         ) );
 
