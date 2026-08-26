@@ -28,6 +28,23 @@ function emclient_seed_generator_menu() {
 add_action( 'admin_menu', 'emclient_seed_generator_menu' );
 
 /**
+ * Load styles only on the seed generator screen.
+ */
+function emclient_seed_generator_styles( $hook_suffix ) {
+    if ( 'project_item_page_headless-ops-seeder' !== $hook_suffix ) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'emclient-headless-ops-admin',
+        get_template_directory_uri() . '/assets/css/headless-ops-admin.css',
+        array(),
+        '1.0.0'
+    );
+}
+add_action( 'admin_enqueue_scripts', 'emclient_seed_generator_styles' );
+
+/**
  * Render Seed Generator Admin Page
  */
 function emclient_render_seed_generator_page() {
@@ -74,8 +91,8 @@ function emclient_render_seed_generator_page() {
 
     ?>
     <div class="wrap">
-        <h1 style="display:flex; align-items:center; gap:10px;">
-            <span class="dashicons dashicons-database-add" style="font-size:32px; width:32px; height:32px;"></span>
+        <h1 class="headless-ops-title">
+            <span class="dashicons dashicons-database-add" aria-hidden="true"></span>
             <?php esc_html_e( 'Headless Dashboard Seed Generator', 'em-client' ); ?>
         </h1>
         <p><?php esc_html_e( 'Auto-generate realistic sample data (Case Studies, Blog Posts, Types, and Stacks) to test the Headless Operations React Dashboard.', 'em-client' ); ?></p>
@@ -86,7 +103,7 @@ function emclient_render_seed_generator_page() {
             </div>
         <?php endif; ?>
 
-        <div style="background:#fff; border:1px solid #c3c4c7; padding:20px; border-radius:8px; max-width:700px; margin-top:20px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+        <div class="headless-ops-panel">
             <h2><?php esc_html_e( 'Current Status', 'em-client' ); ?></h2>
             <ul>
                 <li><strong><?php esc_html_e( 'Total Case Studies:', 'em-client' ); ?></strong> <?php echo esc_html( $portfolio_count->publish ?? 0 ); ?></li>
@@ -94,17 +111,17 @@ function emclient_render_seed_generator_page() {
                 <li><strong><?php esc_html_e( 'Seeded Blog Posts:', 'em-client' ); ?></strong> <?php echo esc_html( $seeded_posts ); ?></li>
             </ul>
 
-            <hr style="margin:20px 0; border-color:#f0f0f1;" />
+            <hr />
 
             <h3><?php esc_html_e( 'Actions', 'em-client' ); ?></h3>
             <p><?php esc_html_e( 'Generate case studies with complete and deliberately missing fields to test quality scoring and audit warnings in the dashboard.', 'em-client' ); ?></p>
 
-            <div style="display:flex; gap:15px; margin-top:15px;">
+            <div class="headless-ops-actions">
                 <form method="post" action="">
                     <?php wp_nonce_field( 'emclient_seed_action_nonce', 'emclient_seed_nonce' ); ?>
                     <input type="hidden" name="emclient_seeder_action" value="generate" />
                     <button type="submit" class="button button-primary button-large">
-                        <span class="dashicons dashicons-plus-alt2" style="vertical-align:middle; margin-right:4px;"></span>
+                        <span class="dashicons dashicons-plus-alt2" aria-hidden="true"></span>
                         <?php esc_html_e( 'Generate Seed Data', 'em-client' ); ?>
                     </button>
                 </form>
@@ -113,8 +130,8 @@ function emclient_render_seed_generator_page() {
                     <form method="post" action="" onsubmit="return confirm('Are you sure you want to delete all seeded sample items?');">
                         <?php wp_nonce_field( 'emclient_seed_action_nonce', 'emclient_seed_nonce' ); ?>
                         <input type="hidden" name="emclient_seeder_action" value="purge" />
-                        <button type="submit" class="button button-secondary button-large" style="color:#d63638; border-color:#d63638;">
-                            <span class="dashicons dashicons-trash" style="vertical-align:middle; margin-right:4px;"></span>
+                        <button type="submit" class="button button-secondary button-large headless-ops-purge">
+                            <span class="dashicons dashicons-trash" aria-hidden="true"></span>
                             <?php esc_html_e( 'Purge Seeded Data', 'em-client' ); ?>
                         </button>
                     </form>

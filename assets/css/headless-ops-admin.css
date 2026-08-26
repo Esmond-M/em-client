@@ -1,0 +1,70 @@
+.headless-ops-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.headless-ops-title .dashicons {
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+}
+
+.headless-ops-panel {
+    width: min(700px, 100%);
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.headless-ops-panel h2,
+.headless-ops-panel h3 {
+    margin-top: 0;
+}
+
+.headless-ops-panel hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #f0f0f1;
+}
+
+.headless-ops-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.headless-ops-actions form {
+    margin: 0;
+}
+
+.headless-ops-actions .dashicons {
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.headless-ops-purge {
+    color: #d63638 !important;
+    border-color: #d63638 !important;
+}
+
+@media screen and (max-width: 782px) {
+    .headless-ops-panel {
+        width: auto;
+        margin-right: 12px;
+    }
+
+    .headless-ops-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .headless-ops-actions form,
+    .headless-ops-actions .button {
+        width: 100%;
+    }
+}
