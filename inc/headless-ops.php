@@ -114,6 +114,18 @@ function emclient_register_headless_ops_cpt() {
 add_action( 'init', 'emclient_register_headless_ops_cpt', 0 );
 
 /**
+ * Use the Classic Editor for portfolio items only.
+ */
+function emclient_use_classic_editor_for_project_items( $use_block_editor, $post ) {
+    if ( $post instanceof WP_Post && 'project_item' === $post->post_type ) {
+        return false;
+    }
+
+    return $use_block_editor;
+}
+add_filter( 'use_block_editor_for_post', 'emclient_use_classic_editor_for_project_items', 10, 2 );
+
+/**
  * Add CORS headers to REST API requests to support local headless development
  */
 function emclient_send_cors_headers() {
