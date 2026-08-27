@@ -446,10 +446,14 @@ add_filter( 'ai1wm_exclude_content_from_export', 'emclient_ai1wm_exclude_develop
 add_filter( 'ai1wm_exclude_themes_from_export', 'emclient_ai1wm_exclude_development_files' );
 
 /**
- * Keep the backend homepage out of the public theme experience.
+ * Keep all normal frontend routes out of the public backend experience.
  */
 function emclient_redirect_public_homepage() {
-    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ! is_front_page() ) {
+    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+        return;
+    }
+
+    if ( current_user_can( 'manage_options' ) ) {
         return;
     }
 
