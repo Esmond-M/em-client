@@ -444,3 +444,37 @@ function emclient_ai1wm_exclude_development_files( $exclude_filters ) {
 
 add_filter( 'ai1wm_exclude_content_from_export', 'emclient_ai1wm_exclude_development_files' );
 add_filter( 'ai1wm_exclude_themes_from_export', 'emclient_ai1wm_exclude_development_files' );
+
+/**
+ * Keep the backend homepage out of the public theme experience.
+ */
+function emclient_redirect_public_homepage() {
+    if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ! is_front_page() ) {
+        return;
+    }
+
+    if ( is_user_logged_in() ) {
+        wp_safe_redirect( admin_url() );
+    } else {
+        wp_safe_redirect( wp_login_url( home_url( '/' ) ) );
+    }
+
+    exit;
+}
+
+add_action( 'template_redirect', 'emclient_redirect_public_homepage' );
+
+/**
+ * Prevent backend HTML pages from being indexed by search engines.
+ *
+ * @param array $robots Existing robots directives.
+ * @return array
+ */
+function emclient_backend_robots( $robots ) {
+    $robots['noindex']  = true;
+    $robots['nofollow'] = true;
+
+    return $robots;
+}
+
+add_filter( 'wp_robots', 'emclient_backend_robots' );
