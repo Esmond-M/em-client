@@ -14,9 +14,22 @@ The theme redirects visitors from the front page before the normal template is r
 
 - Anonymous visitors are sent to the WordPress login page.
 - Authenticated visitors are sent to `/wp-admin/`.
+- Logged-in administrators with the `manage_options` capability can browse frontend routes without being redirected.
 - WordPress admin requests, AJAX, cron, and REST requests are not redirected.
 
 This keeps the backend homepage from exposing the boilerplate theme while preserving normal WordPress administration and API access.
+
+## WPS Hide Login compatibility
+
+The redirect uses WordPress's `wp_login_url()` function rather than a hardcoded `wp-login.php` path. When WPS Hide Login is installed and configured, WordPress can provide the plugin's custom login URL to the redirect automatically.
+
+After enabling WPS Hide Login:
+
+1. Set and record the custom login slug in the plugin settings.
+2. Test the custom login URL in a private browser window.
+3. Confirm an anonymous request to the backend homepage redirects to that custom login URL.
+4. Confirm `/wp-login.php` is no longer treated as the public login entry point.
+5. Do not hardcode the hidden slug in theme code; it belongs in the plugin configuration.
 
 ## Search indexing
 
