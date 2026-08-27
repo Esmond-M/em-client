@@ -418,3 +418,29 @@ final class EMCLIENT_Theme_Class {
 }
 
 new EMCLIENT_Theme_Class();
+
+/**
+ * Exclude local development files from All-in-One WP Migration exports.
+ *
+ * @param array $exclude_filters Existing excluded paths.
+ * @return array
+ */
+function emclient_ai1wm_exclude_development_files( $exclude_filters ) {
+    $theme_directory = trailingslashit( get_stylesheet_directory() );
+    $development_directories = array(
+        '.git',
+        '.vscode',
+        'build',
+        'docs',
+        'node_modules',
+    );
+
+    foreach ( $development_directories as $directory ) {
+        $exclude_filters[] = $theme_directory . $directory;
+    }
+
+    return array_values( array_unique( $exclude_filters ) );
+}
+
+add_filter( 'ai1wm_exclude_content_from_export', 'emclient_ai1wm_exclude_development_files' );
+add_filter( 'ai1wm_exclude_themes_from_export', 'emclient_ai1wm_exclude_development_files' );
