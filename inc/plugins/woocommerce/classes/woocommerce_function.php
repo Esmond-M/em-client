@@ -65,19 +65,23 @@ if (!class_exists('EMCLIENT_woocommerce_function')) {
 		
 		// Redirect WooCommerce Shop URL
 		public static function wpc_shop_url_redirect() {
+			if ( ! is_shop() ) {
+				return;
+			}
+
 			global $wpdb;
 			/* Get post IDs of all pages using "page-templates/template-shop.php" */
-			// If no page random redirect to a product
 			$custom_shop_pages = $wpdb->get_results("SELECT `post_id` FROM $wpdb->postmeta WHERE `meta_key` ='_wp_page_template' AND `meta_value` = 'page-templates/template-shop.php' ", ARRAY_A);
+			if ( empty( $custom_shop_pages[0]['post_id'] ) ) {
+				return;
+			}
 			/* Get permalink using post ID of first page in the results */
 			$custom_shop_pages_permalink = get_permalink($custom_shop_pages[0]['post_id']);
-			if(!current_user_can( 'edit_posts' )){ // for testing
-	    
+			if ( ! $custom_shop_pages_permalink ) {
+				return;
 			}
-			if( is_shop() ){
-				wp_redirect( $custom_shop_pages_permalink); // Assign custom internal page here
-				exit();
-			}	
+			wp_redirect( $custom_shop_pages_permalink );
+			exit();
 		}
 
 				
